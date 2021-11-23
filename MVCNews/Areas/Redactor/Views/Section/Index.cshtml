@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MVCNews.Models.SectionData>
+
+@{
+    ViewData["Title"] = "GetSection";
+}
+
+<h1>GetSection</h1>
+
+<p>
+    <a asp-area="Redactor" asp-controller="Section" asp-action="CreateSection" asp-route-id="">Создать</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Id)
+                </th>*@
+            <th>
+                Название заголовка
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameSection)
+                </td>
+                <td>
+                    <a asp-area="Redactor" asp-controller="Section" asp-action="PutSection" asp-route-id="@item.Id">Изменить</a>
+                    @Html.ActionLink("Удалить", "DeleteSection", new { id=item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

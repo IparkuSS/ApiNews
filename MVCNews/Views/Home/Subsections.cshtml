@@ -1,0 +1,37 @@
+﻿@model IEnumerable<MVCNews.Models.SubsectionData>
+
+
+
+<div id="main">
+    <div class="inner">
+        <header>
+            <h1>
+                Главные новости мира
+            </h1>
+        </header>
+
+        <section class="tiles">
+            @foreach (var item in Model)
+            {
+                <article class="style2">
+                    <span class="image">
+                        <img width="10em" height="240em" src="~/images/@item.ImagePath" alt="" />
+                    </span>
+                    <a asp-area="" asp-controller="Home" asp-action="Articles" asp-route-idsection="@item.IdSection" asp-route-idsubsection="@item.Id">
+                        <h2>@item.Name</h2>
+                    </a>
+
+
+                </article>
+            }
+        </section>
+
+
+    </div>
+</div>
+
+
+
+
+
+

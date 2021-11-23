@@ -1,0 +1,6 @@
+2021-11-15 14:28:44.0308 ERROR CompanyForCreationDto object sent from client is null.
+2021-11-15 14:30:32.7347 ERROR CompanyForCreationDto object sent from client is null.
+2021-11-15 14:46:14.2580 ERROR CompanyForCreationDto object sent from client is null.
+2021-11-15 14:49:45.6442 ERROR CompanyForCreationDto object sent from client is null.
+2021-11-15 21:30:54.2851 INFO Company with id: 00000000-0000-0000-0000-000000000000 doesn't exist in the database.
+2021-11-15 22:06:56.0594 INFO Company with id: 00000000-0000-0000-0000-000000000000 doesn't exist in the database.

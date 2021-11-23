@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVCNews.Models.SubsectionData>
+
+@{
+    ViewData["Title"] = "Subsections";
+}
+
+<h1>Подзоголовки</h1>
+
+<p>
+    <a asp-area="Redactor" asp-controller="Subsection" asp-action="CreateSubsection" asp-route-Id="@ViewBag.sectionId"> Создать</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Id)
+                </th>*@
+            <th>
+                Название
+            </th>
+            @*  <th>
+                @Html.DisplayNameFor(model => model.IdSection)
+                </th>*@
+            @*    <th>
+                @Html.DisplayNameFor(model => model.MetaTitle)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.MetaDescription)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.MetaKeywords)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*  <td>
+                    @Html.DisplayFor(modelItem => item.IdSection)
+                    </td>*@
+                @*    <td>
+                    @Html.DisplayFor(modelItem => item.MetaTitle)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.MetaDescription)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.MetaKeywords)
+                    </td>*@
+                <td>
+
+                    <a asp-area="Redactor" asp-controller="Subsection" asp-action="PutSubsection" asp-route-sectionId="@item.IdSection" asp-route-id="@item.Id">Изменить</a>
+                    @Html.ActionLink("Удалить", "DeleteSubsection", new { id=item.Id , idSection = item.IdSection})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVCNews.Models.AuthorData>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            @*  <th>
+                @Html.DisplayNameFor(model => model.Id)
+                </th>*@
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Документ
+            </th>
+            <th>
+                Скачать
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Document)
+                </td>
+                <td>@Html.ActionLink("Download", "DownloadFile", new { fileName = item.Document })</td>
+                <td>
+                    @Html.ActionLink("Удалить", "DeleteAuthor", new { id=item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

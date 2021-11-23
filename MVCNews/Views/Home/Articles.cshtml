@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MVCNews.Models.ArticleData>
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+@*<h1>Articles</h1>
+
+    <p>
+    <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Id)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.ShortDescription)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Heading)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Priority)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Image)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.AddTime)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Text)
+    </th>
+    <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.ShortDescription)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Heading)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Priority)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Image)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.AddTime)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Text)
+    </td>
+    <td>
+    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("DeatailsForSubsection", "DeatailsForSubsection", new { id = item.Id, idsubsection = item.IdSubsection})
+    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+    </tr>
+    }
+    </tbody>
+    </table>
+*@
+
+<div id="main">
+    <div class="inner">
+        <section class="tiles">
+
+
+            @foreach (var item in Model)
+            {
+
+                <article class="style3">
+                    <span class="image">
+                        <img width="10em" height="240em" src="~/images/@item.Image" alt="" />
+                    </span>
+                    <a asp-area="" asp-controller="Home" asp-action="Article" asp-route-id="@item.Id" asp-route-idsubsection="@item.IdSubsection" asp-route-idsection="@ViewBag.idsection">
+
+
+                        <h2>@item.Heading</h2>
+                        <div class="content">
+                            <p>@item.ShortDescription</p>
+                        </div>
+                    </a>
+                    @item.AddTime
+                </article>
+
+
+            }
+        </section>
+
+    </div>
+</div>
+
+
+
+

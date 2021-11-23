@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MVCNews.Models.SectionData>
+
+
+
+
+
+<div id="main">
+    <div class="inner">
+
+
+
+        <header>
+            <h1>
+                Главные новости мира
+            </h1>
+        </header>
+
+
+        <section class="tiles">
+            @foreach (var item in Model)
+            {
+                <article class="style1">
+                    <span class="image">
+                        <img width="10em" height="240em" src="~/images/@item.TitleImagePath" alt="" />
+                    </span>
+                    <a asp-area="" asp-controller="Home" asp-action="Subsections" asp-route-id="@item.Id">
+                        <h2>@item.NameSection</h2>
+                    </a>
+
+
+                </article>
+            }
+        </section>
+        <hr>
+        <a asp-area="" asp-controller="Author" asp-action="create" asp-route-id="" class="button primary fit">Поделитесь с нами, вашей статьей</a>
+        <a class="button primary fit small" asp-area="" asp-controller="Account" asp-action="Login" asp-route-id="">Войти</a>
+    </div>
+</div>
+
+
+
+

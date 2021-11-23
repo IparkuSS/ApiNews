@@ -1,0 +1,36 @@
+﻿@model MVCNews.Models.AuthorData
+
+@{
+    ViewData["Title"] = "create";
+}
+<div id="main">
+    <div class="inner">
+
+        <section>
+            <h2>Введите данные</h2>
+            <form method="post" asp-action="Create" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Surname" class="control-label"></label>
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Document" class="control-label"></label>
+                    <input type="file" name="PdfFile" id="PdfFile" accept=".doc,.docx,.pdf,.txt" />
+                </div>
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Отправить" class="btn btn-primary" />
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

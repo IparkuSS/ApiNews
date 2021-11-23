@@ -1,0 +1,1 @@
+2021-11-16 01:58:58.8127 INFO Company with id: 00000000-0000-0000-0000-000000000000 doesn't exist in the database.
