@@ -1,4 +1,0 @@
-{     "firstname": "Mifhdae",     "lastname": "dfaoe",     "username": "vikftor",
-  "password": "Password1000",     "email": "a2rsd@mail.ru",   
-  "phonenumber": "189-432", "roles":["Administrator"] }
-

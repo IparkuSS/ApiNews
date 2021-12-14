@@ -76,7 +76,6 @@ namespace APINews.Migrations
                         .HasColumnName("IdAuthor");
 
                     b.Property<string>("Document")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -109,6 +108,26 @@ namespace APINews.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sections");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
+                            NameSection = "Sport",
+                            TitleImagePath = "Sport.jpg"
+                        },
+                        new
+                        {
+                            Id = new Guid("38736ae1-08a1-4d45-9c0e-b0b3711f92e7"),
+                            NameSection = "World",
+                            TitleImagePath = "USA.jpg"
+                        },
+                        new
+                        {
+                            Id = new Guid("9ea5b28f-9b62-49d2-853b-8f031bc51091"),
+                            NameSection = "War",
+                            TitleImagePath = "war.jpg"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Subsection", b =>
@@ -249,17 +268,17 @@ namespace APINews.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4dabbbdd-249f-48c2-9d05-e444a5b6ffbc",
-                            ConcurrencyStamp = "0b598931-4710-4bd6-b329-48ef5ed10b3e",
-                            Name = "Redactor",
-                            NormalizedName = "REDACTOR"
+                            Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
+                            ConcurrencyStamp = "04ad0374-4865-496f-89e5-7e9079917d43",
+                            Name = "Administrator",
+                            NormalizedName = "Administrator"
                         },
                         new
                         {
-                            Id = "4037b5b4-5dfb-4176-b688-54905ca36cba",
-                            ConcurrencyStamp = "c7dd6094-6a48-48a9-a4da-4daf6cac453f",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Id = "6a37880d-42ac-43be-9e76-c3fc02847c39",
+                            ConcurrencyStamp = "2505a533-d203-47a1-a753-139f258e05f7",
+                            Name = "Redactor",
+                            NormalizedName = "REDACTOR"
                         });
                 });
 
@@ -285,6 +304,92 @@ namespace APINews.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "1f86c465-34a5-449d-9f6c-8d289aa87059",
+                            Email = "my@email.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MY@EMAIL.COM",
+                            NormalizedUserName = "DON",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFq52uVLhFsTaxacbPEgq5oOLJAaCWeeKyyefgHEe14QABA4O5d9CyF06yLJnQgpsg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "don"
+                        },
+                        new
+                        {
+                            Id = "136ef774-9b20-4a17-a2c1-4d779b752e5b",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "239c40fc-0520-485e-b2b2-ed0619e838d7",
+                            Email = "myad@email.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MYAD@EMAIL.COM",
+                            NormalizedUserName = "REDA",
+                            PasswordHash = "AQAAAAEAACcQAAAAELCvZCwmBp2Fc44AZPpHa85njExgaVpGebFZy7rtbo2640XJMizv5pOnYp7gorL/iw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "reda"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -346,6 +451,18 @@ namespace APINews.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
+                            RoleId = "44546e06-8719-4ad8-b88a-f271ae9d6eab"
+                        },
+                        new
+                        {
+                            UserId = "136ef774-9b20-4a17-a2c1-4d779b752e5b",
+                            RoleId = "6a37880d-42ac-43be-9e76-c3fc02847c39"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

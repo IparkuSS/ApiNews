@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
 using Contract;
-using Entities.DataTransferObjects;
+using Contract.Repositories;
+using Entities.DataTransferObjects.SubsectionsDto;
 using Entities.Models;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-
 namespace APINews.Controllers
 {
-    [Route("api/section/{idsection}/subsection")]
+    [Route("api/section/{sectionId}/subsection")]
     [ApiController]
     public class SubsectionController : Controller
     {
@@ -24,67 +23,82 @@ namespace APINews.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// Returns all subsection for section
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetSubsectionForSection(Guid idsection)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetSubsectionsForSection(Guid sectionId)
         {
             try
             {
-                var section = await _repository.Section.GetSectionAsync(idsection, trackChanges: false);
+                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
                 if (section == null)
                 {
-                    _logger.LogInfo($"section with id: {idsection} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"section with id: {sectionId} doesn't exist.");
+                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
                 }
-
-                var subsectionFromDb = await _repository.Subsection.GetSubsectionsAsync(idsection, trackChanges: false);
-
+                var subsectionFromDb = await _repository.Subsection.GetSubsectionsAsync(sectionId, trackChanges: false);
                 var subsectionDto = _mapper.Map<IEnumerable<SubsectionDto>>(subsectionFromDb);
-
                 return Ok(subsectionDto);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the {nameof(GetSubsectionForSection)} action {ex}");
-
+                _logger.LogError($"Something went wrong in the {nameof(GetSubsectionsForSection)} action {ex}, {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
-
+        /// <summary>
+        /// Returns specified subsection by id for section
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetSubsectionForSection")]
-        public async Task<IActionResult> GetSubsectionForSection(Guid idsection, Guid id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetSubsectionForSection(Guid sectionId, Guid id)
         {
             try
             {
-                var section = await _repository.Section.GetSectionAsync(idsection, trackChanges: false);
+                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
                 if (section == null)
                 {
-                    _logger.LogInfo($"Section with id: {idsection} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
+                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
                 }
-
-                var subsectionDb = await _repository.Subsection.GetSubsectionAsync(idsection, id, trackChanges: false);
+                var subsectionDb = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: false);
                 if (subsectionDb == null)
                 {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Subsection with id: {id} doesn't exist.");
+                    return StatusCode(404, $"Subsection with id: {id} doesn't exist");
                 }
-
                 var subsection = _mapper.Map<SubsectionDto>(subsectionDb);
-
                 return Ok(subsection);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the {nameof(GetSubsectionForSection)} action {ex}");
-
+                _logger.LogError($"Something went wrong in the {nameof(GetSubsectionForSection)} action {ex}, {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
-
-
+        /// <summary>
+        /// Creates a new subsection for section
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <param name="subsection"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateSubsectionForSection(Guid idsection, [FromBody] SubsectionForCreationDto subsection)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateSubsectionForSection(Guid sectionId, [FromBody] SubsectionForCreationDto subsection)
         {
             try
             {
@@ -93,96 +107,99 @@ namespace APINews.Controllers
                     _logger.LogError("SubsectionForCreationDto object sent from client is null.");
                     return BadRequest("SubsectionForCreationDto object is null");
                 }
-
-                var section = await _repository.Section.GetSectionAsync(idsection, trackChanges: false);
+                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
                 if (section == null)
                 {
-                    _logger.LogInfo($"Section with id: {idsection} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
+                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
                 }
-
                 var subsectionEntity = _mapper.Map<Subsection>(subsection);
-                _repository.Subsection.CreateSubsectionForSection(idsection, subsectionEntity);
+                _repository.Subsection.CreateSubsectionForSection(sectionId, subsectionEntity);
                 await _repository.SaveAsync();
                 return Ok();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the {nameof(CreateSubsectionForSection)} action {ex}");
-
+                _logger.LogError($"Something went wrong in the {nameof(CreateSubsectionForSection)} action {ex}, {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
-
         }
-
-
+        /// <summary>
+        /// Deletes a subsection from a section
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSubsectionForSection(Guid idsection, Guid id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteSubsectionForSection(Guid sectionId, Guid id)
         {
             try
             {
-                var company = await _repository.Section.GetSectionAsync(idsection, trackChanges: false);
-                if (company == null)
+                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
+                if (section == null)
                 {
-                    _logger.LogInfo($"Section with id: {idsection} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
+                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist ");
                 }
-
-                var SubsectionForsection = await _repository.Subsection.GetSubsectionAsync(idsection, id, trackChanges: false);
+                var SubsectionForsection = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: false);
                 if (SubsectionForsection == null)
                 {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Subsection with id: {id} doesn't exist");
+                    return StatusCode(404, $"Subsection with id: {id} doesn't exist");
                 }
-
                 _repository.Subsection.DeleteSubsection(SubsectionForsection);
                 await _repository.SaveAsync();
-
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the {nameof(DeleteSubsectionForSection)} action {ex}");
-
+                _logger.LogError($"Something went wrong in the {nameof(DeleteSubsectionForSection)} action {ex}, {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
-
-
+        /// <summary>
+        /// Updates a subsection for section
+        /// </summary>
+        /// <param name="sectionId"></param>
+        /// <param name="id"></param>
+        /// <param name="subsection"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployeeForCompany(Guid idsection, Guid id, [FromBody] SubsectionForUpdateDto employee)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateSubsectionForSection(Guid sectionId, Guid id, [FromBody] SubsectionForUpdateDto subsection)
         {
             try
             {
-                if (employee == null)
+                if (subsection == null)
                 {
                     _logger.LogError("SubsectionForUpdateDto object sent from client is null.");
                     return BadRequest("SubsectionForUpdateDto object is null");
                 }
-
-                var section = await _repository.Section.GetSectionAsync(idsection, trackChanges: false);
+                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
                 if (section == null)
                 {
-                    _logger.LogInfo($"Section with id: {idsection} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
+                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
                 }
-
-                var sectionEntity = await _repository.Subsection.GetSubsectionAsync(idsection, id, trackChanges: true);
-                if (sectionEntity == null)
+                var subsectionEntity = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: true);
+                if (subsectionEntity == null)
                 {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist in the database.");
-                    return NotFound();
+                    _logger.LogInfo($"Subsection with id: {id} doesn't exist.");
+                    return StatusCode(404, $"Subsection with id: {id} doesn't exist");
                 }
-
-                _mapper.Map(employee, sectionEntity);
+                _mapper.Map(subsection, subsectionEntity);
                 await _repository.SaveAsync();
-
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the {nameof(UpdateEmployeeForCompany)} action {ex}");
-
+                _logger.LogError($"Something went wrong in the {nameof(UpdateSubsectionForSection)} action {ex}, {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

@@ -1,0 +1,83 @@
+2021-12-13 09:52:23.0223 INFO Subsection with id: 00000000-0000-0000-0000-000000000000 doesn't exist in the database.
+2021-12-13 12:07:30.7178 INFO Subsection with id: 370bda5f-03d4-48a6-ebe3-08d9ad5ba23a doesn't exist
+2021-12-13 12:07:34.0553 INFO Subsection with id: 370bda5f-03d4-48a6-ebe3-08d9ad5ba23a doesn't exist
+2021-12-13 12:07:45.0828 INFO Subsection with id: 370bda5f-03d4-48a6-ebe3-08d9ad5ba23a doesn't exist
+2021-12-13 12:09:23.5812 INFO Subsection with id: 370bda5f-03d4-48a6-ebe3-08d9ad5ba23a doesn't exist
+2021-12-13 12:10:43.3999 INFO Subsection with id: 370bda5f-03d4-48a6-ebe3-08d9ad5ba23a doesn't exist
+2021-12-13 12:14:09.2390 INFO Article with id: 00000000-0000-0000-0000-000000000000 doesn't exist.
+2021-12-13 12:14:12.8876 INFO Article with id: 00000000-0000-0000-0000-000000000000 doesn't exist.
+2021-12-13 12:15:49.6454 INFO Subsection with id: 00000000-0000-0000-0000-000000000000 doesn't exist.
+2021-12-13 12:16:46.6441 INFO Subsection with id: 00000000-0000-0000-0000-000000000000 doesn't exist.
+2021-12-13 12:18:56.4139 INFO Section with id: c31a202d-b0b5-46a6-5aa0-08d9be198901 doesn't exist
+2021-12-13 14:37:47.1409 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method226(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 14:37:51.3002 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method226(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 21:44:12.0263 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 21:52:40.4661 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method226(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 22:02:45.8294 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 22:04:45.1758 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 22:06:38.6800 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 22:08:30.6130 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-13 22:10:55.7124 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.

@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 namespace MVCNews.Areas.Redactor.Controllers
 {
     [Area("Redactor")]
@@ -9,6 +8,5 @@ namespace MVCNews.Areas.Redactor.Controllers
         {
             return View();
         }
-
     }
 }

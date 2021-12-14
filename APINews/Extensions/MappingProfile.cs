@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using Entities.DataTransferObjects;
+using Entities.DataTransferObjects.ArticlesDto;
+using Entities.DataTransferObjects.AuthorsDto;
+using Entities.DataTransferObjects.SectionsDto;
+using Entities.DataTransferObjects.SubsectionsDto;
+using Entities.DataTransferObjects.UserDto;
 using Entities.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace APINews.Extensions
 {
     public class MappingProfile : Profile
@@ -17,7 +15,7 @@ namespace APINews.Extensions
             CreateMap<Subsection, SubsectionDto>();
             CreateMap<Article, ArticleDto>();
             CreateMap<AuthorCreatDto, Author>();
-            CreateMap<AuthorDto, Author>();
+            CreateMap<Author, AuthorDto>();
             CreateMap<UserForRegistrationDto, User>();
             CreateMap<SectionForCreationDto, Section>();
             CreateMap<SubsectionForCreationDto, Subsection>();
@@ -25,11 +23,6 @@ namespace APINews.Extensions
             CreateMap<ArticleForCreationDto, Article>();
             CreateMap<SectionForUpdateDto, Section>();
             CreateMap<ArticleForUpdateDto, Article>();
-
-
-
-
-
         }
     }
 }

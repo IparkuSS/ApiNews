@@ -3,18 +3,20 @@ using MVCNews.Helper;
 using MVCNews.Models;
 using System.Net.Http;
 using System.Net.Http.Json;
-
 namespace MVCNews.Areas.Administrator.Controllers
 {
     [Area("Administrator")]
     public class RegistrationController : Controller
     {
-        ApiModels _api = new ApiModels();
+        private readonly IApiModels _api;
+        public RegistrationController(IApiModels api)
+        {
+            _api = api;
+        }
         public IActionResult AddUsers()
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult AddUsers(UserForRigestration userForRigestration)
         {

@@ -1,105 +1,36 @@
-﻿@*<!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MVCNews</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    </head>
-    <body>
-    <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container">
-    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVCNews</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-    <ul class="navbar-nav flex-grow-1">
-    <li class="nav-item">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </li>
-    </ul>
-    </div>
-    </div>
-    </nav>
-    </header>
-    <div class="container">
-    <main role="main" class="pb-3">
-    @RenderBody()
-    </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-    <div class="container">
-    &copy; 2021 - MVCNews - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-    </body>
-    </html>
-*@
-
-<!DOCTYPE HTML>
-<!--
-    Phantom by HTML5 UP
-    html5up.net |
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>News</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-
     <link rel="stylesheet" href="~/css/main.min.css" />
-
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper">
-
         <!-- Header -->
         <header id="header">
             <div class="inner">
-
                 <!-- Logo -->
                 <a href="/" class="logo">
-                    <span class="symbol"><img src="~/images/logo.svg" alt="" /></span><span class="title">Новости</span>
+                    <span class="symbol"><img src="~/images/logo.svg" alt="" /></span><span class="title">News</span>
                 </a>
-
                 <!-- Nav -->
                 <nav>
                     <ul>
-                        <li><a href="#menu">МЕНЮ</a></li>
+                        <li><a href="#menu">Meny</a></li>
                     </ul>
                 </nav>
-
             </div>
         </header>
-
-        <!-- sidebar--------------------------------------- -->
         @(await Component.InvokeAsync<FoterViewComponent>())
-        <!-- sidebar--------------------------------------- -->
-        <!-- Main ------------------------------------------>
         @RenderBody()
-
-
-        <!-- Main ------------------------------------------>
-        <!----------------------------------- Footer -->
         <footer id="footer">
             <div class="inner">
                 <section>
-                    <h2>Подпишитесь</h2>
+                    <h2>Subscribe</h2>
                     <ul class="icons">
                         <li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
                         <li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -113,20 +44,10 @@
                 </section>
                 <ul class="copyright">
                     <li>&copy; Parputs Ilya</li>
-
                 </ul>
             </div>
         </footer>
-
     </div>
-    <!----------------------------------- Footer -->
-    <!-- Scripts -->
-    @*<script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>*@
     <script src="~/js/scripts.min.js"></script>
-
 </body>
 </html>

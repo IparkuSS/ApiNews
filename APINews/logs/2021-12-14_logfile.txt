@@ -1,0 +1,149 @@
+2021-12-14 04:25:20.0868 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-14 04:31:36.9300 ERROR Something went wrong in the GetAuthors action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method174(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.AuthorRepository.GetAllAuthorsAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\AuthorRepository.cs:line 15
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 38, Data is Null. This method or property cannot be called on Null values.
+2021-12-14 04:47:37.0079 ERROR Something went wrong in the GetAuthors action AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.AuthorsDto.AuthorDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Author -> AuthorDto
+Entities.Models.Author -> Entities.DataTransferObjects.AuthorsDto.AuthorDto
+   at lambda_method229(Closure , Author , AuthorDto , ResolutionContext )
+   at lambda_method228(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method228(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 39, Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.AuthorsDto.AuthorDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2021-12-14 05:06:07.9295 ERROR Something went wrong in the GetAuthors action AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.AuthorsDto.AuthorDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Author -> AuthorDto
+Entities.Models.Author -> Entities.DataTransferObjects.AuthorsDto.AuthorDto
+   at lambda_method177(Closure , Author , AuthorDto , ResolutionContext )
+   at lambda_method176(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method176(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at APINews.Controllers.AuthorController.GetAuthors() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 39, Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.AuthorsDto.AuthorDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2021-12-14 05:35:32.2427 ERROR Something went wrong in the GetAriclesForSubsection action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method64(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.ArticleRepository.GetArticlesAsync(Guid sectionId, Guid subsectionId, Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\ArticleRepository.cs:line 16
+   at APINews.Controllers.ArticleController.GetAriclesForSubsection(Guid sectionId, Guid subsectionId) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\ArticleController.cs:line 46, Data is Null. This method or property cannot be called on Null values.
+2021-12-14 05:35:45.0168 ERROR Something went wrong in the GetAriclesForSubsection action System.Data.SqlTypes.SqlNullValueException: Data is Null. This method or property cannot be called on Null values.
+   at Microsoft.Data.SqlClient.SqlBuffer.get_String()
+   at lambda_method64(Closure , QueryContext , DbDataReader , ResultContext , SingleQueryResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.ArticleRepository.GetArticlesAsync(Guid sectionId, Guid subsectionId, Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\ArticleRepository.cs:line 16
+   at APINews.Controllers.ArticleController.GetAriclesForSubsection(Guid sectionId, Guid subsectionId) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\ArticleController.cs:line 46, Data is Null. This method or property cannot be called on Null values.
+2021-12-14 08:57:05.6701 ERROR Something went wrong in the GetAllSection action Microsoft.Data.SqlClient.SqlException (0x80131904): Недопустимое имя столбца "TitleImagePath".
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.SectionRepository.GetAllSectionAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\SectionRepository.cs:line 15
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 39
+ClientConnectionId:98b8e8fb-120e-4d56-b0d3-21202362510d
+Error Number:207,State:1,Class:16, Недопустимое имя столбца "TitleImagePath".
+2021-12-14 08:57:07.5538 ERROR Something went wrong in the GetAllSection action Microsoft.Data.SqlClient.SqlException (0x80131904): Недопустимое имя столбца "TitleImagePath".
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.SectionRepository.GetAllSectionAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\SectionRepository.cs:line 15
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 39
+ClientConnectionId:98b8e8fb-120e-4d56-b0d3-21202362510d
+Error Number:207,State:1,Class:16, Недопустимое имя столбца "TitleImagePath".
+2021-12-14 08:59:51.8186 ERROR Something went wrong in the GetAllSection action Microsoft.Data.SqlClient.SqlException (0x80131904): Недопустимое имя столбца "TitleImagePath".
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.SectionRepository.GetAllSectionAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\SectionRepository.cs:line 15
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 39
+ClientConnectionId:98b8e8fb-120e-4d56-b0d3-21202362510d
+Error Number:207,State:1,Class:16, Недопустимое имя столбца "TitleImagePath".
+2021-12-14 08:59:58.1518 WARN Authenticate: Authentication failed. Wrong user name or password.
+2021-12-14 08:59:58.7296 ERROR Something went wrong in the GetAllSection action Microsoft.Data.SqlClient.SqlException (0x80131904): Недопустимое имя столбца "TitleImagePath".
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__277_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at LoggerService.RepositoryModels.SectionRepository.GetAllSectionAsync(Boolean trackChanges) in C:\Users\Lenovo\source\repos\APINews\LoggerService\RepositoryModels\SectionRepository.cs:line 15
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 39
+ClientConnectionId:98b8e8fb-120e-4d56-b0d3-21202362510d
+Error Number:207,State:1,Class:16, Недопустимое имя столбца "TitleImagePath".

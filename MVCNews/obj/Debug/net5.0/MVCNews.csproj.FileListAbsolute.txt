@@ -9,7 +9,6 @@ C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\ref\MVCNews.dll
 C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\MVCNews.pdb
 C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\MVCNews.Views.dll
 C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\MVCNews.Views.pdb
-C:\Users\Lenovo\source\repos\APINews\MVCNews\obj\Debug\net5.0\MVCNews.csproj.AssemblyReference.cache
 C:\Users\Lenovo\source\repos\APINews\MVCNews\obj\Debug\net5.0\MVCNews.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Lenovo\source\repos\APINews\MVCNews\obj\Debug\net5.0\MVCNews.AssemblyInfoInputs.cache
 C:\Users\Lenovo\source\repos\APINews\MVCNews\obj\Debug\net5.0\MVCNews.AssemblyInfo.cs
@@ -162,3 +161,4 @@ C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\runtimes\osx-x64\n
 C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
 C:\Users\Lenovo\source\repos\APINews\MVCNews\bin\Debug\net5.0\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
 C:\Users\Lenovo\source\repos\APINews\MVCNews\obj\Debug\net5.0\Razor\Areas\Redactor\Views\Articles\PutArticle.cshtml.g.cs
+C:\Users\Lenovo\source\repos\APINews\MVCNews\obj\Debug\net5.0\MVCNews.csproj.AssemblyReference.cache

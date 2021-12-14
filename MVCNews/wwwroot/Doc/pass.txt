@@ -1,0 +1,3 @@
+{     "firstname": "Mihae",     "lastname": "doe",     "username": "expert",
+  "password": "Password1000",     "email": "asdasd@mail.ru",     "phonenumber": "589-432", "roles":["Manager"] }
+

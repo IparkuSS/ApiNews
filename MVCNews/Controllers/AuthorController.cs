@@ -3,31 +3,27 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVCNews.Helper;
 using MVCNews.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-
 namespace MVCNews.Controllers
 {
     public class AuthorController : Controller
     {
-        ApiModels _api = new ApiModels();
         private readonly IWebHostEnvironment hostingEnvironment;
-        public AuthorController(IWebHostEnvironment hostingEnvironment)
+        private readonly IApiModels _api;
+        public AuthorController(IWebHostEnvironment hostingEnvironment, IApiModels api)
         {
             this.hostingEnvironment = hostingEnvironment;
+            _api = api;
         }
-
         public ActionResult create()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult create(AuthorData author, IFormFile PdfFile)
+        public async Task<IActionResult> create(AuthorData author, IFormFile PdfFile)
         {
             if (ModelState.IsValid)
             {
@@ -40,19 +36,13 @@ namespace MVCNews.Controllers
                     }
                 }
                 HttpClient client = _api.Initial();
-                var postTask = client.PostAsJsonAsync<AuthorData>("api/author", author);
-                postTask.Wait();
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
+                var postTask = await client.PostAsJsonAsync<AuthorData>("api/author", author);
+                if (postTask.IsSuccessStatusCode)
                 {
-                    return View();
+                    return RedirectToRoute(new { controller = "Home", action = "Index" });
                 }
-
             }
-
             return View();
         }
-
-
     }
 }
