@@ -1,0 +1,24 @@
+2021-12-21 01:13:06.5338 ERROR Something went wrong in the CreateSection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Section
+System.Object -> DALNews.Models.Section
+   at lambda_method22(Closure , Object , Section , ResolutionContext )
+   at BLLNews.Services.SectionServices.CreateSection(SectionForCreationDto sectionForCreationDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SectionServices.cs:line 61
+   at APINews.Controllers.SectionController.CreateSection(SectionForCreationDto section) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 177, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Section
+System.Object -> DALNews.Models.Section
+2021-12-21 01:25:10.4787 ERROR Something went wrong in the CreateSection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Section
+System.Object -> DALNews.Models.Section
+   at lambda_method22(Closure , Object , Section , ResolutionContext )
+   at BLLNews.Services.SectionServices.CreateSection(SectionForCreationDto sectionForCreationDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SectionServices.cs:line 61
+   at APINews.Controllers.SectionController.CreateSection(SectionForCreationDto section) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 177, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Section
+System.Object -> DALNews.Models.Section

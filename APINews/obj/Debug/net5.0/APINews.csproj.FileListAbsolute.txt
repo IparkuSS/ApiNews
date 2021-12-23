@@ -76,3 +76,7 @@ C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\Microsoft.Extensio
 C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Lenovo\source\repos\APINews\APINews\obj\Debug\net5.0\APINews.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\BLLNews.dll
+C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\DALNews.dll
+C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\BLLNews.pdb
+C:\Users\Lenovo\source\repos\APINews\APINews\bin\Debug\net5.0\DALNews.pdb

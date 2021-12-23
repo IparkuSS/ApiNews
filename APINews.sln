@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALNews", "DALNews\DALNews.csproj", "{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLLNews", "BLLNews\BLLNews.csproj", "{33E915E6-1026-49A8-90D4-7450FF77EFDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,14 @@ Global
 		{7EE14B11-20C7-4197-BE65-DB5EA87D4F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EE14B11-20C7-4197-BE65-DB5EA87D4F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EE14B11-20C7-4197-BE65-DB5EA87D4F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E915E6-1026-49A8-90D4-7450FF77EFDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E915E6-1026-49A8-90D4-7450FF77EFDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E915E6-1026-49A8-90D4-7450FF77EFDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E915E6-1026-49A8-90D4-7450FF77EFDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

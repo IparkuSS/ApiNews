@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using BLLNews.DataTransferObjects.UserDto;
 using Contract;
-using Contract.Identity;
-using Entities.DataTransferObjects.UserDto;
-using Entities.Models;
+using DALNews.Identity;
+using DALNews.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

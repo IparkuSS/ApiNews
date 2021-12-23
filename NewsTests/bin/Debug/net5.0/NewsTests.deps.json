@@ -1776,6 +1776,7 @@
       "APINews/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "BLLNews": "1.0.0",
           "Entities": "1.0.0",
           "LoggerService": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.11",
@@ -1788,6 +1789,16 @@
           "APINews.dll": {}
         }
       },
+      "BLLNews/1.0.0": {
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "Contract": "1.0.0",
+          "DALNews": "1.0.0"
+        },
+        "runtime": {
+          "BLLNews.dll": {}
+        }
+      },
       "Contract/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
@@ -1796,6 +1807,17 @@
         },
         "runtime": {
           "Contract.dll": {}
+        }
+      },
+      "DALNews/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
+          "NLog.Extensions.Logging": "1.7.4",
+          "Newtonsoft.Json": "13.0.1",
+          "System.IdentityModel.Tokens.Jwt": "6.14.1"
+        },
+        "runtime": {
+          "DALNews.dll": {}
         }
       },
       "Entities/1.0.0": {
@@ -2967,7 +2989,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BLLNews/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Contract/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DALNews/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

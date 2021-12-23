@@ -2,10 +2,10 @@
 using APINews.Extensions;
 using AutoFixture;
 using AutoMapper;
+using BLLNews.DataTransferObjects.AuthorsDto;
+using BLLNews.Interfaces;
 using Contract;
-using Contract.Repositories;
-using Entities.DataTransferObjects.AuthorsDto;
-using Entities.Models;
+using DALNews.Models;
 using FakeItEasy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,33 +17,31 @@ namespace NewsTests
 {
     public class AuthorControllerTests
     {
-        private readonly IRepositoryManager _repositoryManager;
+        private readonly IAuthorServices _authorManager;
         private readonly ILoggerManager _loggerManager;
-        private readonly IMapper _mapperFake;
         private readonly Fixture _fixture;
         private readonly AuthorController _controller;
         public AuthorControllerTests()
         {
-            _repositoryManager = A.Fake<IRepositoryManager>();
+            _authorManager = A.Fake<IAuthorServices>();
             _loggerManager = A.Fake<ILoggerManager>();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
             });
-            _mapperFake = config.CreateMapper();
-            _controller = new AuthorController(_repositoryManager, _loggerManager, _mapperFake);
+            _controller = new AuthorController(_loggerManager, _authorManager);
             _fixture = new Fixture();
         }
         [Fact]
         public async Task GetAllAuthorsTests_ShouldReturnActionResultOfAuthorsWith200StatusCode()
         {
             //Arange 
-            var authors = _fixture.CreateMany<Author>(3).ToList();
-            A.CallTo(() => _repositoryManager.Author.GetAllAuthorsAsync(false)).Returns(authors);
+            var authors = _fixture.CreateMany<AuthorDto>(3).ToList();
+            A.CallTo(() => _authorManager.GetAuthors()).Returns(authors);
             //Act
             var result = await _controller.GetAuthors() as OkObjectResult;
             //Assert
-            A.CallTo(() => _repositoryManager.Author.GetAllAuthorsAsync(false)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => _authorManager.GetAuthors()).MustHaveHappenedOnceExactly();
             Assert.NotNull(result);
             var returnValue = result.Value as IEnumerable<AuthorDto>;
             Assert.Equal(authors.Count, returnValue.Count());
@@ -53,13 +51,13 @@ namespace NewsTests
         public async Task GetAuthorTests_ShouldReturnActionResultOfAuthorWith200StatusCode()
         {
             //Arange 
-            var authors = _fixture.CreateMany<Author>(3).ToList();
+            var authors = _fixture.CreateMany<AuthorDto>(3).ToList();
             var author = authors.FirstOrDefault();
-            A.CallTo(() => _repositoryManager.Author.GetAuthorAsync(author.Id, false)).Returns(author);
+            A.CallTo(() => _authorManager.GetAuthor(author.Id)).Returns(author);
             // Act
             var result = await _controller.GetAuthor(author.Id) as OkObjectResult;
             // Assert
-            A.CallTo(() => _repositoryManager.Author.GetAuthorAsync(author.Id, false)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => _authorManager.GetAuthor(author.Id)).MustHaveHappenedOnceExactly();
             Assert.NotNull(result);
             var returnValue = result.Value as AuthorDto;
             Assert.Equal(author.Id, returnValue.Id);

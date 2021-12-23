@@ -1,10 +1,8 @@
-﻿using AutoMapper;
+﻿using BLLNews.DataTransferObjects.UserDto;
+using BLLNews.Interfaces;
 using Contract;
-using Contract.Identity;
-using Entities.DataTransferObjects.UserDto;
-using Entities.Models;
+using DALNews.Identity;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -15,14 +13,12 @@ namespace APINews.Controllers
     public class RegistrationController : Controller
     {
         private readonly ILoggerManager _logger;
-        private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
         private readonly IAuthenticationManager _authManager;
-        public RegistrationController(ILoggerManager logger, IMapper mapper, UserManager<User> userManager, IAuthenticationManager authManager)
+        private readonly IRegistrationServices _registration;
+        public RegistrationController(ILoggerManager logger, IRegistrationServices registration, IAuthenticationManager authManager)
         {
             _logger = logger;
-            _mapper = mapper;
-            _userManager = userManager;
+            _registration = registration;
             _authManager = authManager;
         }
         /// <summary>
@@ -38,17 +34,11 @@ namespace APINews.Controllers
         {
             try
             {
-                var user = _mapper.Map<User>(userForRegistration);
-                var result = await _userManager.CreateAsync(user, userForRegistration.Password);
-                if (!result.Succeeded)
+                var result = await _registration.RegisterUser(userForRegistration);
+                if (result == false)
                 {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.TryAddModelError(error.Code, error.Description);
-                    }
-                    return BadRequest(ModelState);
+                    return BadRequest();
                 }
-                await _userManager.AddToRolesAsync(user, userForRegistration.Roles);
                 return StatusCode(201);
             }
             catch (Exception ex)

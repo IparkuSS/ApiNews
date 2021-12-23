@@ -1,12 +1,9 @@
-﻿using AutoMapper;
+﻿using BLLNews.DataTransferObjects.AuthorsDto;
+using BLLNews.Interfaces;
 using Contract;
-using Contract.Repositories;
-using Entities.DataTransferObjects.AuthorsDto;
-using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace APINews.Controllers
 {
@@ -14,14 +11,12 @@ namespace APINews.Controllers
     [ApiController]
     public class AuthorController : Controller
     {
-        private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
-        private readonly IMapper _mapper;
-        public AuthorController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly IAuthorServices _author;
+        public AuthorController(ILoggerManager logger, IAuthorServices author)
         {
-            _repository = repository;
+            _author = author;
             _logger = logger;
-            _mapper = mapper;
         }
         /// <summary>
         /// Returns all authors 
@@ -34,8 +29,7 @@ namespace APINews.Controllers
         {
             try
             {
-                var author = await _repository.Author.GetAllAuthorsAsync(trackChanges: false);
-                var authorDto = _mapper.Map<IEnumerable<AuthorDto>>(author);
+                var authorDto = await _author.GetAuthors();
                 return Ok(authorDto);
             }
             catch (Exception ex)
@@ -57,17 +51,13 @@ namespace APINews.Controllers
         {
             try
             {
-                var author = await _repository.Author.GetAuthorAsync(id, trackChanges: false);
-                if (author == null)
+                var authorDto = await _author.GetAuthor(id);
+                if (authorDto == null)
                 {
                     _logger.LogInfo($"Author with id: {id} doesn't exist.");
                     return StatusCode(404, $"Author with id: {id} doesn't exist");
                 }
-                else
-                {
-                    var authorDto = _mapper.Map<AuthorDto>(author);
-                    return Ok(authorDto);
-                }
+                return Ok(authorDto);
             }
             catch (Exception ex)
             {
@@ -93,9 +83,7 @@ namespace APINews.Controllers
                     _logger.LogError("AuthorCreatDto object sent from client is null.");
                     return BadRequest("AuthorCreatDto object is null");
                 }
-                var authorEntity = _mapper.Map<Author>(author);
-                _repository.Author.CreateAuthor(authorEntity);
-                await _repository.SaveAsync();
+                var authorDto = await _author.CreateAuthor(author);
                 return NoContent();
             }
             catch (Exception ex)
@@ -117,14 +105,12 @@ namespace APINews.Controllers
         {
             try
             {
-                var author = await _repository.Author.GetAuthorAsync(id, trackChanges: false);
-                if (author == null)
+                var authorDto = await _author.DeleteAuthor(id);
+                if (authorDto == null)
                 {
                     _logger.LogInfo($"Author with id: {id} doesn't exist.");
                     return StatusCode(404, $"Author with id: {id} doesn't exist.");
                 }
-                _repository.Author.DeleteAuthor(author);
-                await _repository.SaveAsync();
                 return NoContent();
             }
             catch (Exception ex)

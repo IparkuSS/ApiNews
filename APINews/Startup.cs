@@ -1,6 +1,6 @@
 using APINews.Extensions;
-using Contract.Identity;
-using LoggerService;
+using BLLNews.Identity;
+using DALNews.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
 using System.IO;
+using System.Reflection;
 namespace APINews
 {
     public class Startup
@@ -27,12 +28,13 @@ namespace APINews
             services.ConfigureLoggerService();
             services.ConfigureSqlContext(Configuration);
             services.ConfigureRepositoryManager();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(Assembly.GetAssembly(typeof(MappingProfile)));
             services.AddAuthentication();
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
             services.ConfigureSwagger();
+            services.ConfigureServices();
             services.AddControllers();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +52,7 @@ namespace APINews
             app.UseSwagger();
             app.UseSwaggerUI(s =>
             {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Code Maze API v1");
+                s.SwaggerEndpoint("/swagger/v2/swagger.json", "Code Maze API v2");
             });
             app.UseHttpsRedirection();
             app.UseRouting();

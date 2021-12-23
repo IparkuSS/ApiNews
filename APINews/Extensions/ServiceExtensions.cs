@@ -1,7 +1,9 @@
-﻿using Contract;
-using Contract.Repositories;
-using Entities;
-using Entities.Models;
+﻿using BLLNews.Interfaces;
+using BLLNews.Services;
+using Contract;
+using DALNews;
+using DALNews.Models;
+using DALNews.Repositories;
 using LoggerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -25,7 +27,7 @@ namespace APINews.Extensions
         });
         public static void ConfigureIISIntegration(this IServiceCollection services) =>
             services.Configure<IISOptions>(options => { });
-        public static void ConfigureLoggerService(this IServiceCollection services) => services.AddScoped<ILoggerManager, LoggerManager>();
+        public static void ConfigureLoggerService(this IServiceCollection services) => services.AddSingleton<ILoggerManager, LoggerManager>();
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b =>
             b.MigrationsAssembly("APINews")));
@@ -73,6 +75,14 @@ namespace APINews.Extensions
             {
                 s.SwaggerDoc("v2", new OpenApiInfo { Title = "Code Maze API", Version = "v2" });
             });
+        }
+        public static void ConfigureServices(this IServiceCollection services)
+        {
+            services.AddScoped<ISectionServices, SectionServices>();
+            services.AddScoped<ISubsectionServices, SubsectionServices>();
+            services.AddScoped<IArticleServices, ArticleServices>();
+            services.AddScoped<IAuthorServices, AuthorServices>();
+            services.AddScoped<IRegistrationServices, RegistrationServices>();
         }
     }
 }

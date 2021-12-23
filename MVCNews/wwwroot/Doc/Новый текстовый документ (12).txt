@@ -1,0 +1,89 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using MVCNews.Helper;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MVCNews.Models.ViewComponents
+{
+    public class AuthorViewComponent : ViewComponent
+    {
+        ApiModels _api = new ApiModels();
+        private readonly IWebHostEnvironment hostingEnvironment;
+        public AuthorViewComponent(IWebHostEnvironment hostingEnvironment)
+        {
+            this.hostingEnvironment = hostingEnvironment;
+        }
+
+        public Task<IViewComponentResult> InvokeAsync()
+        {
+            return Task.FromResult<IViewComponentResult>(View()); ;
+        }
+        public Task<IViewComponentResult> Create(AuthorData authorData, IFormFile PdfFile)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (PdfFile != null)
+                {
+                    authorData.Document = PdfFile.FileName;
+                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", PdfFile.FileName), FileMode.Create))
+                    {
+                        PdfFile.CopyTo(stream);// / Views / Shared / Components / Author / Default.cshtml
+                    }
+                }
+
+                HttpClient client = _api.Initial();
+                var postTask = client.PostAsJsonAsync<AuthorData>("api/author", authorData);
+                postTask.Wait();
+                var result = postTask.Result;
+
+            }
+            return Task.FromResult<IViewComponentResult>(View()); ;
+        }
+
+    }
+}
+
+@model MVCNews.Models.AuthorData
+
+
+<section>
+
+    <h2>Get in touch</h2>
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Surname" class="control-label"></label>
+            <input asp-for="Surname" class="form-control" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Document" class="control-label"></label>
+            <input type="file" name="PdfFile" id="PdfFile" />
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+
+
+
+</section>
+

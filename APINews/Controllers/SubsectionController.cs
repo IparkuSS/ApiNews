@@ -1,12 +1,9 @@
-﻿using AutoMapper;
+﻿using BLLNews.DataTransferObjects.SubsectionsDto;
+using BLLNews.Interfaces;
 using Contract;
-using Contract.Repositories;
-using Entities.DataTransferObjects.SubsectionsDto;
-using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace APINews.Controllers
 {
@@ -14,14 +11,12 @@ namespace APINews.Controllers
     [ApiController]
     public class SubsectionController : Controller
     {
-        private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
-        private readonly IMapper _mapper;
-        public SubsectionController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly ISubsectionServices _subsection;
+        public SubsectionController(ILoggerManager logger, ISubsectionServices subsection)
         {
-            _repository = repository;
             _logger = logger;
-            _mapper = mapper;
+            _subsection = subsection;
         }
         /// <summary>
         /// Returns all subsection for section
@@ -36,14 +31,12 @@ namespace APINews.Controllers
         {
             try
             {
-                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
-                if (section == null)
+                var subsectionDto = await _subsection.GetSubsectionsForSection(sectionId);
+                if (subsectionDto == null)
                 {
                     _logger.LogInfo($"section with id: {sectionId} doesn't exist.");
-                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
+                    return StatusCode(404, $"section with id: {sectionId} doesn't exist");
                 }
-                var subsectionFromDb = await _repository.Subsection.GetSubsectionsAsync(sectionId, trackChanges: false);
-                var subsectionDto = _mapper.Map<IEnumerable<SubsectionDto>>(subsectionFromDb);
                 return Ok(subsectionDto);
             }
             catch (Exception ex)
@@ -66,20 +59,13 @@ namespace APINews.Controllers
         {
             try
             {
-                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
-                if (section == null)
-                {
-                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
-                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
-                }
-                var subsectionDb = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: false);
-                if (subsectionDb == null)
+                var sectionDto = await _subsection.GetSubsectionForSection(id, sectionId);
+                if (sectionDto == null)
                 {
                     _logger.LogInfo($"Subsection with id: {id} doesn't exist.");
                     return StatusCode(404, $"Subsection with id: {id} doesn't exist");
                 }
-                var subsection = _mapper.Map<SubsectionDto>(subsectionDb);
-                return Ok(subsection);
+                return Ok(sectionDto);
             }
             catch (Exception ex)
             {
@@ -107,16 +93,13 @@ namespace APINews.Controllers
                     _logger.LogError("SubsectionForCreationDto object sent from client is null.");
                     return BadRequest("SubsectionForCreationDto object is null");
                 }
-                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
-                if (section == null)
+                var subsectionDto = await _subsection.CreateSubsectionForSection(sectionId, subsection);
+                if (subsectionDto == null)
                 {
                     _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
                     return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
                 }
-                var subsectionEntity = _mapper.Map<Subsection>(subsection);
-                _repository.Subsection.CreateSubsectionForSection(sectionId, subsectionEntity);
-                await _repository.SaveAsync();
-                return Ok();
+                return NoContent();
             }
             catch (Exception ex)
             {
@@ -138,20 +121,12 @@ namespace APINews.Controllers
         {
             try
             {
-                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
-                if (section == null)
-                {
-                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
-                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist ");
-                }
-                var SubsectionForsection = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: false);
-                if (SubsectionForsection == null)
+                var subsectionDto = await _subsection.DeleteSubsectionForSection(id, sectionId);
+                if (subsectionDto == null)
                 {
                     _logger.LogInfo($"Subsection with id: {id} doesn't exist");
                     return StatusCode(404, $"Subsection with id: {id} doesn't exist");
                 }
-                _repository.Subsection.DeleteSubsection(SubsectionForsection);
-                await _repository.SaveAsync();
                 return NoContent();
             }
             catch (Exception ex)
@@ -181,20 +156,12 @@ namespace APINews.Controllers
                     _logger.LogError("SubsectionForUpdateDto object sent from client is null.");
                     return BadRequest("SubsectionForUpdateDto object is null");
                 }
-                var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
-                if (section == null)
+                var subsectionDto = await _subsection.UpdateSubsectionForSection(id, sectionId, subsection);
+                if (subsectionDto == null)
                 {
-                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
-                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
-                }
-                var subsectionEntity = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: true);
-                if (subsectionEntity == null)
-                {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist.");
+                    _logger.LogInfo($"Subsection with id: {id} doesn't exist");
                     return StatusCode(404, $"Subsection with id: {id} doesn't exist");
                 }
-                _mapper.Map(subsection, subsectionEntity);
-                await _repository.SaveAsync();
                 return NoContent();
             }
             catch (Exception ex)

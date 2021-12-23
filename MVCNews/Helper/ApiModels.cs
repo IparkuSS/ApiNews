@@ -7,6 +7,7 @@ namespace MVCNews.Helper
         public HttpClient Initial()
         {
             var client = new HttpClient();
+            // Todo: move to appsettings
             client.BaseAddress = new Uri("http://localhost:5000/");
             return client;
         }

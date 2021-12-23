@@ -2,10 +2,10 @@ using APINews.Controllers;
 using APINews.Extensions;
 using AutoFixture;
 using AutoMapper;
+using BLLNews.DataTransferObjects.SectionsDto;
+using BLLNews.Interfaces;
 using Contract;
-using Contract.Repositories;
-using Entities.DataTransferObjects.SectionsDto;
-using Entities.Models;
+using DALNews.Models;
 using FakeItEasy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,33 +17,31 @@ namespace NewsTests
 {
     public class SectionControllerTests
     {
-        private readonly IRepositoryManager _repositoryManager;
+        private readonly ISectionServices _sectionManager;
         private readonly ILoggerManager _loggerManager;
-        private readonly IMapper _mapperFake;
         private readonly Fixture _fixture;
         private readonly SectionController _controller;
         public SectionControllerTests()
         {
-            _repositoryManager = A.Fake<IRepositoryManager>();
+            _sectionManager = A.Fake<ISectionServices>();
             _loggerManager = A.Fake<ILoggerManager>();
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new MappingProfile());
             });
-            _mapperFake = config.CreateMapper();
-            _controller = new SectionController(_repositoryManager, _loggerManager, _mapperFake);
+            _controller = new SectionController(_loggerManager, _sectionManager);
             _fixture = new Fixture();
         }
         [Fact]
         public async Task GetAllSectionTests_ShouldReturnActionResultOfSectionsWith200StatusCode()
         {
             //Arange 
-            var sections = _fixture.CreateMany<Section>(3).ToList();
-            A.CallTo(() => _repositoryManager.Section.GetAllSectionAsync(false)).Returns(sections);
+            var sections = _fixture.CreateMany<SectionDto>(3).ToList();
+            A.CallTo(() => _sectionManager.GetSections()).Returns(sections);
             //Act
             var result = await _controller.GetAllSection() as OkObjectResult;
             //Assert
-            A.CallTo(() => _repositoryManager.Section.GetAllSectionAsync(false)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => _sectionManager.GetSections()).MustHaveHappenedOnceExactly();
             Assert.NotNull(result);
             var returnValue = result.Value as IEnumerable<SectionDto>;
             Assert.Equal(sections.Count, returnValue.Count());
@@ -53,13 +51,13 @@ namespace NewsTests
         public async Task GetSectionTests_ShouldReturnActionResultOfSectionWith200StatusCode()
         {
             //Arange 
-            var sections = _fixture.CreateMany<Section>(3).ToList();
+            var sections = _fixture.CreateMany<SectionDto>(3).ToList();
             var section = sections.FirstOrDefault();
-            A.CallTo(() => _repositoryManager.Section.GetSectionAsync(section.Id, false)).Returns(section);
+            A.CallTo(() => _sectionManager.GetSection(section.Id)).Returns(section);
             // Act
             var result = await _controller.GetSection(section.Id) as OkObjectResult;
             // Assert
-            A.CallTo(() => _repositoryManager.Section.GetSectionAsync(section.Id, false)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => _sectionManager.GetSection(section.Id)).MustHaveHappenedOnceExactly();
             Assert.NotNull(result);
             var returnValue = result.Value as SectionDto;
             Assert.Equal(section.Id, returnValue.Id);
