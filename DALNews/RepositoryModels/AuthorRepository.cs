@@ -1,12 +1,12 @@
-﻿using DALNews.Repositories;
-using DALNews;
-using DALNews.Models;
+﻿using News.DAL.Repositories;
+using News.DAL;
+using News.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-namespace DALNews.RepositoryModels
+namespace News.DAL.RepositoryModels
 {
     public class AuthorRepository : RepositoryBase<Author>, IAuthorRepository
     {
@@ -20,9 +20,6 @@ namespace DALNews.RepositoryModels
         public void DeleteAuthor(Author author) => Delete(author);
         public void CreateAuthor(Author author) => Create(author);
 
-        public void SaveAuthor()
-        {
-            Save();
-        }
+        public void SaveAuthor() => Save();
     }
 }

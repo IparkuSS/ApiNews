@@ -1,8 +1,8 @@
-﻿using DALNews.Repositories;
-using DALNews;
-using DALNews.RepositoryModels;
+﻿using News.DAL.Repositories;
+using News.DAL;
+using News.DAL.RepositoryModels;
 using System.Threading.Tasks;
-namespace DALNews
+namespace News.DAL
 {
     public class RepositoryManager : IRepositoryManager
     {

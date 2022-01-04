@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BLLNews.DataTransferObjects.ArticlesDto;
-using BLLNews.DataTransferObjects.AuthorsDto;
-using BLLNews.DataTransferObjects.SectionsDto;
-using BLLNews.DataTransferObjects.SubsectionsDto;
-using BLLNews.DataTransferObjects.UserDto;
-using DALNews.Models;
-namespace APINews.Extensions
+using News.BLL.DataTransferObjects.ArticlesDto;
+using News.BLL.DataTransferObjects.AuthorsDto;
+using News.BLL.DataTransferObjects.SectionsDto;
+using News.BLL.DataTransferObjects.SubsectionsDto;
+using News.BLL.DataTransferObjects.UserDto;
+using News.DAL.Models;
+namespace News.BLL.Extensions
 {
     public class MappingProfile : Profile
     {

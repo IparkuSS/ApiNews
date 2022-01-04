@@ -1,6 +1,5 @@
-﻿using BLLNews.DataTransferObjects.UserDto;
-using DALNews.Identity;
-using DALNews.Models;
+﻿using News.BLL.DataTransferObjects.UserDto;
+using News.DAL.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -10,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-namespace BLLNews.Identity
+namespace News.BLL.Identity
 {
     public class AuthenticationManager : IAuthenticationManager
     {

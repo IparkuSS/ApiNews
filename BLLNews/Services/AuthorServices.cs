@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using BLLNews.DataTransferObjects.AuthorsDto;
-using BLLNews.Interfaces;
-using DALNews.Models;
-using DALNews.Repositories;
+using News.BLL.DataTransferObjects.AuthorsDto;
+using News.BLL.Interfaces;
+using News.DAL.Models;
+using News.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace BLLNews.Services
+namespace News.BLL.Services
 {
     /// <summary>
     /// the service class that serves the authors controller
@@ -27,16 +27,16 @@ namespace BLLNews.Services
             _repository.Author.SaveAuthor();
             return true;
         }
-        public async Task<string> DeleteAuthor(Guid id)
+        public async Task<bool> DeleteAuthor(Guid id)
         {
             var author = await _repository.Author.GetAuthorAsync(id, trackChanges: false);
             if (author == null)
             {
-                return null;
+                return false;
             }
             _repository.Author.DeleteAuthor(author);
             _repository.Author.SaveAuthor();
-            return "Ok";
+            return true;
         }
         public async Task<AuthorDto> GetAuthor(Guid id)
         {

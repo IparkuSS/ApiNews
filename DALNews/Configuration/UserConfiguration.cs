@@ -1,8 +1,8 @@
-﻿using DALNews.Models;
+﻿using News.DAL.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace DALNews.Configuration
+namespace News.DAL.Configuration
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

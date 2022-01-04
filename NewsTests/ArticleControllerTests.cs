@@ -2,8 +2,8 @@
 using APINews.Extensions;
 using AutoFixture;
 using AutoMapper;
-using BLLNews.DataTransferObjects.ArticlesDto;
-using BLLNews.Interfaces;
+using News.BLL.DataTransferObjects.ArticlesDto;
+using News.BLL.Interfaces;
 using Contract;
 using FakeItEasy;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using News.BLL.Extensions;
+
 namespace NewsTests
 {
     public class ArticleControllerTests

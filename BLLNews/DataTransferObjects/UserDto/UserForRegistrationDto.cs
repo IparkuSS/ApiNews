@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-namespace BLLNews.DataTransferObjects.UserDto
+namespace News.BLL.DataTransferObjects.UserDto
 {
     public class UserForRegistrationDto
     {

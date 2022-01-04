@@ -1147,9 +1147,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\DALNews.csproj",
-      "projectName": "DALNews",
-      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\DALNews.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\News.DAL.csproj",
+      "projectName": "News.DAL",
+      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\News.DAL.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\obj\\",
       "projectStyle": "PackageReference",

@@ -162,7 +162,7 @@ C:\Users\Lenovo\source\repos\APINews\NewsTests\obj\Debug\net5.0\NewsTests.dll
 C:\Users\Lenovo\source\repos\APINews\NewsTests\obj\Debug\net5.0\ref\NewsTests.dll
 C:\Users\Lenovo\source\repos\APINews\NewsTests\obj\Debug\net5.0\NewsTests.pdb
 C:\Users\Lenovo\source\repos\APINews\NewsTests\obj\Debug\net5.0\NewsTests.genruntimeconfig.cache
-C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\BLLNews.dll
-C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\DALNews.dll
-C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\BLLNews.pdb
-C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\DALNews.pdb
+C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\News.BLL.dll
+C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\News.DAL.dll
+C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\News.BLL.pdb
+C:\Users\Lenovo\source\repos\APINews\NewsTests\bin\Debug\net5.0\News.DAL.pdb

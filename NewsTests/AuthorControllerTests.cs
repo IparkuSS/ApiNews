@@ -2,10 +2,10 @@
 using APINews.Extensions;
 using AutoFixture;
 using AutoMapper;
-using BLLNews.DataTransferObjects.AuthorsDto;
-using BLLNews.Interfaces;
+using News.BLL.DataTransferObjects.AuthorsDto;
+using News.BLL.Interfaces;
 using Contract;
-using DALNews.Models;
+using News.DAL.Models;
 using FakeItEasy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using News.BLL.Extensions;
+
 namespace NewsTests
 {
     public class AuthorControllerTests

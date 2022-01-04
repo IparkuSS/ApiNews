@@ -1,8 +1,8 @@
-﻿using BLLNews.DataTransferObjects.SectionsDto;
-using BLLNews.Interfaces;
-using Contract;
+﻿using Contract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.BLL.DataTransferObjects.SectionsDto;
+using News.BLL.Interfaces;
 using System;
 using System.Threading.Tasks;
 namespace APINews.Controllers
@@ -13,11 +13,11 @@ namespace APINews.Controllers
     public class SectionController : Controller
     {
         private readonly ILoggerManager _logger;
-        private readonly ISectionServices _section;
+        private readonly ISectionServices _sectionsService;
         public SectionController(ILoggerManager logger, ISectionServices section)
         {
             _logger = logger;
-            _section = section;
+            _sectionsService = section;
         }
         /// <summary>
         /// Returns all sections 
@@ -28,16 +28,8 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllSection()
         {
-            try
-            {
-                var sectionDto = await _section.GetSections();
-                return Ok(sectionDto);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetAllSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            var sectionDto = await _sectionsService.GetSections();
+            return Ok(sectionDto);
         }
         /// <summary>
         /// Returns specified section by id 
@@ -50,21 +42,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetSection(Guid id)
         {
-            try
+            var sectionDto = await _sectionsService.GetSection(id);
+            if (sectionDto == null)
             {
-                var sectionDto = await _section.GetSection(id);
-                if (sectionDto == null)
-                {
-                    _logger.LogError($"Section with id: {id} doesn't exist");
-                    return StatusCode(404, $"Section with id: {id} doesn't exist");
-                }
-                return Ok(sectionDto);
+                _logger.LogError($"Section with id: {id} doesn't exist");
+                return NotFound($"Section with id: {id} doesn't exist");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(sectionDto);
         }
         /// <summary>
         /// Creates a new section
@@ -77,21 +61,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateSection([FromBody] SectionForCreationDto section)
         {
-            try
+            if (section == null)
             {
-                if (section == null)
-                {
-                    _logger.LogError("SectionForCreationDto object is null");
-                    return BadRequest("SectionForCreationDto object is null");
-                }
-                var sectionDto = await _section.CreateSection(section);
-                return NoContent();
+                _logger.LogError("SectionForCreationDto object is null");
+                return BadRequest("SectionForCreationDto object is null");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(CreateSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            var sectionDto = await _sectionsService.CreateSection(section);
+            return NoContent();
         }
         /// <summary>
         /// Deletes a section
@@ -104,21 +80,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteSection(Guid id)
         {
-            try
+            var sectionDto = await _sectionsService.DeleteSection(id);
+            if (sectionDto == false)
             {
-                var sectionDto = await _section.DeleteSection(id);
-                if (sectionDto == null)
-                {
-                    _logger.LogError("sectionDto object is null");
-                    return BadRequest("sectionDto object is null");
-                }
-                return NoContent();
+                _logger.LogError("sectionDto object is null");
+                return BadRequest("sectionDto object is null");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(DeleteSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return NoContent();
         }
         /// <summary>
         /// Updates a section
@@ -133,26 +101,18 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateSection(Guid id, [FromBody] SectionForUpdateDto section)
         {
-            try
+            if (section == null)
             {
-                if (section == null)
-                {
-                    _logger.LogError("SectionForCreationDto object sent from client is null.");
-                    return BadRequest("SectionForCreationDto object is null");
-                }
-                var sectionDto = await _section.UpdateSection(id, section);
-                if (sectionDto == null)
-                {
-                    _logger.LogInfo($"Section with id: {id} doesn't exist.");
-                    return StatusCode(404, $"Section with id: {id} doesn't exist");
-                }
-                return NoContent();
+                _logger.LogError("SectionForCreationDto object sent from client is null.");
+                return BadRequest("SectionForCreationDto object is null");
             }
-            catch (Exception ex)
+            var sectionDto = await _sectionsService.UpdateSection(id, section);
+            if (sectionDto == false)
             {
-                _logger.LogError($"Something went wrong in the {nameof(UpdateSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
+                _logger.LogInfo($"Section with id: {id} doesn't exist.");
+                return NotFound($"Section with id: {id} doesn't exist");
             }
+            return NoContent();
         }
     }
 }

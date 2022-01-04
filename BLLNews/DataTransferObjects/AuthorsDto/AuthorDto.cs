@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BLLNews.DataTransferObjects.AuthorsDto
+namespace News.BLL.DataTransferObjects.AuthorsDto
 {
     public class AuthorDto
     {

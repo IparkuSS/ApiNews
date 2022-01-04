@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qQflel14tuwSh+nvWvrrZluff8XEfPX8wVWWKNDA7GrJytYUyqPbYrZBNKLhnZQVfhAY+3Gh1dS/kB2Il8ERDA==",
+  "dgSpecHash": "ciCbcLpklbDLWD7LHHcHEBdANc87NkV4Vc0ya5RRymRqY70GmhacOYiGnbxmICS6maMVdV/1LPa9VarFGqYKTw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\DALNews.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\DALNews\\News.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.11\\microsoft.aspnetcore.cryptography.internal.5.0.11.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.11\\microsoft.aspnetcore.cryptography.keyderivation.5.0.11.nupkg.sha512",

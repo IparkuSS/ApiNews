@@ -1,8 +1,8 @@
-﻿using BLLNews.DataTransferObjects.AuthorsDto;
-using BLLNews.Interfaces;
-using Contract;
+﻿using Contract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.BLL.DataTransferObjects.AuthorsDto;
+using News.BLL.Interfaces;
 using System;
 using System.Threading.Tasks;
 namespace APINews.Controllers
@@ -12,10 +12,10 @@ namespace APINews.Controllers
     public class AuthorController : Controller
     {
         private readonly ILoggerManager _logger;
-        private readonly IAuthorServices _author;
+        private readonly IAuthorServices _authorService;
         public AuthorController(ILoggerManager logger, IAuthorServices author)
         {
-            _author = author;
+            _authorService = author;
             _logger = logger;
         }
         /// <summary>
@@ -27,16 +27,8 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAuthors()
         {
-            try
-            {
-                var authorDto = await _author.GetAuthors();
-                return Ok(authorDto);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetAuthors)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            var authorDto = await _authorService.GetAuthors();
+            return Ok(authorDto);
         }
         /// <summary>
         /// Returns specified author by id 
@@ -49,21 +41,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAuthor(Guid id)
         {
-            try
+            var authorDto = await _authorService.GetAuthor(id);
+            if (authorDto == null)
             {
-                var authorDto = await _author.GetAuthor(id);
-                if (authorDto == null)
-                {
-                    _logger.LogInfo($"Author with id: {id} doesn't exist.");
-                    return StatusCode(404, $"Author with id: {id} doesn't exist");
-                }
-                return Ok(authorDto);
+                _logger.LogInfo($"Author with id: {id} doesn't exist.");
+                return NotFound($"Author with id: {id} doesn't exist.");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetAuthor)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(authorDto);
         }
         /// <summary>
         /// Creates a new author
@@ -76,21 +60,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateAuthor([FromBody] AuthorCreatDto author)
         {
-            try
+            if (author == null)
             {
-                if (author == null)
-                {
-                    _logger.LogError("AuthorCreatDto object sent from client is null.");
-                    return BadRequest("AuthorCreatDto object is null");
-                }
-                var authorDto = await _author.CreateAuthor(author);
-                return NoContent();
+                _logger.LogError("AuthorCreatDto object sent from client is null.");
+                return BadRequest("AuthorCreatDto object is null");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetAuthor)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            var authorDto = await _authorService.CreateAuthor(author);
+            return NoContent();
         }
         /// <summary>
         /// Deletes a author
@@ -103,21 +79,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         public async Task<IActionResult> DeleteAuthor(Guid id)
         {
-            try
+            var authorDto = await _authorService.DeleteAuthor(id);
+            if (authorDto == false)
             {
-                var authorDto = await _author.DeleteAuthor(id);
-                if (authorDto == null)
-                {
-                    _logger.LogInfo($"Author with id: {id} doesn't exist.");
-                    return StatusCode(404, $"Author with id: {id} doesn't exist.");
-                }
-                return NoContent();
+                _logger.LogInfo($"Author with id: {id} doesn't exist.");
+                return NotFound($"Author with id: {id} doesn't exist.");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(DeleteAuthor)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return NoContent();
         }
     }
 }

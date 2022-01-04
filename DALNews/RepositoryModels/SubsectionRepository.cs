@@ -1,11 +1,11 @@
-﻿using DALNews.Repositories;
-using DALNews;
-using DALNews.Models;
+﻿using News.DAL.Repositories;
+using News.DAL;
+using News.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace DALNews.RepositoryModels
+namespace News.DAL.RepositoryModels
 {
     public class SubsectionRepository : RepositoryBase<Subsection>, ISubsectionRepository
     {
@@ -22,9 +22,6 @@ namespace DALNews.RepositoryModels
         }
         public void DeleteSubsection(Subsection subsection) => Delete(subsection);
 
-        public void SaveSubsection()
-        {
-            Save();
-        }
+        public void SaveSubsection() => Save();
     }
 }

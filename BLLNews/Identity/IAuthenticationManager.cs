@@ -1,6 +1,6 @@
-﻿using BLLNews.DataTransferObjects.UserDto;
+﻿using News.BLL.DataTransferObjects.UserDto;
 using System.Threading.Tasks;
-namespace DALNews.Identity
+namespace News.BLL.Identity
 {
     public interface IAuthenticationManager
     {

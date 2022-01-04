@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BLLNews.DataTransferObjects.UserDto;
-using BLLNews.Interfaces;
-using DALNews.Identity;
-using DALNews.Models;
+using News.BLL.DataTransferObjects.UserDto;
+using News.BLL.Interfaces;
+using News.BLL.Identity;
+using News.DAL.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-namespace BLLNews.Services
+namespace News.BLL.Services
 {
     /// <summary>
     /// the service class that serves the register controller

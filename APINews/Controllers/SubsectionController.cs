@@ -1,8 +1,8 @@
-﻿using BLLNews.DataTransferObjects.SubsectionsDto;
-using BLLNews.Interfaces;
-using Contract;
+﻿using Contract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.BLL.DataTransferObjects.SubsectionsDto;
+using News.BLL.Interfaces;
 using System;
 using System.Threading.Tasks;
 namespace APINews.Controllers
@@ -12,11 +12,11 @@ namespace APINews.Controllers
     public class SubsectionController : Controller
     {
         private readonly ILoggerManager _logger;
-        private readonly ISubsectionServices _subsection;
+        private readonly ISubsectionServices _subsectionService;
         public SubsectionController(ILoggerManager logger, ISubsectionServices subsection)
         {
             _logger = logger;
-            _subsection = subsection;
+            _subsectionService = subsection;
         }
         /// <summary>
         /// Returns all subsection for section
@@ -29,21 +29,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetSubsectionsForSection(Guid sectionId)
         {
-            try
+            var subsectionDto = await _subsectionService.GetSubsectionsForSection(sectionId);
+            if (subsectionDto == null)
             {
-                var subsectionDto = await _subsection.GetSubsectionsForSection(sectionId);
-                if (subsectionDto == null)
-                {
-                    _logger.LogInfo($"section with id: {sectionId} doesn't exist.");
-                    return StatusCode(404, $"section with id: {sectionId} doesn't exist");
-                }
-                return Ok(subsectionDto);
+                _logger.LogInfo($"section with id: {sectionId} doesn't exist.");
+                return NotFound($"section with id: {sectionId} doesn't exist");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetSubsectionsForSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(subsectionDto);
         }
         /// <summary>
         /// Returns specified subsection by id for section
@@ -57,21 +49,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetSubsectionForSection(Guid sectionId, Guid id)
         {
-            try
+            var sectionDto = await _subsectionService.GetSubsectionForSection(id, sectionId);
+            if (sectionDto == null)
             {
-                var sectionDto = await _subsection.GetSubsectionForSection(id, sectionId);
-                if (sectionDto == null)
-                {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist.");
-                    return StatusCode(404, $"Subsection with id: {id} doesn't exist");
-                }
-                return Ok(sectionDto);
+                _logger.LogInfo($"Subsection with id: {id} doesn't exist.");
+                return NotFound($"Subsection with id: {id} doesn't exist");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetSubsectionForSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(sectionDto);
         }
         /// <summary>
         /// Creates a new subsection for section
@@ -86,26 +70,18 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateSubsectionForSection(Guid sectionId, [FromBody] SubsectionForCreationDto subsection)
         {
-            try
+            if (subsection == null)
             {
-                if (subsection == null)
-                {
-                    _logger.LogError("SubsectionForCreationDto object sent from client is null.");
-                    return BadRequest("SubsectionForCreationDto object is null");
-                }
-                var subsectionDto = await _subsection.CreateSubsectionForSection(sectionId, subsection);
-                if (subsectionDto == null)
-                {
-                    _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
-                    return StatusCode(404, $"Section with id: {sectionId} doesn't exist");
-                }
-                return NoContent();
+                _logger.LogError("SubsectionForCreationDto object sent from client is null.");
+                return BadRequest("SubsectionForCreationDto object is null");
             }
-            catch (Exception ex)
+            var subsectionDto = await _subsectionService.CreateSubsectionForSection(sectionId, subsection);
+            if (subsectionDto == false)
             {
-                _logger.LogError($"Something went wrong in the {nameof(CreateSubsectionForSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
+                _logger.LogInfo($"Section with id: {sectionId} doesn't exist.");
+                return NotFound($"Section with id: {sectionId} doesn't exist");
             }
+            return NoContent();
         }
         /// <summary>
         /// Deletes a subsection from a section
@@ -119,21 +95,13 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteSubsectionForSection(Guid sectionId, Guid id)
         {
-            try
+            var subsectionDto = await _subsectionService.DeleteSubsectionForSection(id, sectionId);
+            if (subsectionDto == false)
             {
-                var subsectionDto = await _subsection.DeleteSubsectionForSection(id, sectionId);
-                if (subsectionDto == null)
-                {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist");
-                    return StatusCode(404, $"Subsection with id: {id} doesn't exist");
-                }
-                return NoContent();
+                _logger.LogInfo($"Subsection with id: {id} doesn't exist");
+                return NotFound($"Subsection with id: {id} doesn't exist");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(DeleteSubsectionForSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
-            }
+            return NoContent();
         }
         /// <summary>
         /// Updates a subsection for section
@@ -149,26 +117,18 @@ namespace APINews.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateSubsectionForSection(Guid sectionId, Guid id, [FromBody] SubsectionForUpdateDto subsection)
         {
-            try
+            if (subsection == null)
             {
-                if (subsection == null)
-                {
-                    _logger.LogError("SubsectionForUpdateDto object sent from client is null.");
-                    return BadRequest("SubsectionForUpdateDto object is null");
-                }
-                var subsectionDto = await _subsection.UpdateSubsectionForSection(id, sectionId, subsection);
-                if (subsectionDto == null)
-                {
-                    _logger.LogInfo($"Subsection with id: {id} doesn't exist");
-                    return StatusCode(404, $"Subsection with id: {id} doesn't exist");
-                }
-                return NoContent();
+                _logger.LogError("SubsectionForUpdateDto object sent from client is null.");
+                return BadRequest("SubsectionForUpdateDto object is null");
             }
-            catch (Exception ex)
+            var subsectionDto = await _subsectionService.UpdateSubsectionForSection(id, sectionId, subsection);
+            if (subsectionDto == false)
             {
-                _logger.LogError($"Something went wrong in the {nameof(UpdateSubsectionForSection)} action {ex}, {ex.Message}");
-                return StatusCode(500, "Internal server error");
+                _logger.LogInfo($"Subsection with id: {id} doesn't exist");
+                return NotFound($"Subsection with id: {id} doesn't exist");
             }
+            return NoContent();
         }
     }
 }

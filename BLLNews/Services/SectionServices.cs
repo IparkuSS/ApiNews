@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using BLLNews.DataTransferObjects.SectionsDto;
-using BLLNews.Interfaces;
-using DALNews.Models;
-using DALNews.Repositories;
+using News.BLL.DataTransferObjects.SectionsDto;
+using News.BLL.Interfaces;
+using News.DAL.Models;
+using News.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace BLLNews.Services
+namespace News.BLL.Services
 {
     /// <summary>
     /// the service class that serves the sections controller
@@ -50,27 +50,27 @@ namespace BLLNews.Services
             _repository.Section.SaveSection();
             return true;
         }
-        public async Task<string> DeleteSection(Guid id)
+        public async Task<bool> DeleteSection(Guid id)
         {
             var section = await _repository.Section.GetSectionAsync(id, trackChanges: false);
             if (section == null)
             {
-                return null;
+                return false;
             }
             _repository.Section.DeleteSection(section);
             _repository.Section.SaveSection();
-            return "Ok";
+            return true;
         }
-        public async Task<string> UpdateSection(Guid id, SectionForUpdateDto sectionForUpdateDto)
+        public async Task<bool> UpdateSection(Guid id, SectionForUpdateDto sectionForUpdateDto)
         {
             var sectionEntity = await _repository.Section.GetSectionAsync(id, trackChanges: true);
             if (sectionEntity == null)
             {
-                return null;
+                return false;
             }
             _mapper.Map(sectionForUpdateDto, sectionEntity);
             _repository.Section.SaveSection();
-            return "Ok";
+            return true;
         }
     }
 }

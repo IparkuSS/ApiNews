@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-namespace DALNews.Repositories
+namespace News.DAL.Repositories
 {
     public interface IRepositoryManager
     {

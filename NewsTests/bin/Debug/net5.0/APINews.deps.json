@@ -34,13 +34,13 @@
       "APINews/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "BLLNews": "1.0.0",
           "Entities": "1.0.0",
           "LoggerService": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.11",
+          "News.BLL": "1.0.0",
           "Newtonsoft.Json": "13.0.1",
           "Swashbuckle.AspNetCore": "5.6.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
@@ -1424,19 +1424,6 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "BLLNews/1.0.0": {
-        "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "Contract": "1.0.0",
-          "DALNews": "1.0.0"
-        },
-        "runtime": {
-          "BLLNews.dll": {}
-        },
-        "compile": {
-          "BLLNews.dll": {}
-        }
-      },
       "Contract/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
@@ -1448,20 +1435,6 @@
         },
         "compile": {
           "Contract.dll": {}
-        }
-      },
-      "DALNews/1.0.0": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
-          "NLog.Extensions.Logging": "1.7.4",
-          "Newtonsoft.Json": "13.0.1",
-          "System.IdentityModel.Tokens.Jwt": "6.14.1"
-        },
-        "runtime": {
-          "DALNews.dll": {}
-        },
-        "compile": {
-          "DALNews.dll": {}
         }
       },
       "Entities/1.0.0": {
@@ -1490,6 +1463,33 @@
         },
         "compile": {
           "LoggerService.dll": {}
+        }
+      },
+      "News.BLL/1.0.0": {
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "Contract": "1.0.0",
+          "News.DAL": "1.0.0"
+        },
+        "runtime": {
+          "News.BLL.dll": {}
+        },
+        "compile": {
+          "News.BLL.dll": {}
+        }
+      },
+      "News.DAL/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
+          "NLog.Extensions.Logging": "1.7.4",
+          "Newtonsoft.Json": "13.0.1",
+          "System.IdentityModel.Tokens.Jwt": "6.14.1"
+        },
+        "runtime": {
+          "News.DAL.dll": {}
+        },
+        "compile": {
+          "News.DAL.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -3925,17 +3925,7 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "BLLNews/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Contract/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DALNews/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -3946,6 +3936,16 @@
       "sha512": ""
     },
     "LoggerService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "News.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "News.DAL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

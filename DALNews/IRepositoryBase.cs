@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DALNews
+namespace News.DAL
 {
     public interface IRepositoryBase<T>
     {

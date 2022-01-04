@@ -1,8 +1,8 @@
-﻿using DALNews.Models;
+﻿using News.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-namespace DALNews.Configuration
+namespace News.DAL.Configuration
 {
     public class SectionConfiguration : IEntityTypeConfiguration<Section>
     {

@@ -1,8 +1,8 @@
-﻿using DALNews.Models;
+﻿using News.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace DALNews.Repositories
+namespace News.DAL.Repositories
 {
     public interface IAuthorRepository
     {

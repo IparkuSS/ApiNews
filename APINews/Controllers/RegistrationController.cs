@@ -1,7 +1,7 @@
-﻿using BLLNews.DataTransferObjects.UserDto;
-using BLLNews.Interfaces;
+﻿using News.BLL.DataTransferObjects.UserDto;
+using News.BLL.Interfaces;
 using Contract;
-using DALNews.Identity;
+using News.BLL.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,11 +14,11 @@ namespace APINews.Controllers
     {
         private readonly ILoggerManager _logger;
         private readonly IAuthenticationManager _authManager;
-        private readonly IRegistrationServices _registration;
+        private readonly IRegistrationServices _registrationService;
         public RegistrationController(ILoggerManager logger, IRegistrationServices registration, IAuthenticationManager authManager)
         {
             _logger = logger;
-            _registration = registration;
+            _registrationService = registration;
             _authManager = authManager;
         }
         /// <summary>
@@ -34,7 +34,7 @@ namespace APINews.Controllers
         {
             try
             {
-                var result = await _registration.RegisterUser(userForRegistration);
+                var result = await _registrationService.RegisterUser(userForRegistration);
                 if (result == false)
                 {
                     return BadRequest();

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-namespace DALNews.Models
+namespace News.DAL.Models
 {
     public class User : IdentityUser
     {

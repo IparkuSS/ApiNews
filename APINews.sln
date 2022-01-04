@@ -20,9 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALNews", "DALNews\DALNews.csproj", "{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "News.DAL", "DALNews\News.DAL.csproj", "{64CECDA4-D9C3-44DD-BCFA-95EDE3DAE681}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLLNews", "BLLNews\BLLNews.csproj", "{33E915E6-1026-49A8-90D4-7450FF77EFDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "News.BLL", "BLLNews\News.BLL.csproj", "{33E915E6-1026-49A8-90D4-7450FF77EFDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

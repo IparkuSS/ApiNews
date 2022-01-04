@@ -1,11 +1,11 @@
-﻿using DALNews;
+﻿using News.DAL;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace DALNews
+namespace News.DAL
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {

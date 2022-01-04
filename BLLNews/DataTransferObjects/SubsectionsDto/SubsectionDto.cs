@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BLLNews.DataTransferObjects.SubsectionsDto
+namespace News.BLL.DataTransferObjects.SubsectionsDto
 {
     public class SubsectionDto
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-namespace DALNews.Configuration
+namespace News.DAL.Configuration
 {
     public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
     {

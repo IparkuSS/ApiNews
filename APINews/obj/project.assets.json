@@ -1599,21 +1599,6 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "BLLNews/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "Contract": "1.0.0",
-          "DALNews": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BLLNews.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BLLNews.dll": {}
-        }
-      },
       "Contract/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -1627,22 +1612,6 @@
         },
         "runtime": {
           "bin/placeholder/Contract.dll": {}
-        }
-      },
-      "DALNews/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
-          "NLog.Extensions.Logging": "1.7.4",
-          "Newtonsoft.Json": "13.0.1",
-          "System.IdentityModel.Tokens.Jwt": "6.14.1"
-        },
-        "compile": {
-          "bin/placeholder/DALNews.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/DALNews.dll": {}
         }
       },
       "Entities/1.0.0": {
@@ -1675,6 +1644,37 @@
         },
         "runtime": {
           "bin/placeholder/LoggerService.dll": {}
+        }
+      },
+      "News.BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "Contract": "1.0.0",
+          "News.DAL": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/News.BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/News.BLL.dll": {}
+        }
+      },
+      "News.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
+          "NLog.Extensions.Logging": "1.7.4",
+          "Newtonsoft.Json": "13.0.1",
+          "System.IdentityModel.Tokens.Jwt": "6.14.1"
+        },
+        "compile": {
+          "bin/placeholder/News.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/News.DAL.dll": {}
         }
       }
     }
@@ -5968,20 +5968,10 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "BLLNews/1.0.0": {
-      "type": "project",
-      "path": "../BLLNews/BLLNews.csproj",
-      "msbuildProject": "../BLLNews/BLLNews.csproj"
-    },
     "Contract/1.0.0": {
       "type": "project",
       "path": "../Contract/Contract.csproj",
       "msbuildProject": "../Contract/Contract.csproj"
-    },
-    "DALNews/1.0.0": {
-      "type": "project",
-      "path": "../DALNews/DALNews.csproj",
-      "msbuildProject": "../DALNews/DALNews.csproj"
     },
     "Entities/1.0.0": {
       "type": "project",
@@ -5992,18 +5982,28 @@
       "type": "project",
       "path": "../LoggerService/LoggerService.csproj",
       "msbuildProject": "../LoggerService/LoggerService.csproj"
+    },
+    "News.BLL/1.0.0": {
+      "type": "project",
+      "path": "../BLLNews/News.BLL.csproj",
+      "msbuildProject": "../BLLNews/News.BLL.csproj"
+    },
+    "News.DAL/1.0.0": {
+      "type": "project",
+      "path": "../DALNews/News.DAL.csproj",
+      "msbuildProject": "../DALNews/News.DAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
-      "BLLNews >= 1.0.0",
       "Entities >= 1.0.0",
       "LoggerService >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.11",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
+      "News.BLL >= 1.0.0",
       "Newtonsoft.Json >= 13.0.1",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -6040,8 +6040,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Lenovo\\source\\repos\\APINews\\BLLNews\\BLLNews.csproj": {
-              "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\BLLNews\\BLLNews.csproj"
+            "C:\\Users\\Lenovo\\source\\repos\\APINews\\BLLNews\\News.BLL.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\BLLNews\\News.BLL.csproj"
             },
             "C:\\Users\\Lenovo\\source\\repos\\APINews\\Entities\\Entities.csproj": {
               "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\Entities\\Entities.csproj"

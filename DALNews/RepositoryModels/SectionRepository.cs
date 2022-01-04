@@ -1,12 +1,12 @@
-﻿using DALNews.Repositories;
-using DALNews;
-using DALNews.Models;
+﻿using News.DAL.Repositories;
+using News.DAL;
+using News.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-namespace DALNews.RepositoryModels
+namespace News.DAL.RepositoryModels
 {
     public class SectionRepository : RepositoryBase<Section>, ISectionRepository
     {
@@ -22,9 +22,6 @@ namespace DALNews.RepositoryModels
             await FindByCondition(x => ids.Contains(x.Id), trackChanges).ToListAsync();
         public void DeleteSection(Section section) => Delete(section);
 
-        public void SaveSection()
-        {
-            Save();
-        }
+        public void SaveSection() => Save();
     }
 }

@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using BLLNews.DataTransferObjects.SubsectionsDto;
-using BLLNews.Interfaces;
-using DALNews.Models;
-using DALNews.Repositories;
+using News.BLL.DataTransferObjects.SubsectionsDto;
+using News.BLL.Interfaces;
+using News.DAL.Models;
+using News.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace BLLNews.Services
+namespace News.BLL.Services
 {
     /// <summary>
     /// the service class that serves the subsections controller
@@ -44,42 +44,42 @@ namespace BLLNews.Services
             var subsection = mapper.Map<SubsectionDto>(subsectionDb);
             return subsection;
         }
-        public async Task<string> CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsectionForCreationDto)
+        public async Task<bool> CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsectionForCreationDto)
         {
             var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
             if (section == null)
             {
-                return null;
+                return false;
             }
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<SubsectionForCreationDto, Subsection>()).CreateMapper();
             var subsectionEntity = mapper.Map<Subsection>(subsectionForCreationDto);
             _repository.Subsection.CreateSubsectionForSection(sectionId, subsectionEntity);
             _repository.Subsection.SaveSubsection();
-            return "Ok";
+            return true;
         }
-        public async Task<string> DeleteSubsectionForSection(Guid id, Guid sectionId)
+        public async Task<bool> DeleteSubsectionForSection(Guid id, Guid sectionId)
         {
             var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
             var SubsectionForsection = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: false);
             if (SubsectionForsection == null)
             {
-                return null;
+                return true;
             }
             _repository.Subsection.DeleteSubsection(SubsectionForsection);
             _repository.Subsection.SaveSubsection();
-            return "Ok";
+            return false;
         }
-        public async Task<string> UpdateSubsectionForSection(Guid id, Guid sectionId, SubsectionForUpdateDto subsectionForUpdateDto)
+        public async Task<bool> UpdateSubsectionForSection(Guid id, Guid sectionId, SubsectionForUpdateDto subsectionForUpdateDto)
         {
             var section = await _repository.Section.GetSectionAsync(sectionId, trackChanges: false);
             var subsectionEntity = await _repository.Subsection.GetSubsectionAsync(sectionId, id, trackChanges: true);
             if (subsectionEntity == null)
             {
-                return null;
+                return false;
             }
             _mapper.Map(subsectionForUpdateDto, subsectionEntity);
             _repository.Subsection.SaveSubsection();
-            return "Ok";
+            return true;
         }
     }
 }

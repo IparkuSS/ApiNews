@@ -1,4 +1,4 @@
-﻿namespace BLLNews.DataTransferObjects.SectionsDto
+﻿namespace News.BLL.DataTransferObjects.SectionsDto
 {
     public class SectionForUpdateDto
     {

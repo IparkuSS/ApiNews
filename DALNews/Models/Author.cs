@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace DALNews.Models
+namespace News.DAL.Models
 {
     public class Author
     {

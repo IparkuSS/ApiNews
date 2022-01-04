@@ -1,9 +1,9 @@
-﻿using BLLNews.Interfaces;
-using BLLNews.Services;
+﻿using News.BLL.Interfaces;
+using News.BLL.Services;
 using Contract;
-using DALNews;
-using DALNews.Models;
-using DALNews.Repositories;
+using News.DAL;
+using News.DAL.Models;
+using News.DAL.Repositories;
 using LoggerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -25,14 +25,21 @@ namespace APINews.Extensions
             options.AddPolicy("CorsPolicy", builder =>
             builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         });
+
         public static void ConfigureIISIntegration(this IServiceCollection services) =>
             services.Configure<IISOptions>(options => { });
-        public static void ConfigureLoggerService(this IServiceCollection services) => services.AddSingleton<ILoggerManager, LoggerManager>();
+
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+            services.AddSingleton<ILoggerManager, LoggerManager>();
+
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
-            services.AddDbContext<RepositoryContext>(opts => opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b =>
+            services.AddDbContext<RepositoryContext>(opts =>
+            opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b =>
             b.MigrationsAssembly("APINews")));
+
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+
         public static void ConfigureIdentity(this IServiceCollection services)
         {
             var builder = services.AddIdentityCore<User>(o =>

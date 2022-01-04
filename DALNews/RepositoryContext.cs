@@ -1,8 +1,8 @@
-﻿using DALNews.Configuration;
-using DALNews.Models;
+﻿using News.DAL.Configuration;
+using News.DAL.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-namespace DALNews
+namespace News.DAL
 {
     public class RepositoryContext : IdentityDbContext<User>
     {
