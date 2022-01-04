@@ -1,34 +1,22 @@
 ﻿@model IEnumerable<MVCNews.Models.SectionData>
-
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1>Выберите заголовок</h1>
-
 <div id="main">
     <div class="inner">
-
-
-
-
-
-
         <section class="tiles">
             @foreach (var item in Model)
             {
                 <article class="style1">
                     <span class="image">
-                        <img src="~/images/@item.TitleImagePath" alt="" />
+                        <img width="10em" height="240em" src="~/images/@item.TitleImagePath" alt="" />
                     </span>
                     <a asp-area="Redactor" asp-controller="Subsection" asp-action="GetSubsections" asp-route-id="@item.Id">
                         <h2>@item.NameSection</h2>
                     </a>
-
-
                 </article>
             }
         </section>
-
     </div>
 </div>

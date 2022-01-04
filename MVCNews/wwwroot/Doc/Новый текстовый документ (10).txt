@@ -1,0 +1,13 @@
+SELECT SocialStatuse.SocialStatusId,COUNT(Cards.IdCard) AS Count
+FROM Statuses
+FULL OUTER JOIN SocialStatuse on SocialStatuse.SocialStatusId= Statuses.SocialStatusId
+FULL OUTER JOIN Clients on Clients.ClientId = Statuses.ClientsId
+FULL OUTER JOIN Accounts on Accounts.AccountId = Clients.ClientId
+FULL OUTER JOIN Cards ON Cards.AccountId = Accounts.AccountId 
+GROUP BY SocialStatuse.SocialStatusId
+
+SELECT Accounts.AccountId, SUM(Accounts.Balance) - ISNULL(SUM(Cards.Balance ),0)  AS difference 
+FROM Accounts 
+	FULL OUTER JOIN Cards on Cards.AccountId = Accounts.AccountId
+GROUP BY Accounts.AccountId
+HAVING SUM(Accounts.Balance)  - ISNULL(SUM(Cards.Balance ),0) != 0

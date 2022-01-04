@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-
 namespace APINews.ModelBinders
 {
     public class ArrayModelBinder : IModelBinder
@@ -34,6 +31,5 @@ namespace APINews.ModelBinders
             bindingContext.Result = ModelBindingResult.Success(bindingContext.Model);
             return Task.CompletedTask;
         }
-
     }
 }

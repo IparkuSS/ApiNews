@@ -1,68 +1,51 @@
 ﻿@model MVCNews.Models.SubsectionData
-
 @{
     ViewData["Title"] = "CreateSubsection";
 }
-
-<h1>Изменить</h1>
-
-
+<h1>Edit</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-
-
-
-        <form asp-action="PutSubsection" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="ImagePath" />
-            <input type="hidden" asp-for="IdSection" />
-
-
-
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<div id="main">
+    <div class="inner">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="PutSubsection" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ImagePath" value="/" />
+                    <input type="hidden" asp-for="IdSection" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImagePath" class="control-label"></label>
+                        <input type="file" name="titleImageFile" id="titleImageFile" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MetaTitle" class="control-label"></label>
+                        <input asp-for="MetaTitle" class="form-control" />
+                        <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MetaDescription" class="control-label"></label>
+                        <input asp-for="MetaDescription" class="form-control" />
+                        <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MetaKeywords" class="control-label"></label>
+                        <input asp-for="MetaKeywords" class="form-control" />
+                        <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" name="idsection" id="idsection" value="@ViewBag.idsection" />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input type="file" name="titleImageFile" id="titleImageFile" />
-
-            </div>
-
-
-
-
-
-            <div class="form-group">
-                <label asp-for="MetaTitle" class="control-label"></label>
-                <input asp-for="MetaTitle" class="form-control" />
-                <span asp-validation-for="MetaTitle" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="MetaDescription" class="control-label"></label>
-                <input asp-for="MetaDescription" class="form-control" />
-                <span asp-validation-for="MetaDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MetaKeywords" class="control-label"></label>
-                <input asp-for="MetaKeywords" class="form-control" />
-                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
-            </div>
-            <input type="hidden" name="idsection" id="idsection" value="@ViewBag.idsection" />
-
-            <div class="form-group">
-                <input type="submit" value="Создать" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
 <div>
-    <a asp-action="GetSubsections">Вернуться</a>
+    <a asp-action="GetSubsections">Back</a>
 </div>
-

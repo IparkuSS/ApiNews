@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xsiDBJCdo3rrG6w+RkIssMFdYeLr4giuC2yeflIePEto3O6jn9kpT28Y7S4lEOA/G0cRtOCym0M0MX5cs7yS7w==",
+  "dgSpecHash": "j4s3HJiGuvKQyg4K9BynmqlGEytA5sHgVLpR2Q7efq+ajZ/TugCIy18o0CbUx+iEeM+b+KpK2G7l2DyufnX0Gg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\Contract\\Contract.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512"

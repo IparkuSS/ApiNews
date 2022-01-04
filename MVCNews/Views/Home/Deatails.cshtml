@@ -1,25 +1,22 @@
 ﻿@model MVCNews.Models.SectionData
-
 @{
     ViewData["Title"] = "Deatails";
 }
-
 <h1>Deatails</h1>
-
 <div>
     <h4>SectionData</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Id)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Id)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.NameSection)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NameSection)
         </dd>
     </dl>

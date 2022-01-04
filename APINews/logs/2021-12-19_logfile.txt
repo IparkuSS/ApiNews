@@ -1,0 +1,40 @@
+2021-12-19 22:49:25.0387 ERROR Something went wrong in the GetAllSection action AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[BLLNews.DataTransferObjects.SectionsDto.SectionDto, BLLNews, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Section -> SectionDto
+DALNews.Models.Section -> BLLNews.DataTransferObjects.SectionsDto.SectionDto
+   at lambda_method42(Closure , Section , SectionDto , ResolutionContext )
+   at lambda_method41(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method41(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at BLLNews.Services.SectionServices.GetSections() in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SectionServices.cs:line 29
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 40, Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[BLLNews.DataTransferObjects.SectionsDto.SectionDto, BLLNews, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2021-12-19 22:55:15.8262 ERROR Something went wrong in the GetAllSection action AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[BLLNews.DataTransferObjects.SectionsDto.SectionDto, BLLNews, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Section -> SectionDto
+DALNews.Models.Section -> BLLNews.DataTransferObjects.SectionsDto.SectionDto
+   at lambda_method42(Closure , Section , SectionDto , ResolutionContext )
+   at lambda_method41(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method41(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at BLLNews.Services.SectionServices.GetSections() in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SectionServices.cs:line 29
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 40, Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[BLLNews.DataTransferObjects.SectionsDto.SectionDto, BLLNews, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]

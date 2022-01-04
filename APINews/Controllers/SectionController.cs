@@ -1,216 +1,118 @@
-﻿using APINews.ModelBinders;
-using AutoMapper;
-using Contract;
-using Entities.DataTransferObjects;
-using Entities.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Contract;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.BLL.DataTransferObjects.SectionsDto;
+using News.BLL.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-
 namespace APINews.Controllers
 {
     [Route("api/section")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class SectionController : Controller
     {
-        private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
-        private readonly IMapper _mapper;
-        public SectionController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly ISectionServices _sectionsService;
+        public SectionController(ILoggerManager logger, ISectionServices section)
         {
-            _repository = repository;
             _logger = logger;
-            _mapper = mapper;
+            _sectionsService = section;
         }
-
+        /// <summary>
+        /// Returns all sections 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetAllSection()
         {
-            try
-            {
-                var sections = await _repository.Section.GetAllSectionAsync(trackChanges: false);
-
-                var SectionDto = _mapper.Map<IEnumerable<SectionDto>>(sections);
-                return Ok(SectionDto);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(Get)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
-            }
+            var sectionDto = await _sectionsService.GetSections();
+            return Ok(sectionDto);
         }
+        /// <summary>
+        /// Returns specified section by id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "SectionById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetSection(Guid id)
         {
-            try
+            var sectionDto = await _sectionsService.GetSection(id);
+            if (sectionDto == null)
             {
-                var company = await _repository.Section.GetSectionAsync(id, trackChanges: false);
-                if (company == null)
-                {
-                    _logger.LogInfo($"Section with id: {id} doesn't exist in the database..");
-                    return NotFound();
-                }
-                else
-                {
-                    var companyDto = _mapper.Map<SectionDto>(company);
-                    return Ok(companyDto);
-                }
+                _logger.LogError($"Section with id: {id} doesn't exist");
+                return NotFound($"Section with id: {id} doesn't exist");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetSection)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
-            }
+            return Ok(sectionDto);
         }
-
-
-        [HttpGet("collection/({ids})", Name = "SectionCollection")]
-        public async Task<IActionResult> GetSectionCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
-        {
-            try
-            {
-                if (ids == null)
-                {
-                    _logger.LogError("Parameter ids is null");
-                    return BadRequest("Parameter ids is null");
-                }
-
-                var sectionEntities = await _repository.Section.GetByIdsAsync(ids, trackChanges: false);
-
-                if (ids.Count() != sectionEntities.Count())
-                {
-                    _logger.LogError("Some ids are not valid in a collection");
-                    return NotFound();
-                }
-                var companiesToReturn = _mapper.Map<IEnumerable<SectionDto>>(sectionEntities);
-                return Ok(companiesToReturn);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(GetSectionCollection)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
-            }
-        }
-        [HttpPost("collection")]
-        public async Task<IActionResult> CreateCompanyCollection([FromBody] IEnumerable<SectionForCreationDto> sectionCollection)
-        {
-            try
-            {
-                if (sectionCollection == null)
-                {
-                    _logger.LogError("Section collection sent from client is null.");
-                    return BadRequest("Section collection is null");
-                }
-
-                var sectionEntities = _mapper.Map<IEnumerable<Section>>(sectionCollection);
-                foreach (var section in sectionEntities)
-                {
-                    _repository.Section.CreateSection(section);
-                }
-
-                await _repository.SaveAsync();
-
-                var companyCollectionToReturn = _mapper.Map<IEnumerable<SectionDto>>(sectionEntities);
-                var ids = string.Join(",", companyCollectionToReturn.Select(c => c.Id));
-
-                return CreatedAtRoute("SectionCollection", new { ids }, companyCollectionToReturn);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(CreateCompanyCollection)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
-            }
-        }
-
-
-
+        /// <summary>
+        /// Creates a new section
+        /// </summary>
+        /// <param name="section"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> CreateCompany([FromBody] SectionForCreationDto section)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> CreateSection([FromBody] SectionForCreationDto section)
         {
-            try
+            if (section == null)
             {
-                if (section == null)
-                {
-                    _logger.LogError("SectionForCreationDto object sent from client is null.");
-
-                    return BadRequest("SectionForCreationDto object is null");
-                }
-
-                var sectionEntity = _mapper.Map<Section>(section);
-
-                _repository.Section.CreateSection(sectionEntity);
-                await _repository.SaveAsync();
-
-                return Ok();
+                _logger.LogError("SectionForCreationDto object is null");
+                return BadRequest("SectionForCreationDto object is null");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(CreateCompany)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
-            }
+            var sectionDto = await _sectionsService.CreateSection(section);
+            return NoContent();
         }
-
+        /// <summary>
+        /// Deletes a section
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteSection(Guid id)
         {
-            try
+            var sectionDto = await _sectionsService.DeleteSection(id);
+            if (sectionDto == false)
             {
-                var section = await _repository.Section.GetSectionAsync(id, trackChanges: false);
-                if (section == null)
-                {
-                    _logger.LogInfo($"Section with id: {id} doesn't exist in the database.");
-                    return NotFound();
-                }
-
-                _repository.Section.DeleteSection(section);
-                await _repository.SaveAsync();
-
-                return NoContent();
+                _logger.LogError("sectionDto object is null");
+                return BadRequest("sectionDto object is null");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong in the {nameof(DeleteSection)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
-            }
+            return NoContent();
         }
+        /// <summary>
+        /// Updates a section
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="section"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCompany(Guid id, [FromBody] SectionForUpdateDto section)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateSection(Guid id, [FromBody] SectionForUpdateDto section)
         {
-            try
+            if (section == null)
             {
-                if (section == null)
-                {
-                    _logger.LogError("CompanyForUpdateDto object sent from client is null.");
-                    return BadRequest("CompanyForUpdateDto object is null");
-                }
-                var companyEntity = await _repository.Section.GetSectionAsync(id, trackChanges: true);
-                if (companyEntity == null)
-                {
-                    _logger.LogInfo($"Company with id: {id} doesn't exist in the database.");
-                    return NotFound();
-                }
-
-                _mapper.Map(section, companyEntity);
-                await _repository.SaveAsync();
-
-                return NoContent();
+                _logger.LogError("SectionForCreationDto object sent from client is null.");
+                return BadRequest("SectionForCreationDto object is null");
             }
-            catch (Exception ex)
+            var sectionDto = await _sectionsService.UpdateSection(id, section);
+            if (sectionDto == false)
             {
-                _logger.LogError($"Something went wrong in the {nameof(UpdateCompany)} action {ex}");
-
-                return StatusCode(500, "Internal server error");
+                _logger.LogInfo($"Section with id: {id} doesn't exist.");
+                return NotFound($"Section with id: {id} doesn't exist");
             }
+            return NoContent();
         }
     }
 }

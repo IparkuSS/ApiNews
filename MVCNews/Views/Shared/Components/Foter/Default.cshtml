@@ -1,13 +1,10 @@
 ﻿@model IEnumerable<MVCNews.Models.SectionData>
-
  @if (Model?.Any() == true)
 {
     @foreach (SectionData entity in Model)
     {
-
         <nav id="menu">
             <h2>Menu</h2>
-
             <ul>
                 @foreach (var item in Model)
                 {
@@ -15,10 +12,8 @@
                         <a asp-area="" asp-controller="Home" asp-action="Subsections" asp-route-id="@item.Id">
                             @item.NameSection
                         </a>
-
                     </li>
                 }
-
             </ul>
         </nav>
     }

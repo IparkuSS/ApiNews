@@ -1,21 +1,11 @@
 ﻿@model IEnumerable<MVCNews.Models.SectionData>
-
-
-
-
-
 <div id="main">
     <div class="inner">
-
-
-
         <header>
             <h1>
-                Главные новости мира
+                World Breaking News
             </h1>
         </header>
-
-
         <section class="tiles">
             @foreach (var item in Model)
             {
@@ -26,17 +16,11 @@
                     <a asp-area="" asp-controller="Home" asp-action="Subsections" asp-route-id="@item.Id">
                         <h2>@item.NameSection</h2>
                     </a>
-
-
                 </article>
             }
         </section>
         <hr>
-        <a asp-area="" asp-controller="Author" asp-action="create" asp-route-id="" class="button primary fit">Поделитесь с нами, вашей статьей</a>
-        <a class="button primary fit small" asp-area="" asp-controller="Account" asp-action="Login" asp-route-id="">Войти</a>
+        <a asp-area="" asp-controller="Author" asp-action="create" asp-route-id="" class="button primary fit">Share with us your article</a>
+        <a class="button primary fit small" asp-area="" asp-controller="Account" asp-action="Login" asp-route-id="">Login</a>
     </div>
 </div>
-
-
-
-

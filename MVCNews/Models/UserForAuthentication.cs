@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel.DataAnnotations;
 namespace MVCNews.Models
 {
     public class UserForAuthentication
     {
         [Required]
-        [Display(Name = "UserName")]
+        [Display(Name = "Name")]
         public string UserName { get; set; }
-
         [Required]
         [UIHint("password")]
-        [Display(Name = "Пароль")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
     }
 }

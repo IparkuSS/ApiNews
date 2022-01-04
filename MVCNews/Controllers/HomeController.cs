@@ -1,124 +1,86 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using MVCNews.Helper;
 using MVCNews.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 namespace MVCNews.Controllers
 {
     public class HomeController : Controller
     {
-        ApiModels _api = new ApiModels();
-
+        private readonly IApiModels _api;
+        public HomeController(IApiModels api)
+        {
+            _api = api;
+        }
         public async Task<IActionResult> Index()
         {
-            List<SectionData> apiModels = new List<SectionData>();
+            var section = new List<SectionData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync("api/section");
-
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<List<SectionData>>(result);
+                section = JsonConvert.DeserializeObject<List<SectionData>>(result);
             }
-
-
-            return View(apiModels);
+            return View(section);
         }
         public async Task<IActionResult> Deatails(Guid id)
         {
-            var apiModels = new SectionData();
+            var section = new SectionData();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync($"api/section/{id}");
-
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<SectionData>(result);
+                section = JsonConvert.DeserializeObject<SectionData>(result);
             }
-
-            return View(apiModels);
+            return View(section);
         }
-
-
-        public async Task<IActionResult> Articles(Guid idsection, Guid idsubsection)
+        public async Task<IActionResult> Articles(Guid sectionId, Guid subsectionId)
         {
-            List<ArticleData> apiModels = new List<ArticleData>();
+            var article = new List<ArticleData>();
             HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{idsection}/subsection/{idsubsection}/article");
-
+            HttpResponseMessage res = await client.GetAsync($"api/section/{sectionId}/subsection/{subsectionId}/article");
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<List<ArticleData>>(result);
+                article = JsonConvert.DeserializeObject<List<ArticleData>>(result);
             }
-
-            ViewBag.idsection = idsection;
-            return View(apiModels);
+            ViewBag.idsection = sectionId;
+            return View(article);
         }
-
-
         public async Task<IActionResult> Subsections(Guid id)
         {
-            List<SubsectionData> apiModels = new List<SubsectionData>();
+            var subsection = new List<SubsectionData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync($"api/section/{id}/subsection");
-
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<List<SubsectionData>>(result);
+                subsection = JsonConvert.DeserializeObject<List<SubsectionData>>(result);
             }
-
-
-            return View(apiModels);
+            return View(subsection);
         }
-        public async Task<IActionResult> DeatailsForSubsection(Guid idSection, Guid id)
+        public async Task<IActionResult> Article(Guid subsectionId, Guid id, Guid sectionId)
         {
-            SubsectionData apiModels = new SubsectionData();
+            var article = new ArticleData();
             HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{idSection}/subsection/{id}");
-
+            HttpResponseMessage res = await client.GetAsync($"api/section/{sectionId}/subsection/{subsectionId}/article/{id}");
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<SubsectionData>(result);
+                article = JsonConvert.DeserializeObject<ArticleData>(result);
             }
-
-
-            return View(apiModels);
+            return View(article);
         }
-        public async Task<IActionResult> Article(Guid idsubsection, Guid id, Guid idsection)
-        {
-            ArticleData apiModels = new ArticleData();
-            HttpClient client = _api.Initial();
-
-
-            HttpResponseMessage res = await client.GetAsync($"api/section/{idsection}/subsection/{idsubsection}/article/{id}");
-
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<ArticleData>(result);
-            }
-
-
-            return View(apiModels);
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
     }
 }

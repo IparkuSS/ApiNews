@@ -1,39 +1,29 @@
 ﻿@model MVCNews.Models.SectionData
-
-
-
-<h1>Создание секции</h1>
-
-
+<h1>Create section</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateSection" enctype="multipart/form-data">
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="TitleImagePath" />
-
-            <div class="form-group">
-                <label asp-for="NameSection" class="control-label"></label>
-                <input asp-for="NameSection" class="form-control" />
-                <span asp-validation-for="NameSection" class="text-danger"></span>
+<div id="main">
+    <div class="inner">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="CreateSection" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="TitleImagePath" value="/" />
+                    <div class="form-group">
+                        <label asp-for="NameSection" class="control-label"></label>
+                        <input asp-for="NameSection" class="form-control" />
+                        <span asp-validation-for="NameSection" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TitleImagePath" class="control-label"></label>
+                        <input type="file" name="titleImageFile" id="titleImageFile" accept=".jpg,.png" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="TitleImagePath" class="control-label"></label>
-                <input type="file" name="titleImageFile" id="titleImageFile" accept=".jpg,.png" />
-
-
-            </div>
-
-
-
-            <div class="form-group">
-                <input type="submit" value="Создать" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
 <div>
-    <a asp-action="Index">Вернуться</a>
+    <a asp-action="Index">back</a>
 </div>
-

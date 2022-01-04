@@ -10,168 +10,127 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-
 namespace MVCNews.Areas.Redactor.Controllers
 {
     [Area("Redactor")]
     public class ArticlesController : Controller
     {
-        ApiModels _api = new ApiModels();
-
         private readonly IWebHostEnvironment hostingEnvironment;
-        public ArticlesController(IWebHostEnvironment hostingEnvironment)
+        private readonly IApiModels _api;
+        public ArticlesController(IWebHostEnvironment hostingEnvironment, IApiModels api)
         {
             this.hostingEnvironment = hostingEnvironment;
+            _api = api;
         }
-
-        public async Task<IActionResult> GetArticles(Guid idsection, Guid idsubsection)
+        public async Task<IActionResult> GetArticles(Guid sectionId, Guid subsectionId)
         {
-            List<ArticleData> apiModels = new List<ArticleData>();
+            var article = new List<ArticleData>();
             HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{idsection}/subsection/{idsubsection}/article");
-
+            HttpResponseMessage res = await client.GetAsync($"api/section/{sectionId}/subsection/{subsectionId}/article");
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<List<ArticleData>>(result);
+                article = JsonConvert.DeserializeObject<List<ArticleData>>(result);
             }
-
-            ViewBag.idsection = idsection;
-            ViewBag.idsubsection = idsubsection;
-            return View(apiModels);
+            ViewBag.idsection = sectionId;
+            ViewBag.idsubsection = subsectionId;
+            return View(article);
         }
-
-
         public async Task<IActionResult> Subsections(Guid id)
         {
-            List<SubsectionData> apiModels = new List<SubsectionData>();
+            var subsection = new List<SubsectionData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync($"api/section/{id}/subsection");
-
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<List<SubsectionData>>(result);
+                subsection = JsonConvert.DeserializeObject<List<SubsectionData>>(result);
             }
-
-
-            return View(apiModels);
+            return View(subsection);
         }
-
         public async Task<IActionResult> Index()
         {
-            List<SectionData> apiModels = new List<SectionData>();
+            var section = new List<SectionData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync("api/section");
-
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<List<SectionData>>(result);
+                section = JsonConvert.DeserializeObject<List<SectionData>>(result);
             }
-
-
-            return View(apiModels);
+            return View(section);
         }
-
-
-
         [HttpPost]
-        public IActionResult CreateArticle(Guid sectionId, Guid subsectionId, ArticleData articleData, IFormFile titleImageFile)
+        public async Task<IActionResult> CreateArticle(Guid sectionId, Guid subsectionId, ArticleData article, IFormFile titleImageFile)
         {
-
             HttpClient client = _api.Initial();
             if (ModelState.IsValid)
             {
                 if (titleImageFile != null)
                 {
-                    articleData.Image = titleImageFile.FileName;
+                    article.Image = titleImageFile.FileName;
                     using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
                     {
                         titleImageFile.CopyTo(stream);
                     }
                 }
-                articleData.AddTime = DateTime.Now;
-
-                var postTask = client.PostAsJsonAsync<ArticleData>($"api/section/{sectionId}/subsection/{subsectionId}/article", articleData);
-                postTask.Wait();
-                var result = postTask.Result;
-
-
-                if (result.IsSuccessStatusCode)
+                article.AddTime = DateTime.Now;
+                var postTask = await client.PostAsJsonAsync<ArticleData>($"api/section/{sectionId}/subsection/{subsectionId}/article", article);
+                if (postTask.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
                 }
             }
             return View();
         }
-        public IActionResult CreateArticle(Guid idsection, Guid idsubsection)
+        public IActionResult CreateArticle(Guid sectionId, Guid subsectionId)
         {
-            ViewBag.idsection = idsection;
-            ViewBag.idsubsection = idsubsection;
-
+            ViewBag.idsection = sectionId;
+            ViewBag.idsubsection = subsectionId;
             return View();
         }
-
         [HttpPost]
-        public IActionResult PutArticle(Guid idsection, Guid idsubsection, ArticleData articleData, IFormFile titleImageFile)
+        public async Task<IActionResult> PutArticle(Guid sectionId, Guid subsectionId, ArticleData article, IFormFile titleImageFile)
         {
-
             HttpClient client = _api.Initial();
             if (ModelState.IsValid)
             {
                 if (titleImageFile != null)
                 {
-                    articleData.Image = titleImageFile.FileName;
+                    article.Image = titleImageFile.FileName;
                     using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
                     {
                         titleImageFile.CopyTo(stream);
                     }
                 }
-                articleData.AddTime = DateTime.Now;
-
-                var postTask = client.PutAsJsonAsync<ArticleData>($"api/section/{idsection}/subsection/{idsubsection}/article/{articleData.Id}", articleData);
-                postTask.Wait();
-                var result = postTask.Result;
-
-
-                if (result.IsSuccessStatusCode)
+                article.AddTime = DateTime.Now;
+                var postTask = await client.PutAsJsonAsync<ArticleData>($"api/section/{sectionId}/subsection/{subsectionId}/article/{article.Id}", article);
+                if (postTask.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
                 }
             }
             return View();
         }
-        public async Task<IActionResult> PutArticle(Guid id, Guid idsection, Guid idsubsection)
+        public async Task<IActionResult> PutArticle(Guid id, Guid sectionId, Guid subsectionId)
         {
-            ArticleData apiModels = new ArticleData();
+            var article = new ArticleData();
             HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{idsection}/subsection/{idsubsection}/article/{id}");
-
+            HttpResponseMessage res = await client.GetAsync($"api/section/{sectionId}/subsection/{subsectionId}/article/{id}");
             if (res.IsSuccessStatusCode)
             {
                 var result = res.Content.ReadAsStringAsync().Result;
-                apiModels = JsonConvert.DeserializeObject<ArticleData>(result);
+                article = JsonConvert.DeserializeObject<ArticleData>(result);
             }
-
-            ViewBag.idsection = idsection;
-            ViewBag.idsubsection = idsubsection;
-
-            return View(apiModels);
-
+            ViewBag.idsection = sectionId;
+            ViewBag.idsubsection = subsectionId;
+            return View(article);
         }
-        public async Task<IActionResult> DeleteArticle(Guid id, Guid idsubsection, Guid idsection)
+        public async Task<IActionResult> DeleteArticle(Guid id, Guid sectionId, Guid subsectionId)
         {
-            var section = new ArticleData();
             HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.DeleteAsync($"api/section/{idsection}/subsection/{idsubsection}/article/{id}");
+            HttpResponseMessage res = await client.DeleteAsync($"api/section/{sectionId}/subsection/{subsectionId}/article/{id}");
             return RedirectToAction("Index");
-
         }
-
-
-
-
-
     }
 }

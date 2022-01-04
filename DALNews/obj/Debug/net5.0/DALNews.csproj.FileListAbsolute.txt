@@ -1,0 +1,12 @@
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.AssemblyInfoInputs.cache
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.AssemblyInfo.cs
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\APINews\DALNews\bin\Debug\net5.0\DALNews.deps.json
+C:\Users\Lenovo\source\repos\APINews\DALNews\bin\Debug\net5.0\DALNews.dll
+C:\Users\Lenovo\source\repos\APINews\DALNews\bin\Debug\net5.0\ref\DALNews.dll
+C:\Users\Lenovo\source\repos\APINews\DALNews\bin\Debug\net5.0\DALNews.pdb
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.dll
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\ref\DALNews.dll
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.pdb
+C:\Users\Lenovo\source\repos\APINews\DALNews\obj\Debug\net5.0\DALNews.csproj.AssemblyReference.cache

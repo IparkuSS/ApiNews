@@ -1,0 +1,94 @@
+2021-12-22 01:51:35.7006 ERROR Something went wrong in the UpdateSection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+SectionForUpdateDto -> Section
+BLLNews.DataTransferObjects.SectionsDto.SectionForUpdateDto -> DALNews.Models.Section
+   at lambda_method258(Closure , SectionForUpdateDto , Section , ResolutionContext )
+   at BLLNews.Services.SectionServices.UpdateSection(Guid id, SectionForUpdateDto sectionForUpdateDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SectionServices.cs:line 123
+   at APINews.Controllers.SectionController.UpdateSection(Guid id, SectionForUpdateDto section) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 256, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+SectionForUpdateDto -> Section
+BLLNews.DataTransferObjects.SectionsDto.SectionForUpdateDto -> DALNews.Models.Section
+2021-12-22 01:52:43.2524 ERROR Something went wrong in the CreateSubsectionForSection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Subsection
+System.Object -> DALNews.Models.Subsection
+   at lambda_method284(Closure , Object , Subsection , ResolutionContext )
+   at BLLNews.Services.SubsectionServices.CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsectionForCreationDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SubsectionServices.cs:line 105
+   at APINews.Controllers.SubsectionController.CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsection) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SubsectionController.cs:line 142, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Subsection
+System.Object -> DALNews.Models.Subsection
+2021-12-22 01:53:14.6839 ERROR Something went wrong in the CreateArticleForSubsection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Article
+System.Object -> DALNews.Models.Article
+   at lambda_method314(Closure , Object , Article , ResolutionContext )
+   at BLLNews.Services.ArticleServices.CreateAricleForSubsection(Guid sectionId, Guid subsectionId, ArticleForCreationDto articleForCreationDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\ArticleServices.cs:line 72
+   at APINews.Controllers.ArticleController.CreateArticleForSubsection(Guid sectionId, Guid subsectionId, ArticleForCreationDto article) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\ArticleController.cs:line 97, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Article
+System.Object -> DALNews.Models.Article
+2021-12-22 01:53:42.4721 ERROR Something went wrong in the GetAuthor action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Author
+System.Object -> DALNews.Models.Author
+   at lambda_method340(Closure , Object , Author , ResolutionContext )
+   at BLLNews.Services.AuthorServices.CreateAuthor(AuthorCreatDto authorCreatDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\AuthorServices.cs:line 32
+   at APINews.Controllers.AuthorController.CreateAuthor(AuthorCreatDto author) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\AuthorController.cs:line 109, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Author
+System.Object -> DALNews.Models.Author
+2021-12-22 03:05:16.3652 ERROR Something went wrong in the CreateSubsectionForSection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Subsection
+System.Object -> DALNews.Models.Subsection
+   at lambda_method41(Closure , Object , Subsection , ResolutionContext )
+   at BLLNews.Services.SubsectionServices.CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsectionForCreationDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SubsectionServices.cs:line 105
+   at APINews.Controllers.SubsectionController.CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsection) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SubsectionController.cs:line 142, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Subsection
+System.Object -> DALNews.Models.Subsection
+2021-12-22 03:06:57.6249 ERROR Something went wrong in the CreateSubsectionForSection action AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Subsection
+System.Object -> DALNews.Models.Subsection
+   at lambda_method41(Closure , Object , Subsection , ResolutionContext )
+   at BLLNews.Services.SubsectionServices.CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsectionForCreationDto) in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SubsectionServices.cs:line 105
+   at APINews.Controllers.SubsectionController.CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsection) in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SubsectionController.cs:line 142, Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Subsection
+System.Object -> DALNews.Models.Subsection
+2021-12-22 10:12:18.7727 ERROR Something went wrong in the GetAllSection action AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[BLLNews.DataTransferObjects.SectionsDto.SectionDto, BLLNews, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Section -> SectionDto
+DALNews.Models.Section -> BLLNews.DataTransferObjects.SectionsDto.SectionDto
+   at lambda_method42(Closure , Section , SectionDto , ResolutionContext )
+   at lambda_method41(Closure , Object , IEnumerable`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method41(Closure , Object , IEnumerable`1 , ResolutionContext )
+   at BLLNews.Services.SectionServices.GetSections() in C:\Users\Lenovo\source\repos\APINews\BLLNews\Services\SectionServices.cs:line 34
+   at APINews.Controllers.SectionController.GetAllSection() in C:\Users\Lenovo\source\repos\APINews\APINews\Controllers\SectionController.cs:line 32, Error mapping types.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[BLLNews.DataTransferObjects.SectionsDto.SectionDto, BLLNews, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2021-12-22 11:39:56.1805 INFO Subsection with id: 5cac81a3-79a1-47aa-fef4-08d9c5264b15 doesn't exist.
+2021-12-22 18:23:38.9814 WARN Authenticate: Authentication failed. Wrong user name or password.
