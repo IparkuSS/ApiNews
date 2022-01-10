@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using News.BLL.DataTransferObjects.UserDto;
-using News.BLL.Interfaces;
-using News.BLL.Identity;
-using News.DAL.Models;
 using Microsoft.AspNetCore.Identity;
+using News.BLL.DataTransferObjects.UserDto;
+using News.BLL.Identity;
+using News.BLL.Interfaces;
+using News.DAL.Models;
 using System.Threading.Tasks;
 namespace News.BLL.Services
 {

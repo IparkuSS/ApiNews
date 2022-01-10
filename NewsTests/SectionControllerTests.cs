@@ -1,21 +1,20 @@
-using APINews.Controllers;
-using APINews.Extensions;
 using AutoFixture;
 using AutoMapper;
-using News.BLL.DataTransferObjects.SectionsDto;
-using News.BLL.Interfaces;
 using Contract;
-using News.DAL.Models;
 using FakeItEasy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.API.Controllers;
+using News.BLL.DataTransferObjects.SectionsDto;
+using News.BLL.Extensions;
+using News.BLL.Interfaces;
+using News.DAL.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using News.BLL.Extensions;
 
-namespace NewsTests
+namespace News.Tests
 {
     public class SectionControllerTests
     {

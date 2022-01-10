@@ -1,4 +1,4 @@
-namespace MVCNews.Models
+namespace News.MVC.Models
 {
     public class ErrorViewModel
     {

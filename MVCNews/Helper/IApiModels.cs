@@ -1,5 +1,5 @@
 ﻿using System.Net.Http;
-namespace MVCNews.Helper
+namespace News.MVC.Helper
 {
     public interface IApiModels
     {

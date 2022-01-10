@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using MVCNews.Helper;
-using MVCNews.Models;
+using News.MVC.Helper;
+using News.MVC.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-namespace MVCNews.Areas.Redactor.Controllers
+namespace News.MVC.Areas.Redactor.Controllers
 {
     [Area("Redactor")]
     public class AuhtorController : Controller

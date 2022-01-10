@@ -6015,9 +6015,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\APINews.csproj",
-      "projectName": "APINews",
-      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\APINews.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\News.API.csproj",
+      "projectName": "News.API",
+      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\News.API.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\obj\\",
       "projectStyle": "PackageReference",

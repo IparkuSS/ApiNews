@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Http;
-namespace MVCNews.Helper
+namespace News.MVC.Helper
 {
     public class ApiModels : IApiModels
     {

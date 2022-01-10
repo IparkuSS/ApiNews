@@ -14,27 +14,27 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\Lenovo\source\repos\APINews\MVCNews\Views\_ViewImports.cshtml"
-using MVCNews;
+using News.MVC;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Lenovo\source\repos\APINews\MVCNews\Views\_ViewImports.cshtml"
-using MVCNews.Models;
+using News.MVC.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Lenovo\source\repos\APINews\MVCNews\Views\_ViewImports.cshtml"
-using MVCNews.Models.ViewComponents;
+using News.MVC.Models.ViewComponents;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"269a27be40da68d8fbeef5ef8ff47cc2388dd2f6", @"/Views/Shared/_ValidationScriptsPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a7e969f0fecc841995f587db20cf99d268eda6f1", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"66f9aa78ec5c4ec496df538e5e9ccd2c744d2e16", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__ValidationScriptsPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

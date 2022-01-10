@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace APINews.Migrations
+namespace News.API.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
     [Migration("20211113094749_ModelsUpdate")]

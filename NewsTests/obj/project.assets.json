@@ -2701,30 +2701,6 @@
           "build/netcoreapp2.1/xunit.runner.visualstudio.props": {}
         }
       },
-      "APINews/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
-          "Entities": "1.0.0",
-          "LoggerService": "1.0.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.11",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
-          "News.BLL": "1.0.0",
-          "Newtonsoft.Json": "13.0.1",
-          "Swashbuckle.AspNetCore": "5.6.3"
-        },
-        "compile": {
-          "bin/placeholder/APINews.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/APINews.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
-      },
       "Contract/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -2771,6 +2747,30 @@
         "runtime": {
           "bin/placeholder/LoggerService.dll": {}
         }
+      },
+      "News.API/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
+          "Entities": "1.0.0",
+          "LoggerService": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "5.0.11",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
+          "News.BLL": "1.0.0",
+          "Newtonsoft.Json": "13.0.1",
+          "Swashbuckle.AspNetCore": "5.6.3"
+        },
+        "compile": {
+          "bin/placeholder/News.API.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/News.API.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "News.BLL/1.0.0": {
         "type": "project",
@@ -9146,11 +9146,6 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
-    "APINews/1.0.0": {
-      "type": "project",
-      "path": "../APINews/APINews.csproj",
-      "msbuildProject": "../APINews/APINews.csproj"
-    },
     "Contract/1.0.0": {
       "type": "project",
       "path": "../Contract/Contract.csproj",
@@ -9166,6 +9161,11 @@
       "path": "../LoggerService/LoggerService.csproj",
       "msbuildProject": "../LoggerService/LoggerService.csproj"
     },
+    "News.API/1.0.0": {
+      "type": "project",
+      "path": "../APINews/News.API.csproj",
+      "msbuildProject": "../APINews/News.API.csproj"
+    },
     "News.BLL/1.0.0": {
       "type": "project",
       "path": "../BLLNews/News.BLL.csproj",
@@ -9179,10 +9179,10 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "APINews >= 1.0.0",
       "AutoFixture >= 4.17.0",
       "FakeItEasy >= 7.2.0",
       "Microsoft.NET.Test.Sdk >= 17.0.0",
+      "News.API >= 1.0.0",
       "coverlet.collector >= 3.1.0",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.3"
@@ -9195,9 +9195,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\NewsTests.csproj",
-      "projectName": "NewsTests",
-      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\NewsTests.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\News.Tests.csproj",
+      "projectName": "News.Tests",
+      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\News.Tests.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\obj\\",
       "projectStyle": "PackageReference",
@@ -9220,8 +9220,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\APINews.csproj": {
-              "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\APINews.csproj"
+            "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\News.API.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\News.API.csproj"
             }
           }
         }

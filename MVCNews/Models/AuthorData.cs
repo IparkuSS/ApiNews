@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-namespace MVCNews.Models
+namespace News.MVC.Models
 {
     public class AuthorData
     {

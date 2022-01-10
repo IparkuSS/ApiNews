@@ -2,14 +2,14 @@ C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Contract.deps.jso
 C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Contract.dll
 C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\ref\Contract.dll
 C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Contract.pdb
+C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Entities.dll
+C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Entities.pdb
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.csproj.AssemblyReference.cache
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.AssemblyInfoInputs.cache
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.AssemblyInfo.cs
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.dll
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\ref\Contract.dll
 C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.pdb
-C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Entities.dll
-C:\Users\Lenovo\source\repos\APINews\Contract\bin\Debug\net5.0\Entities.pdb
-C:\Users\Lenovo\source\repos\APINews\Contract\obj\Debug\net5.0\Contract.csproj.CopyComplete

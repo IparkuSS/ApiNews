@@ -2,10 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using MVCNews.Services;
+using News.MVC.Services;
 using System;
 using System.Text;
-namespace MVCNews.Extensions
+namespace News.MVC.Extensions
 {
     public static class ServiceExtensions
     {

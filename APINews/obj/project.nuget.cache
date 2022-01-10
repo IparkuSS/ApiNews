@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OzJTE85MVCV50+k9/ZatUJAVQvgB4ryFsI5rT9PePnFLog3oMd64Ji+SUGli+YIhIpzvf75MVpdRrrF5+aB0Ig==",
+  "dgSpecHash": "kAy9P5MGzllFlZygct2GggoNOyBBx9lXdQ5htXIYgkOrMZ2KU7RUqbNbS6SJfkDcUObOGp2dY3Xqz2LRvmgz6A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\APINews.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\News.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

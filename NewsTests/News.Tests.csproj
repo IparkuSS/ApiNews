@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\APINews\APINews.csproj" />
+    <ProjectReference Include="..\APINews\News.API.csproj" />
   </ItemGroup>
 
 </Project>

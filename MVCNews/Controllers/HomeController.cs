@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCNews.Helper;
-using MVCNews.Models;
+using News.MVC.Helper;
+using News.MVC.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
-namespace MVCNews.Controllers
+namespace News.MVC.Controllers
 {
     public class HomeController : Controller
     {

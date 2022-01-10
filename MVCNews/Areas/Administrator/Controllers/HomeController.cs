@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-namespace MVCNews.Areas.Administrator.Controllers
+namespace News.MVC.Areas.Administrator.Controllers
 {
     [Area("Administrator")]
     public class HomeController : Controller

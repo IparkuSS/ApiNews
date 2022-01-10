@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using News.BLL.DataTransferObjects.UserDto;
 using Contract;
-using News.BLL.Identity;
-using News.DAL.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using News.BLL.DataTransferObjects.UserDto;
+using News.BLL.Identity;
+using News.DAL.Models;
 using System;
 using System.Threading.Tasks;
-namespace APINews.Controllers
+namespace News.API.Controllers
 {
     [Route("api/authentication")]
     [ApiController]

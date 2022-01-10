@@ -12,16 +12,27 @@ namespace News.BLL.Extensions
         public MappingProfile()
         {
             CreateMap<Section, SectionDto>();
+
             CreateMap<Subsection, SubsectionDto>();
+
             CreateMap<Article, ArticleDto>();
+
             CreateMap<AuthorCreatDto, Author>();
+
             CreateMap<Author, AuthorDto>();
+
             CreateMap<UserForRegistrationDto, User>();
+
             CreateMap<SectionForCreationDto, Section>();
+
             CreateMap<SubsectionForCreationDto, Subsection>();
+
             CreateMap<SubsectionForUpdateDto, Subsection>();
+
             CreateMap<ArticleForCreationDto, Article>();
+
             CreateMap<SectionForUpdateDto, Section>();
+
             CreateMap<ArticleForUpdateDto, Article>();
         }
     }

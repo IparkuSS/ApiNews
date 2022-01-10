@@ -1,9 +1,7 @@
-﻿using News.DAL;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace News.DAL
 {
@@ -20,9 +18,21 @@ namespace News.DAL
             .AsNoTracking() :
             RepositoryContext.Set<T>()
             .Where(expression);
-        public void Create(T entity) => RepositoryContext.Set<T>().Add(entity);
-        public void Update(T entity) => RepositoryContext.Set<T>().Update(entity);
-        public void Delete(T entity) => RepositoryContext.Set<T>().Remove(entity);
-        public void Save() => RepositoryContext.SaveChangesAsync();
+        public void Create(T entity)
+        {
+            RepositoryContext.Set<T>().Add(entity);
+            RepositoryContext.SaveChangesAsync();
+        }
+        public void Update(T entity)
+        {
+            RepositoryContext.Set<T>().Update(entity);
+            RepositoryContext.SaveChangesAsync();
+        }
+        public void Delete(T entity)
+        {
+            RepositoryContext.Set<T>().Remove(entity);
+            RepositoryContext.SaveChangesAsync();
+        }
+
     }
 }

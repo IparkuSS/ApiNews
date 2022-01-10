@@ -1,19 +1,19 @@
-using APINews.Extensions;
 //using BLLNews.Identity;
-using News.BLL.Identity;
+using Contract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using News.API.Extensions;
+using News.BLL.Extensions;
+using News.BLL.Identity;
 using NLog;
 using System.IO;
 using System.Reflection;
-using News.BLL.Extensions;
-using Contract;
 
-namespace APINews
+namespace News.API
 {
     public class Startup
     {

@@ -1,8 +1,8 @@
-﻿using News.BLL.DataTransferObjects.UserDto;
-using News.DAL.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using News.BLL.DataTransferObjects.UserDto;
+using News.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCNews.Helper;
-using MVCNews.Models;
+using News.MVC.Helper;
+using News.MVC.Models;
 using System.Net.Http;
 using System.Net.Http.Json;
-namespace MVCNews.Areas.Administrator.Controllers
+namespace News.MVC.Areas.Administrator.Controllers
 {
     [Area("Administrator")]
     public class RegistrationController : Controller

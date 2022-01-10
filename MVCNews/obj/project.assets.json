@@ -8464,9 +8464,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\MVCNews.csproj",
-      "projectName": "MVCNews",
-      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\MVCNews.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\News.MVC.csproj",
+      "projectName": "News.MVC",
+      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\News.MVC.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\obj\\",
       "projectStyle": "PackageReference",
