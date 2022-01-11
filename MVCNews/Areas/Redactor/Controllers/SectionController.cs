@@ -1,37 +1,22 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using News.MVC.Helper;
 using News.MVC.Models;
-using Newtonsoft.Json;
+using News.MVC.Services.Contracts;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 namespace News.MVC.Areas.Redactor.Controllers
 {
     [Area("Redactor")]
     public class SectionController : Controller
     {
-        private readonly IWebHostEnvironment hostingEnvironment;
-        private readonly IApiModels _api;
-        public SectionController(IWebHostEnvironment hostingEnvironment, IApiModels api)
+        private readonly ISectionServices _sectionServices;
+        public SectionController(ISectionServices sectionServices)
         {
-            this.hostingEnvironment = hostingEnvironment;
-            _api = api;
+            _sectionServices = sectionServices;
         }
         public async Task<IActionResult> Index()
         {
-            var section = new List<SectionData>();
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync("api/section");
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                section = JsonConvert.DeserializeObject<List<SectionData>>(result);
-            }
+            var section = await _sectionServices.GetSections();
             return View(section);
         }
         [HttpPost]
@@ -39,17 +24,8 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (titleImageFile != null)
-                {
-                    section.TitleImagePath = titleImageFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
-                    {
-                        titleImageFile.CopyTo(stream);
-                    }
-                }
-                HttpClient client = _api.Initial();
-                var postTask = await client.PostAsJsonAsync<SectionData>($"api/section", section);
-                if (postTask.IsSuccessStatusCode)
+                var resultSectionServices = await _sectionServices.CreateSection(section, titleImageFile);
+                if (resultSectionServices == true)
                 {
                     return RedirectToAction("Index");
                 }
@@ -61,17 +37,8 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (titleImageFile != null)
-                {
-                    sectionData.TitleImagePath = titleImageFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
-                    {
-                        titleImageFile.CopyTo(stream);
-                    }
-                }
-                HttpClient client = _api.Initial();
-                var postTask = await client.PutAsJsonAsync<SectionData>($"api/section/{sectionData.Id}", sectionData);
-                if (postTask.IsSuccessStatusCode)
+                var resultSectionServices = await _sectionServices.UpdateSection(sectionData, sectionData.Id, titleImageFile);
+                if (resultSectionServices == true)
                 {
                     return RedirectToAction("Index");
                 }
@@ -80,14 +47,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         }
         public async Task<IActionResult> PutSection(Guid id)
         {
-            var section = new SectionData();
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{id}");
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                section = JsonConvert.DeserializeObject<SectionData>(result);
-            }
+            var section = await _sectionServices.GetSection(id);
             return View(section);
         }
         public IActionResult CreateSection()
@@ -96,9 +56,12 @@ namespace News.MVC.Areas.Redactor.Controllers
         }
         public async Task<IActionResult> DeleteSection(Guid id)
         {
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.DeleteAsync($"api/section/{id}");
-            return RedirectToAction("Index");
+            var resultSectionServices = await _sectionServices.DeleteSection(id);
+            if (resultSectionServices == true)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

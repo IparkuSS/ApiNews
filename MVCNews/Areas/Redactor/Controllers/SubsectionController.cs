@@ -1,50 +1,30 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using News.MVC.Helper;
 using News.MVC.Models;
-using Newtonsoft.Json;
+using News.MVC.Services.Contracts;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 namespace News.MVC.Areas.Redactor.Controllers
 {
     [Area("Redactor")]
     public class SubsectionController : Controller
     {
-        private readonly IWebHostEnvironment hostingEnvironment;
-        private readonly IApiModels _api;
-        public SubsectionController(IWebHostEnvironment hostingEnvironment, IApiModels api)
+        private readonly ISectionServices _sectionServices;
+        private readonly ISubsectionServices _subsectionServices;
+        public SubsectionController(ISectionServices sectionServices, ISubsectionServices subsectionServices)
         {
-            this.hostingEnvironment = hostingEnvironment;
-            _api = api;
+            _sectionServices = sectionServices;
+            _subsectionServices = subsectionServices;
         }
         public async Task<IActionResult> Index()
         {
-            var section = new List<SectionData>();
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync("api/section");
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                section = JsonConvert.DeserializeObject<List<SectionData>>(result);
-            }
+            var section = await _sectionServices.GetSections();
             return View(section);
         }
         public async Task<IActionResult> GetSubsections(Guid id)
         {
-            var subsection = new List<SubsectionData>();
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{id}/subsection");
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                subsection = JsonConvert.DeserializeObject<List<SubsectionData>>(result);
-            }
             ViewBag.sectionId = id;
+            var subsection = await _subsectionServices.GetSubsections(id);
             return View(subsection);
         }
         [HttpPost]
@@ -52,17 +32,8 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (titleImageFile != null)
-                {
-                    subsection.ImagePath = titleImageFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
-                    {
-                        titleImageFile.CopyTo(stream);
-                    }
-                }
-                HttpClient client = _api.Initial();
-                var postTask = await client.PostAsJsonAsync<SubsectionData>($"api/section/{Id}/subsection", subsection);
-                if (postTask.IsSuccessStatusCode)
+                var resultSectionServices = await _subsectionServices.CreateSubsection(subsection, Id, titleImageFile);
+                if (resultSectionServices == true)
                 {
                     return RedirectToAction("Index");
                 }
@@ -75,14 +46,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         }
         public async Task<IActionResult> PutSubsection(Guid id, Guid sectionId)
         {
-            var subsection = new SubsectionData();
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync($"api/section/{sectionId}/subsection/{id}");
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                subsection = JsonConvert.DeserializeObject<SubsectionData>(result);
-            }
+            var subsection = await _subsectionServices.GetSubsection(id, sectionId);
             ViewBag.idsection = sectionId;
             return View(subsection);
         }
@@ -91,17 +55,8 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (titleImageFile != null)
-                {
-                    sectionData.ImagePath = titleImageFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
-                    {
-                        titleImageFile.CopyTo(stream);
-                    }
-                }
-                HttpClient client = _api.Initial();
-                var postTask = await client.PutAsJsonAsync<SubsectionData>($"api/section/{idsection}/subsection/{sectionData.Id}", sectionData);
-                if (postTask.IsSuccessStatusCode)
+                var resultSubsectionServices = await _subsectionServices.CreateSubsection(sectionData, idsection, titleImageFile);
+                if (resultSubsectionServices == true)
                 {
                     return RedirectToAction("Index");
                 }
@@ -110,8 +65,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         }
         public async Task<IActionResult> DeleteSubsection(Guid id, Guid idsection)
         {
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.DeleteAsync($"api/section/{idsection}/subsection/{id}");
+            var resultSubsectionServices = await _subsectionServices.DeleteSubsection(id, idsection);
             return RedirectToAction("Index");
         }
     }

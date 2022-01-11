@@ -30,7 +30,7 @@ namespace News.MVC.Areas.Administrator.Controllers
                 {
                     return View();
                 }
-                ModelState.AddModelError(nameof(UserForAuthentication.UserName), "huita");
+                ModelState.AddModelError(nameof(UserForAuthentication.UserName), "incorrect input");
             }
             return View();
         }

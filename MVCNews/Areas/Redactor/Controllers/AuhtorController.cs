@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using News.MVC.Helper;
-using News.MVC.Models;
-using Newtonsoft.Json;
+using News.MVC.Services.Contracts;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using System.Threading.Tasks;
 namespace News.MVC.Areas.Redactor.Controllers
 {
@@ -14,23 +11,17 @@ namespace News.MVC.Areas.Redactor.Controllers
     public class AuhtorController : Controller
     {
         private readonly IWebHostEnvironment hostingEnvironment;
-        private readonly IApiModels _api;
-        public AuhtorController(IWebHostEnvironment hostingEnvironment, IApiModels api)
+        private readonly IAuthorSerives _authorServices;
+        public AuhtorController(IWebHostEnvironment hostingEnvironment, IAuthorSerives authorServices)
         {
             this.hostingEnvironment = hostingEnvironment;
-            _api = api;
+            
+            _authorServices = authorServices;
         }
         public async Task<IActionResult> Index()
         {
-            var author = new List<AuthorData>();
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.GetAsync("api/author");
-            if (res.IsSuccessStatusCode)
-            {
-                var result = res.Content.ReadAsStringAsync().Result;
-                author = JsonConvert.DeserializeObject<List<AuthorData>>(result);
-            }
-            return View(author);
+            var authors = await _authorServices.GetAuthors();
+            return View(authors);
         }
         public FileResult DownloadFile(string fileName)
         {
@@ -40,9 +31,9 @@ namespace News.MVC.Areas.Redactor.Controllers
         }
         public async Task<IActionResult> DeleteAuthor(Guid id)
         {
-            HttpClient client = _api.Initial();
-            HttpResponseMessage res = await client.DeleteAsync($"api/author/{id}");
-            return RedirectToAction("Index");
+            var authorServicesResult = await _authorServices.DeleteAuthor(id);
+            if (authorServicesResult == true) return RedirectToAction("Index");
+            return View();
         }
     }
 }

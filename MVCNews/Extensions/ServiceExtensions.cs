@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using News.MVC.Services;
+using News.MVC.Services.Contracts;
 using System;
 using System.Text;
 namespace News.MVC.Extensions
@@ -57,6 +58,13 @@ namespace News.MVC.Extensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
+        }
+        public static void ConfigureServicesManager(this IServiceCollection services)
+        {
+            services.AddTransient<IArticleServices, ArticleServices>();
+            services.AddTransient<ISectionServices, SectionServices>();
+            services.AddTransient<ISubsectionServices, SubsectionServices>();
+            services.AddTransient<IAuthorSerives, AuthorSerives>();
         }
     }
 }
