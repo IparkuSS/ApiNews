@@ -10,8 +10,6 @@ namespace News.MVC.Services.Contracts
     {
         Task<IEnumerable<AuthorData>> GetAuthors();
 
-        Task<AuthorData> GetAuthor(Guid id);
-
         Task<bool> CreateAuthor(AuthorData authorData, IFormFile PdfFile);
 
         Task<bool> DeleteAuthor(Guid id);

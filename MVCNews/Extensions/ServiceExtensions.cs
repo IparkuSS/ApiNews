@@ -61,9 +61,9 @@ namespace News.MVC.Extensions
         }
         public static void ConfigureServicesManager(this IServiceCollection services)
         {
-            services.AddTransient<IArticleServices, ArticleServices>();
             services.AddTransient<ISectionServices, SectionServices>();
             services.AddTransient<ISubsectionServices, SubsectionServices>();
+            services.AddTransient<IArticleServices, ArticleServices>();
             services.AddTransient<IAuthorSerives, AuthorSerives>();
         }
     }

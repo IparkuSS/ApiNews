@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using News.MVC.Extensions;
 using News.MVC.Helper;
+using News.MVC.Helper.Contracts;
 using System.Text;
 namespace News.MVC
 {
@@ -25,8 +26,13 @@ namespace News.MVC
             services.AddSession();
             services.AddControllersWithViews();
             services.ConfigureutJwt(Configuration);
-            services.AddTransient<IApiModels, ApiModels>();
             services.ConfigureServicesManager();
+            services.AddTransient<IApiModels, ApiModels>();
+            services.AddTransient<IClientSection, ClientSection>();
+            services.AddTransient<IClientSubsection, ClientSubsection>();
+            services.AddTransient<IClientArticle, ClientArticle>();
+            services.AddTransient<IClientAuthor, ClientAuthor>();
+
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,7 +44,6 @@ namespace News.MVC
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseStaticFiles();

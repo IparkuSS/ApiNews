@@ -94,11 +94,11 @@ namespace News.API.Extensions
 
         public static void ConfigureServices(this IServiceCollection services)
         {
-            services.AddScoped<ISectionServices, SectionServices>();
-            services.AddScoped<ISubsectionServices, SubsectionServices>();
-            services.AddScoped<IArticleServices, ArticleServices>();
-            services.AddScoped<IAuthorServices, AuthorServices>();
-            services.AddScoped<IRegistrationServices, RegistrationServices>();
+            services.AddTransient<ISectionServices, SectionServices>();
+            services.AddTransient<ISubsectionServices, SubsectionServices>();
+            services.AddTransient<IArticleServices, ArticleServices>();
+            services.AddTransient<IAuthorServices, AuthorServices>();
+            services.AddTransient<IRegistrationServices, RegistrationServices>();
         }
     }
 }
