@@ -20,11 +20,17 @@ namespace News.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services.ConfigureCookie();
             services.ConfigureAuthorization();
             services.ConfigureutControllersWithViews();
             services.AddSession();
             services.AddControllersWithViews();
+
+            ClientConfig clientConfig = Configuration.GetSection("ClientConfig").Get<ClientConfig>();
+            services.AddSingleton(clientConfig);
+
             services.ConfigureutJwt(Configuration);
             services.ConfigureServicesManager();
             services.AddTransient<IApiModels, ApiModels>();

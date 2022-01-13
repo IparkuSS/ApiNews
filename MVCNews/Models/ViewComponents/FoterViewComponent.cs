@@ -8,9 +8,15 @@ namespace News.MVC.Models.ViewComponents
 {
     public class FoterViewComponent : ViewComponent
     {
+        private readonly IApiModels _api;
+
+        public FoterViewComponent(IApiModels api)
+        {
+            _api = api;
+        }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            ApiModels _api = new ApiModels();
+
             List<SectionData> apiModels = new List<SectionData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync("api/section");
