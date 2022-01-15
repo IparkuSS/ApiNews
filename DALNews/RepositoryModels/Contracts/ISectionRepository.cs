@@ -6,13 +6,13 @@ namespace News.DAL.RepositoryModels.Contracts
 {
     public interface ISectionRepository
     {
-        Task<IEnumerable<Section>> GetAllSectionAsync(bool trackChanges);
+        Task<IEnumerable<Section>> GetAllSectionAsync();
 
-        Task<Section> GetSectionAsync(Guid sectionId, bool trackChanges);
+        Task<Section> GetSectionAsync(Guid sectionId);
 
         void CreateSection(Section section);
 
-        Task<List<Section>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
+        Task<List<Section>> GetByIdsAsync(IEnumerable<Guid> ids);
 
         void DeleteSection(Section section);
 

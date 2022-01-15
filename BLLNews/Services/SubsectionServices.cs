@@ -24,20 +24,20 @@ namespace News.BLL.Services
         }
         public async Task<IEnumerable<SubsectionDto>> GetSubsectionsForSection(Guid sectionId)
         {
-            var section = await _sectionRepository.GetSectionAsync(sectionId, trackChanges: false);
+            var section = await _sectionRepository.GetSectionAsync(sectionId);
             if (section == null)
             {
                 return null;
             }
-            var subsectionFromDb = await _subsectionRepository.GetSubsectionsAsync(sectionId, trackChanges: false);
+            var subsectionFromDb = await _subsectionRepository.GetSubsectionsAsync(sectionId);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Subsection, SubsectionDto>()).CreateMapper();
             var subsectionDto = mapper.Map<IEnumerable<SubsectionDto>>(subsectionFromDb);
             return subsectionDto;
         }
         public async Task<SubsectionDto> GetSubsectionForSection(Guid id, Guid sectionId)
         {
-            var section = await _sectionRepository.GetSectionAsync(sectionId, trackChanges: false);
-            var subsectionDb = await _subsectionRepository.GetSubsectionAsync(sectionId, id, trackChanges: false);
+            var section = await _sectionRepository.GetSectionAsync(sectionId);
+            var subsectionDb = await _subsectionRepository.GetSubsectionAsync(sectionId, id);
             if (subsectionDb == null)
             {
                 return null;
@@ -48,7 +48,7 @@ namespace News.BLL.Services
         }
         public async Task<bool> CreateSubsectionForSection(Guid sectionId, SubsectionForCreationDto subsectionForCreationDto)
         {
-            var section = await _sectionRepository.GetSectionAsync(sectionId, trackChanges: false);
+            var section = await _sectionRepository.GetSectionAsync(sectionId);
             if (section == null)
             {
                 return false;
@@ -60,8 +60,8 @@ namespace News.BLL.Services
         }
         public async Task<bool> DeleteSubsectionForSection(Guid id, Guid sectionId)
         {
-            var section = await _sectionRepository.GetSectionAsync(sectionId, trackChanges: false);
-            var SubsectionForsection = await _subsectionRepository.GetSubsectionAsync(sectionId, id, trackChanges: false);
+            var section = await _sectionRepository.GetSectionAsync(sectionId);
+            var SubsectionForsection = await _subsectionRepository.GetSubsectionAsync(sectionId, id);
             if (SubsectionForsection == null)
             {
                 return true;
@@ -71,8 +71,8 @@ namespace News.BLL.Services
         }
         public async Task<bool> UpdateSubsectionForSection(Guid id, Guid sectionId, SubsectionForUpdateDto subsectionForUpdateDto)
         {
-            var section = await _sectionRepository.GetSectionAsync(sectionId, trackChanges: false);
-            var subsectionEntity = await _subsectionRepository.GetSubsectionAsync(sectionId, id, trackChanges: true);
+            var section = await _sectionRepository.GetSectionAsync(sectionId);
+            var subsectionEntity = await _subsectionRepository.GetSubsectionAsync(sectionId, id);
             if (subsectionEntity == null)
             {
                 return false;

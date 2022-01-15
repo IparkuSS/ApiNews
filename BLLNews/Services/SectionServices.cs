@@ -22,13 +22,13 @@ namespace News.BLL.Services
         }
         public async Task<IEnumerable<SectionDto>> GetSections()
         {
-            var sections = await _sectionRepository.GetAllSectionAsync(trackChanges: false);
+            var sections = await _sectionRepository.GetAllSectionAsync();
             var sectionDto = _mapper.Map<IEnumerable<SectionDto>>(sections);
             return sectionDto;
         }
         public async Task<SectionDto> GetSection(Guid id)
         {
-            var section = await _sectionRepository.GetSectionAsync(id, trackChanges: false);
+            var section = await _sectionRepository.GetSectionAsync(id);
             if (section == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace News.BLL.Services
         }
         public async Task<bool> DeleteSection(Guid id)
         {
-            var section = await _sectionRepository.GetSectionAsync(id, trackChanges: false);
+            var section = await _sectionRepository.GetSectionAsync(id);
             if (section == null)
             {
                 return false;
@@ -61,7 +61,7 @@ namespace News.BLL.Services
         }
         public async Task<bool> UpdateSection(Guid id, SectionForUpdateDto sectionForUpdateDto)
         {
-            var sectionEntity = await _sectionRepository.GetSectionAsync(id, trackChanges: true);
+            var sectionEntity = await _sectionRepository.GetSectionAsync(id);
             if (sectionEntity == null)
             {
                 return false;

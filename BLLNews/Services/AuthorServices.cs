@@ -28,7 +28,7 @@ namespace News.BLL.Services
         }
         public async Task<bool> DeleteAuthor(Guid id)
         {
-            var author = await _authorRepository.GetAuthorAsync(id, trackChanges: false);
+            var author = await _authorRepository.GetAuthorAsync(id);
             if (author == null)
             {
                 return false;
@@ -38,7 +38,7 @@ namespace News.BLL.Services
         }
         public async Task<AuthorDto> GetAuthor(Guid id)
         {
-            var author = await _authorRepository.GetAuthorAsync(id, trackChanges: false);
+            var author = await _authorRepository.GetAuthorAsync(id);
             if (author == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace News.BLL.Services
         }
         public async Task<IEnumerable<AuthorDto>> GetAuthors()
         {
-            var author = await _authorRepository.GetAllAuthorsAsync(trackChanges: false);
+            var author = await _authorRepository.GetAllAuthorsAsync();
             var authorDto = _mapper.Map<IEnumerable<AuthorDto>>(author);
             return authorDto;
         }

@@ -1,4 +1,3 @@
-//using BLLNews.Identity;
 using Contract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using News.API.Extensions;
 using News.BLL.Extensions;
 using News.BLL.Identity;
+using News.DAL.Setting;
 using NLog;
 using System.IO;
 using System.Reflection;
@@ -29,10 +29,15 @@ namespace News.API
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
+
+
             services.ConfigureSqlContext(Configuration);
             services.ConfigureRepositoryManager();
             services.AddAutoMapper(Assembly.GetAssembly(typeof(MappingProfile)));
             services.AddAuthentication();
+            TrackSettings trackChanges = Configuration.GetSection("TrackSettings").Get<TrackSettings>();
+            services.AddSingleton(trackChanges);
+
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();

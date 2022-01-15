@@ -24,19 +24,19 @@ namespace News.BLL.Services
         }
         public async Task<IEnumerable<ArticleDto>> GetAriclesForSubsection(Guid sectionId, Guid subsectionId)
         {
-            var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
+            var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
             if (article == null)
             {
                 return null;
             }
-            var articleFromDb = await _articleRepository.GetArticlesAsync(sectionId, subsectionId, trackChanges: false);
+            var articleFromDb = await _articleRepository.GetArticlesAsync(sectionId, subsectionId);
             var articleDto = _mapper.Map<IEnumerable<ArticleDto>>(articleFromDb);
             return articleDto;
         }
         public async Task<ArticleDto> GetAricleForSubsection(Guid sectionId, Guid subsectionId, Guid id)
         {
-            var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
-            var articleDb = await _articleRepository.GetArticleAsync(subsectionId, id, trackChanges: false);
+            var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
+            var articleDb = await _articleRepository.GetArticleAsync(subsectionId, id);
             if (articleDb == null)
             {
                 return null;
@@ -46,7 +46,7 @@ namespace News.BLL.Services
         }
         public async Task<bool> CreateAricleForSubsection(Guid sectionId, Guid subsectionId, ArticleForCreationDto articleForCreationDto)
         {
-            var subsection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
+            var subsection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
             if (subsection == null)
             {
                 return false;
@@ -58,8 +58,8 @@ namespace News.BLL.Services
         }
         public async Task<bool> DeleteAricleForSubsection(Guid sectionId, Guid subsectionId, Guid id)
         {
-            var subSection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
-            var articleForSubsection = await _articleRepository.GetArticleAsync(subsectionId, id, trackChanges: false);
+            var subSection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
+            var articleForSubsection = await _articleRepository.GetArticleAsync(subsectionId, id);
             if (articleForSubsection == null)
             {
                 return false;
@@ -69,8 +69,8 @@ namespace News.BLL.Services
         }
         public async Task<bool> UpdateArticleForSubsection(Guid sectionId, Guid subsectionId, Guid id, ArticleForUpdateDto articleForCreationDto)
         {
-            var subsection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
-            var articleEntity = await _articleRepository.GetArticleAsync(subsectionId, id, trackChanges: true);
+            var subsection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
+            var articleEntity = await _articleRepository.GetArticleAsync(subsectionId, id);
             if (articleEntity == null)
             {
                 return false;
