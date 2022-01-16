@@ -1,16 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVCNews.Helper;
+using News.MVC.Helper.Contracts;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-namespace MVCNews.Models.ViewComponents
+namespace News.MVC.Models.ViewComponents
 {
     public class FoterViewComponent : ViewComponent
     {
+        private readonly IApiModels _api;
+
+        public FoterViewComponent(IApiModels api)
+        {
+            _api = api;
+        }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            ApiModels _api = new ApiModels();
+
             List<SectionData> apiModels = new List<SectionData>();
             HttpClient client = _api.Initial();
             HttpResponseMessage res = await client.GetAsync("api/section");

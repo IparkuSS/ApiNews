@@ -1,19 +1,19 @@
-using APINews.Extensions;
-//using BLLNews.Identity;
-using News.BLL.Identity;
+using Contract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using News.API.Extensions;
+using News.BLL.Extensions;
+using News.BLL.Identity;
+using News.DAL.Setting;
 using NLog;
 using System.IO;
 using System.Reflection;
-using News.BLL.Extensions;
-using Contract;
 
-namespace APINews
+namespace News.API
 {
     public class Startup
     {
@@ -29,15 +29,18 @@ namespace APINews
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
+            services.ConfigureSwagger();
             services.ConfigureSqlContext(Configuration);
-            services.ConfigureRepositoryManager();
+
             services.AddAutoMapper(Assembly.GetAssembly(typeof(MappingProfile)));
             services.AddAuthentication();
+            services.ConfigureRepositoryManager();
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
-            services.ConfigureSwagger();
+
             services.ConfigureServices();
+            services.ConfigureTrackChanges(Configuration);
             services.AddControllers();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

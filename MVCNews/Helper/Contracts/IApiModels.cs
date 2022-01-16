@@ -1,8 +1,8 @@
 ﻿using System.Net.Http;
-namespace MVCNews.Helper
+namespace News.MVC.Helper.Contracts
 {
     public interface IApiModels
     {
-        HttpClient Initial();
+        public HttpClient Initial();
     }
 }

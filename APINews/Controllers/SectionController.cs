@@ -5,7 +5,7 @@ using News.BLL.DataTransferObjects.SectionsDto;
 using News.BLL.Interfaces;
 using System;
 using System.Threading.Tasks;
-namespace APINews.Controllers
+namespace News.API.Controllers
 {
     [Route("api/section")]
     [ApiController]

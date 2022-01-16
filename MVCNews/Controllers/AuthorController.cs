@@ -1,22 +1,16 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MVCNews.Helper;
-using MVCNews.Models;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Json;
+using News.MVC.Models;
+using News.MVC.Services.Contracts;
 using System.Threading.Tasks;
-namespace MVCNews.Controllers
+namespace News.MVC.Controllers
 {
     public class AuthorController : Controller
     {
-        private readonly IWebHostEnvironment hostingEnvironment;
-        private readonly IApiModels _api;
-        public AuthorController(IWebHostEnvironment hostingEnvironment, IApiModels api)
+        private readonly IAuthorSerives _authorSerives;
+        public AuthorController(IAuthorSerives authorSerives)
         {
-            this.hostingEnvironment = hostingEnvironment;
-            _api = api;
+            _authorSerives = authorSerives;
         }
         public ActionResult create()
         {
@@ -27,20 +21,9 @@ namespace MVCNews.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (PdfFile != null)
-                {
-                    author.Document = PdfFile.FileName;
-                    using (var stream = new FileStream(Path.Combine(hostingEnvironment.WebRootPath, "Doc/", PdfFile.FileName), FileMode.Create))
-                    {
-                        PdfFile.CopyTo(stream);
-                    }
-                }
-                HttpClient client = _api.Initial();
-                var postTask = await client.PostAsJsonAsync<AuthorData>("api/author", author);
-                if (postTask.IsSuccessStatusCode)
-                {
+                var authorServicesReslt = await _authorSerives.CreateAuthor(author, PdfFile);
+                if (authorServicesReslt == true)
                     return RedirectToRoute(new { controller = "Home", action = "Index" });
-                }
             }
             return View();
         }

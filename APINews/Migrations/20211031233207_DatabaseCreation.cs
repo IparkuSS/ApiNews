@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace APINews.Migrations
+namespace News.API.Migrations
 {
     public partial class DatabaseCreation : Migration
     {

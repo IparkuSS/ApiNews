@@ -2,7 +2,7 @@
 using News.BLL.DataTransferObjects.ArticlesDto;
 using News.BLL.Interfaces;
 using News.DAL.Models;
-using News.DAL.Repositories;
+using News.DAL.RepositoryModels.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,28 +13,30 @@ namespace News.BLL.Services
     /// </summary>
     public class ArticleServices : IArticleServices
     {
-        private readonly IRepositoryManager _repository;
+        private readonly IArticleRepository _articleRepository;
+        private readonly ISubsectionRepository _subsectionRepository;
         private readonly IMapper _mapper;
-        public ArticleServices(IRepositoryManager repository, IMapper mapper)
+        public ArticleServices(IArticleRepository articleRepository, IMapper mapper, ISubsectionRepository subsectionRepository)
         {
-            _repository = repository;
+            _articleRepository = articleRepository;
             _mapper = mapper;
+            _subsectionRepository = subsectionRepository;
         }
         public async Task<IEnumerable<ArticleDto>> GetAriclesForSubsection(Guid sectionId, Guid subsectionId)
         {
-            var article = await _repository.Subsection.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
+            var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
             if (article == null)
             {
                 return null;
             }
-            var articleFromDb = await _repository.Article.GetArticlesAsync(sectionId, subsectionId, trackChanges: false);
+            var articleFromDb = await _articleRepository.GetArticlesAsync(sectionId, subsectionId);
             var articleDto = _mapper.Map<IEnumerable<ArticleDto>>(articleFromDb);
             return articleDto;
         }
         public async Task<ArticleDto> GetAricleForSubsection(Guid sectionId, Guid subsectionId, Guid id)
         {
-            var article = await _repository.Subsection.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
-            var articleDb = await _repository.Article.GetArticleAsync(subsectionId, id, trackChanges: false);
+            var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
+            var articleDb = await _articleRepository.GetArticleAsync(subsectionId, id);
             if (articleDb == null)
             {
                 return null;
@@ -44,39 +46,36 @@ namespace News.BLL.Services
         }
         public async Task<bool> CreateAricleForSubsection(Guid sectionId, Guid subsectionId, ArticleForCreationDto articleForCreationDto)
         {
-            var subsection = await _repository.Subsection.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
+            var subsection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
             if (subsection == null)
             {
                 return false;
             }
             var subsectionEntity = _mapper.Map<Article>(articleForCreationDto);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleForCreationDto>()).CreateMapper();
-            _repository.Article.CreateArticlesForSubsection(sectionId, subsectionId, subsectionEntity);
-            _repository.Article.SaveArticle();
+            _articleRepository.CreateArticlesForSubsection(sectionId, subsectionId, subsectionEntity);
             return true;
         }
         public async Task<bool> DeleteAricleForSubsection(Guid sectionId, Guid subsectionId, Guid id)
         {
-            var subSection = await _repository.Subsection.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
-            var articleForSubsection = await _repository.Article.GetArticleAsync(subsectionId, id, trackChanges: false);
+            var subSection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
+            var articleForSubsection = await _articleRepository.GetArticleAsync(subsectionId, id);
             if (articleForSubsection == null)
             {
                 return false;
             }
-            _repository.Article.DeleteArticle(articleForSubsection);
-            _repository.Article.SaveArticle();
+            _articleRepository.DeleteArticle(articleForSubsection);
             return true;
         }
         public async Task<bool> UpdateArticleForSubsection(Guid sectionId, Guid subsectionId, Guid id, ArticleForUpdateDto articleForCreationDto)
         {
-            var subsection = await _repository.Subsection.GetSubsectionAsync(sectionId, subsectionId, trackChanges: false);
-            var articleEntity = await _repository.Article.GetArticleAsync(subsectionId, id, trackChanges: true);
+            var subsection = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
+            var articleEntity = await _articleRepository.GetArticleAsync(subsectionId, id);
             if (articleEntity == null)
             {
                 return false;
             }
             _mapper.Map(articleForCreationDto, articleEntity);
-            _repository.Article.SaveArticle();
             return true;
         }
     }

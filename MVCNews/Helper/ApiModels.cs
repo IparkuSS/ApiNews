@@ -1,14 +1,22 @@
-﻿using System;
+﻿using News.MVC.Helper.Contracts;
+using System;
 using System.Net.Http;
-namespace MVCNews.Helper
+namespace News.MVC.Helper
 {
     public class ApiModels : IApiModels
     {
+        private readonly ClientConfig _clientConfig;
+
+        public ApiModels(ClientConfig clientConfig)
+        {
+            _clientConfig = clientConfig;
+        }
+
         public HttpClient Initial()
         {
+            string uriApi = _clientConfig.BaseAddress;
             var client = new HttpClient();
-            // Todo: move to appsettings
-            client.BaseAddress = new Uri("http://localhost:5000/");
+            client.BaseAddress = new Uri(uriApi);
             return client;
         }
     }

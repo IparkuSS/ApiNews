@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e3Lhfjo5xi9keImHPepymkBXGnhMapwQv/C/6ez4cSjgQ0ef0aK42OJsP3/d8/g9cbPsGrpuvTmH3aYkCI685A==",
+  "dgSpecHash": "xRWVIYb3vaTELSJ7tjKbz3VI7qW5R4kxDeB2QvLSdiu+RURbXbHhq4Gr41ruUXHLHkEUYxhnsaLFF+z7Sj5JvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\MVCNews.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\News.MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\grpc.core\\2.42.0\\grpc.core.2.42.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\grpc.core.api\\2.42.0\\grpc.core.api.2.42.0.nupkg.sha512",

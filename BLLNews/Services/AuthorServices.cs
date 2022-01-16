@@ -2,7 +2,7 @@
 using News.BLL.DataTransferObjects.AuthorsDto;
 using News.BLL.Interfaces;
 using News.DAL.Models;
-using News.DAL.Repositories;
+using News.DAL.RepositoryModels.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,34 +13,32 @@ namespace News.BLL.Services
     /// </summary>
     public class AuthorServices : IAuthorServices
     {
-        private readonly IRepositoryManager _repository;
+        private readonly IAuthorRepository _authorRepository;
         private readonly IMapper _mapper;
-        public AuthorServices(IRepositoryManager repository, IMapper mapper)
+        public AuthorServices(IAuthorRepository authorRepository, IMapper mapper)
         {
-            _repository = repository;
+            _authorRepository = authorRepository;
             _mapper = mapper;
         }
         public async Task<bool> CreateAuthor(AuthorCreatDto authorCreatDto)
         {
             var authorEntity = _mapper.Map<Author>(authorCreatDto);
-            _repository.Author.CreateAuthor(authorEntity);
-            _repository.Author.SaveAuthor();
+            _authorRepository.CreateAuthor(authorEntity);
             return true;
         }
         public async Task<bool> DeleteAuthor(Guid id)
         {
-            var author = await _repository.Author.GetAuthorAsync(id, trackChanges: false);
+            var author = await _authorRepository.GetAuthorAsync(id);
             if (author == null)
             {
                 return false;
             }
-            _repository.Author.DeleteAuthor(author);
-            _repository.Author.SaveAuthor();
+            _authorRepository.DeleteAuthor(author);
             return true;
         }
         public async Task<AuthorDto> GetAuthor(Guid id)
         {
-            var author = await _repository.Author.GetAuthorAsync(id, trackChanges: false);
+            var author = await _authorRepository.GetAuthorAsync(id);
             if (author == null)
             {
                 return null;
@@ -53,7 +51,7 @@ namespace News.BLL.Services
         }
         public async Task<IEnumerable<AuthorDto>> GetAuthors()
         {
-            var author = await _repository.Author.GetAllAuthorsAsync(trackChanges: false);
+            var author = await _authorRepository.GetAllAuthorsAsync();
             var authorDto = _mapper.Map<IEnumerable<AuthorDto>>(author);
             return authorDto;
         }

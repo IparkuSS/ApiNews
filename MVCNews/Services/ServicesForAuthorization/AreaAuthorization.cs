@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System;
 using System.Linq;
-namespace MVCNews.Services
+namespace News.MVC.Services
 {
     public class AreaAuthorization : IControllerModelConvention
     {

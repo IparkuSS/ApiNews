@@ -1,7 +1,7 @@
-﻿using News.DAL.Configuration;
-using News.DAL.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using News.DAL.Configuration;
+using News.DAL.Models;
 namespace News.DAL
 {
     public class RepositoryContext : IdentityDbContext<User>
@@ -15,8 +15,11 @@ namespace News.DAL
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
         public DbSet<Article> Articles { get; set; }
+
         public DbSet<Author> Authors { get; set; }
+
         public DbSet<Section> Sections { get; set; }
+
         public DbSet<Subsection> Subsections { get; set; }
     }
 }

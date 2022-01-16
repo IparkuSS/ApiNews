@@ -1,12 +1,12 @@
-﻿using News.BLL.DataTransferObjects.UserDto;
-using News.BLL.Interfaces;
-using Contract;
-using News.BLL.Identity;
+﻿using Contract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.BLL.DataTransferObjects.UserDto;
+using News.BLL.Identity;
+using News.BLL.Interfaces;
 using System;
 using System.Threading.Tasks;
-namespace APINews.Controllers
+namespace News.API.Controllers
 {
     [Route("api/registration")]
     [ApiController]

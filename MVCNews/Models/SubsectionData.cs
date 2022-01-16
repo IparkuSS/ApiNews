@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace MVCNews.Models
+namespace News.MVC.Models
 {
     public class SubsectionData
     {

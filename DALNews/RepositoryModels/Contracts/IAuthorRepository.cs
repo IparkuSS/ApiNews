@@ -2,14 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-namespace News.DAL.Repositories
+namespace News.DAL.RepositoryModels.Contracts
 {
     public interface IAuthorRepository
     {
-        Task<IEnumerable<Author>> GetAllAuthorsAsync(bool trackChanges);
-        Task<Author> GetAuthorAsync(Guid authorId, bool trackChanges);
+        Task<IEnumerable<Author>> GetAllAuthorsAsync();
+
+        Task<Author> GetAuthorAsync(Guid authorId);
+
         void CreateAuthor(Author author);
+
         void DeleteAuthor(Author author);
-        void SaveAuthor();
+
     }
 }

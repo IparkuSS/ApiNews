@@ -1,21 +1,20 @@
-﻿using APINews.Controllers;
-using APINews.Extensions;
-using AutoFixture;
+﻿using AutoFixture;
 using AutoMapper;
-using News.BLL.DataTransferObjects.ArticlesDto;
-using News.BLL.Interfaces;
 using Contract;
 using FakeItEasy;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using News.API.Controllers;
+using News.BLL.DataTransferObjects.ArticlesDto;
+using News.BLL.Extensions;
+using News.BLL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using News.BLL.Extensions;
 
-namespace NewsTests
+namespace News.Tests
 {
     public class ArticleControllerTests
     {

@@ -3,6 +3,7 @@
     public class SectionForUpdateDto
     {
         public string NameSection { get; set; }
+
         public string TitleImagePath { get; set; }
     }
 }

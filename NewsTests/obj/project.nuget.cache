@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qjYDfxUBEb4B1ikEq1C5xXRKOjS+JrlyLLB8PHEfJkhcmZjVp4BW0rslNP3ejmsGgDKzobRsiyplFcCmBWPmZw==",
+  "dgSpecHash": "yaGP2PLXtVTCPE8WZCxPQEuAIBTXQdpadgp63ZMw8hrOVDtfmS96ZpYI8bQQjNvCE5BbfKjziP6m4rpxKX/ZvA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\NewsTests.csproj",
+  "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\NewsTests\\News.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\autofixture\\4.17.0\\autofixture.4.17.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",

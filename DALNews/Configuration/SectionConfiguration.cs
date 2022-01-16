@@ -1,6 +1,6 @@
-﻿using News.DAL.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using News.DAL.Models;
 using System;
 namespace News.DAL.Configuration
 {

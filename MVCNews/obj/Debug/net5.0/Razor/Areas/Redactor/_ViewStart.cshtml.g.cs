@@ -14,20 +14,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "C:\Users\Lenovo\source\repos\APINews\MVCNews\Areas\Redactor\_ViewImports.cshtml"
-using MVCNews;
+using News.MVC;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Lenovo\source\repos\APINews\MVCNews\Areas\Redactor\_ViewImports.cshtml"
-using MVCNews.Models;
+using News.MVC.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Areas/Redactor/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d67b3244243d3b2a69ec0d88133615cac6378af0", @"/Areas/Redactor/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e88b8815421faf9e335174638f21f0be5842bd9c", @"/Areas/Redactor/_ViewImports.cshtml")]
     public class Areas_Redactor__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

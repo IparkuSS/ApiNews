@@ -2,10 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using MVCNews.Services;
+using News.MVC.Helper;
+using News.MVC.Helper.Contracts;
+using News.MVC.Services;
+using News.MVC.Services.Contracts;
 using System;
 using System.Text;
-namespace MVCNews.Extensions
+namespace News.MVC.Extensions
 {
     public static class ServiceExtensions
     {
@@ -57,6 +60,29 @@ namespace MVCNews.Extensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
                 };
             });
+        }
+        public static void ConfigureServicesManager(this IServiceCollection services)
+        {
+            services.AddTransient<ISectionServices, SectionServices>();
+            services.AddTransient<ISubsectionServices, SubsectionServices>();
+            services.AddTransient<IArticleServices, ArticleServices>();
+            services.AddTransient<IAuthorSerives, AuthorSerives>();
+        }
+
+
+        public static void ConfigureClientManager(this IServiceCollection services)
+        {
+            services.AddTransient<IApiModels, ApiModels>();
+            services.AddTransient<IClientSection, ClientSection>();
+            services.AddTransient<IClientSubsection, ClientSubsection>();
+            services.AddTransient<IClientArticle, ClientArticle>();
+            services.AddTransient<IClientAuthor, ClientAuthor>();
+        }
+
+        public static void ConfigureClientConfig(this IServiceCollection services, IConfiguration configuration)
+        {
+            ClientConfig clientConfig = configuration.GetSection("ClientConfig").Get<ClientConfig>();
+            services.AddSingleton(clientConfig);
         }
     }
 }

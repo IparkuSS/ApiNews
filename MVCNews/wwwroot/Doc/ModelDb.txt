@@ -1,0 +1,5 @@
+копка
+
+сайт имеет инормационный характер для получение подробной информации обращайтесь по телефону
+
+Scaffold-DbContext "Server=.;Database=BookStoresDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

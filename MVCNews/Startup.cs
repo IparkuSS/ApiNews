@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MVCNews.Extensions;
-using MVCNews.Helper;
+using News.MVC.Extensions;
 using System.Text;
-namespace MVCNews
+namespace News.MVC
 {
     public class Startup
     {
@@ -19,13 +18,18 @@ namespace MVCNews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.ConfigureCookie();
             services.ConfigureAuthorization();
             services.ConfigureutControllersWithViews();
             services.AddSession();
             services.AddControllersWithViews();
+
+            services.ConfigureClientConfig(Configuration);
             services.ConfigureutJwt(Configuration);
-            services.AddTransient<IApiModels, ApiModels>();
+            services.ConfigureServicesManager();
+            services.ConfigureClientManager();
+
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -37,7 +41,6 @@ namespace MVCNews
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseStaticFiles();

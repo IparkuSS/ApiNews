@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-namespace MVCNews
+namespace News.MVC
 {
     public class Program
     {

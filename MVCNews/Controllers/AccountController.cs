@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MVCNews.Helper;
-using MVCNews.Models;
+using News.MVC.Helper.Contracts;
+using News.MVC.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-namespace MVCNews.Controllers
+namespace News.MVC.Controllers
 {
     [Authorize]
     public class AccountController : Controller
