@@ -43,7 +43,7 @@ namespace News.MVC.Services
         public async Task<SectionData> GetSection(Guid id)
         {
             var section = new SectionData();
-            var res = await _clientSection.GetSectionsApi();
+            var res = await _clientSection.GetSectionApi(id);
             if (res != null)
             {
                 var result = res.Content.ReadAsStringAsync().Result;

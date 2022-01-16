@@ -14,6 +14,7 @@ using News.DAL;
 using News.DAL.Models;
 using News.DAL.RepositoryModels;
 using News.DAL.RepositoryModels.Contracts;
+using News.DAL.Setting;
 using System;
 using System.Text;
 namespace News.API.Extensions
@@ -99,6 +100,11 @@ namespace News.API.Extensions
             services.AddTransient<IArticleServices, ArticleServices>();
             services.AddTransient<IAuthorServices, AuthorServices>();
             services.AddTransient<IRegistrationServices, RegistrationServices>();
+        }
+        public static void ConfigureTrackChanges(this IServiceCollection services, IConfiguration configuration)
+        {
+            TrackSettings trackChanges = configuration.GetSection("TrackSettings").Get<TrackSettings>();
+            services.AddSingleton(trackChanges);
         }
     }
 }

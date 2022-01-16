@@ -1,5 +1,5 @@
 ﻿using System.Net.Http;
-namespace News.MVC.Helper //chang namespace 
+namespace News.MVC.Helper.Contracts
 {
     public interface IApiModels
     {

@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using News.MVC.Helper.Contracts;
 using System;
 using System.Net.Http;
 namespace News.MVC.Helper
 {
-    [Produces("appsettings/json")]//rr
     public class ApiModels : IApiModels
     {
         private readonly ClientConfig _clientConfig;

@@ -29,20 +29,18 @@ namespace News.API
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
-
-
+            services.ConfigureSwagger();
             services.ConfigureSqlContext(Configuration);
-            services.ConfigureRepositoryManager();
+
             services.AddAutoMapper(Assembly.GetAssembly(typeof(MappingProfile)));
             services.AddAuthentication();
-            TrackSettings trackChanges = Configuration.GetSection("TrackSettings").Get<TrackSettings>();
-            services.AddSingleton(trackChanges);
-
+            services.ConfigureRepositoryManager();
             services.ConfigureIdentity();
             services.ConfigureJWT(Configuration);
             services.AddScoped<IAuthenticationManager, AuthenticationManager>();
-            services.ConfigureSwagger();
+
             services.ConfigureServices();
+            services.ConfigureTrackChanges(Configuration);
             services.AddControllers();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

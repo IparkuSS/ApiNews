@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using News.MVC.Helper;
+using News.MVC.Helper.Contracts;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;

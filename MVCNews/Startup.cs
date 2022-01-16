@@ -5,8 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using News.MVC.Extensions;
-using News.MVC.Helper;
-using News.MVC.Helper.Contracts;
 using System.Text;
 namespace News.MVC
 {
@@ -21,23 +19,16 @@ namespace News.MVC
         public void ConfigureServices(IServiceCollection services)
         {
 
-
             services.ConfigureCookie();
             services.ConfigureAuthorization();
             services.ConfigureutControllersWithViews();
             services.AddSession();
             services.AddControllersWithViews();
 
-            ClientConfig clientConfig = Configuration.GetSection("ClientConfig").Get<ClientConfig>();
-            services.AddSingleton(clientConfig);
-
+            services.ConfigureClientConfig(Configuration);
             services.ConfigureutJwt(Configuration);
             services.ConfigureServicesManager();
-            services.AddTransient<IApiModels, ApiModels>();
-            services.AddTransient<IClientSection, ClientSection>();
-            services.AddTransient<IClientSubsection, ClientSubsection>();
-            services.AddTransient<IClientArticle, ClientArticle>();
-            services.AddTransient<IClientAuthor, ClientAuthor>();
+            services.ConfigureClientManager();
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
