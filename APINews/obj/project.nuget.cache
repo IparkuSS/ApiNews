@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kAy9P5MGzllFlZygct2GggoNOyBBx9lXdQ5htXIYgkOrMZ2KU7RUqbNbS6SJfkDcUObOGp2dY3Xqz2LRvmgz6A==",
+  "dgSpecHash": "DDfAJz1LidlYLkyXBcOZVNrMNnOy6wc2qzff4y/x5sjonGycxHr0PJqpiKgjBTwdX2+ynJ2s85luOmKzbnqCew==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\APINews\\News.API.csproj",
   "expectedPackageFiles": [
@@ -112,8 +112,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

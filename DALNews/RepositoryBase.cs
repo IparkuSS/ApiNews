@@ -34,5 +34,14 @@ namespace News.DAL
             RepositoryContext.SaveChangesAsync();
         }
 
+        public void Save()
+        {
+            RepositoryContext.SaveChangesAsync();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
