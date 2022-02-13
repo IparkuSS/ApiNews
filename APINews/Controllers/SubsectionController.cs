@@ -5,6 +5,9 @@ using News.BLL.DataTransferObjects.SubsectionsDto;
 using News.BLL.Interfaces;
 using System;
 using System.Threading.Tasks;
+using News.DAL.Parameters;
+
+
 namespace News.API.Controllers
 {
     [Route("api/section/{sectionId}/subsection")]
@@ -27,9 +30,9 @@ namespace News.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetSubsectionsForSection(Guid sectionId)
+        public async Task<IActionResult> GetSubsectionsForSection(Guid sectionId, [FromQuery] SubsectionParameters subsectionParameters)
         {
-            var subsectionDto = await _subsectionService.GetSubsectionsForSection(sectionId);
+            var subsectionDto = await _subsectionService.GetSubsectionsForSection(sectionId, subsectionParameters);
             if (subsectionDto == null)
             {
                 _logger.LogInfo($"section with id: {sectionId} doesn't exist.");

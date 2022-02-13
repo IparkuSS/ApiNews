@@ -276,6 +276,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Administrator\Pages\Roles\" />
     <Folder Include="wwwroot\Doc\" />
   </ItemGroup>
 

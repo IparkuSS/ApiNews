@@ -2,10 +2,12 @@
 using News.BLL.DataTransferObjects.SubsectionsDto;
 using News.BLL.Interfaces;
 using News.DAL.Models;
+using News.DAL.Parameters;
 using News.DAL.RepositoryModels.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 namespace News.BLL.Services
 {
     /// <summary>
@@ -22,16 +24,17 @@ namespace News.BLL.Services
             _sectionRepository = sectionRepository;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<SubsectionDto>> GetSubsectionsForSection(Guid sectionId)
+        public async Task<IEnumerable<SubsectionDto>> GetSubsectionsForSection(Guid sectionId, SubsectionParameters subsectionParameters)
         {
             var section = await _sectionRepository.GetSectionAsync(sectionId);
             if (section == null)
             {
                 return null;
             }
-            var subsectionFromDb = await _subsectionRepository.GetSubsectionsAsync(sectionId);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Subsection, SubsectionDto>()).CreateMapper();
-            var subsectionDto = mapper.Map<IEnumerable<SubsectionDto>>(subsectionFromDb);
+            var subsectionFromDb = await _subsectionRepository.GetSubsectionsAsync(sectionId, subsectionParameters);
+
+            /*            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Subsection, SubsectionDto>()).CreateMapper();*/
+            var subsectionDto = _mapper.Map<IEnumerable<SubsectionDto>>(subsectionFromDb);
             return subsectionDto;
         }
         public async Task<SubsectionDto> GetSubsectionForSection(Guid id, Guid sectionId)

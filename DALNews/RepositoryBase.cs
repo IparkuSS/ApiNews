@@ -21,27 +21,23 @@ namespace News.DAL
         public void Create(T entity)
         {
             RepositoryContext.Set<T>().Add(entity);
-            RepositoryContext.SaveChangesAsync();
+            RepositoryContext.SaveChanges();
         }
         public void Update(T entity)
         {
             RepositoryContext.Set<T>().Update(entity);
-            RepositoryContext.SaveChangesAsync();
+            RepositoryContext.SaveChanges();
         }
         public void Delete(T entity)
         {
             RepositoryContext.Set<T>().Remove(entity);
-            RepositoryContext.SaveChangesAsync();
+            RepositoryContext.SaveChanges();
         }
 
         public void Save()
         {
-            RepositoryContext.SaveChangesAsync();
+            RepositoryContext.SaveChanges();
         }
 
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
