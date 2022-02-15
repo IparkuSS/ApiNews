@@ -22,6 +22,9 @@ namespace News.DAL.RepositoryModels
 
         public void CreateSection(Section section) => Create(section);
 
+
+        public void SaveSectiom() => Save();
+
         public async Task<List<Section>> GetByIdsAsync(IEnumerable<Guid> ids) =>
             await FindByCondition(x => ids.Contains(x.Id), _trackSettings.TrackChanges).ToListAsync();
 

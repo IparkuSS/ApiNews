@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xRWVIYb3vaTELSJ7tjKbz3VI7qW5R4kxDeB2QvLSdiu+RURbXbHhq4Gr41ruUXHLHkEUYxhnsaLFF+z7Sj5JvQ==",
+  "dgSpecHash": "Lmp8sX3RCj+lXPNKs0EoRESQJJO0laZR8/pYQeIeWz2rCNdn9MpaPFz1aWeCkHTegCIOKUAznajSHX5EOualEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\source\\repos\\APINews\\MVCNews\\News.MVC.csproj",
   "expectedPackageFiles": [
@@ -177,8 +177,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+    "C:\\Users\\Lenovo\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

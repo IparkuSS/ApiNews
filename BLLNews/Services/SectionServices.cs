@@ -59,6 +59,7 @@ namespace News.BLL.Services
             _sectionRepository.DeleteSection(section);
             return true;
         }
+
         public async Task<bool> UpdateSection(Guid id, SectionForUpdateDto sectionForUpdateDto)
         {
             var sectionEntity = await _sectionRepository.GetSectionAsync(id);
@@ -67,6 +68,7 @@ namespace News.BLL.Services
                 return false;
             }
             _mapper.Map(sectionForUpdateDto, sectionEntity);
+            _sectionRepository.SaveSectiom();
             return true;
         }
     }

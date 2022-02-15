@@ -16,5 +16,8 @@ namespace News.DAL
 
         void Delete(T entity);
 
+        void Save();
+
+
     }
 }

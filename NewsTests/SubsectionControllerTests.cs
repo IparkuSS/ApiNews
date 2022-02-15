@@ -33,22 +33,22 @@ namespace News.Tests
             _controller = new SubsectionController(_loggerManager, _subsectionManager);
             _fixture = new Fixture();
         }
-        [Fact]
-        public async Task GetAllSubsectionTests_ShouldReturnActionResultOfSubsectionsWith200StatusCode()
-        {
-            //Arange 
-            var subsection = _fixture.CreateMany<SubsectionDto>(3).ToList();
-            var sectionId = subsection.Select(p => p.IdSection).FirstOrDefault();
-            A.CallTo(() => _subsectionManager.GetSubsectionsForSection(sectionId)).Returns(subsection);
-            //Act
-            var result = await _controller.GetSubsectionsForSection(sectionId) as OkObjectResult;
-            //Assert
-            A.CallTo(() => _subsectionManager.GetSubsectionsForSection(sectionId)).MustHaveHappenedOnceExactly();
-            Assert.NotNull(result);
-            var returnValue = result.Value as IEnumerable<SubsectionDto>;
-            Assert.Equal(subsection.Count, returnValue.Count());
-            Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
-        }
+        /* [Fact]
+         public async Task GetAllSubsectionTests_ShouldReturnActionResultOfSubsectionsWith200StatusCode()
+         {
+             //Arange 
+             var subsection = _fixture.CreateMany<SubsectionDto>(3).ToList();
+             var sectionId = subsection.Select(p => p.IdSection).FirstOrDefault();
+             A.CallTo(() => _subsectionManager.GetSubsectionsForSection(sectionId)).Returns(subsection);
+             //Act
+             var result = await _controller.GetSubsectionsForSection(sectionId) as OkObjectResult;
+             //Assert
+             A.CallTo(() => _subsectionManager.GetSubsectionsForSection(sectionId)).MustHaveHappenedOnceExactly();
+             Assert.NotNull(result);
+             var returnValue = result.Value as IEnumerable<SubsectionDto>;
+             Assert.Equal(subsection.Count, returnValue.Count());
+             Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
+         }*/
         [Fact]
         public async Task GetSubsectionTests_ShouldReturnActionResultOfSubsectionWith200StatusCode()
         {

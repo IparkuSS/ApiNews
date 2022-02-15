@@ -73,7 +73,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             var articleServicesResult = await _articleServices.DeleteArticle(sectionId, subsectionId, id);
             if (articleServicesResult == true) return RedirectToAction("Index");
-            return View();
+            return RedirectToAction("GetArticles");
         }
     }
 }

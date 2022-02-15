@@ -57,11 +57,12 @@ namespace News.MVC.Areas.Redactor.Controllers
         public async Task<IActionResult> DeleteSection(Guid id)
         {
             var resultSectionServices = await _sectionServices.DeleteSection(id);
-            if (resultSectionServices == true)
+            /*if (resultSectionServices == true)
             {
                 return RedirectToAction("Index");
             }
-            return View();
+            return View();*/
+            return RedirectToAction("Index");
         }
     }
 }

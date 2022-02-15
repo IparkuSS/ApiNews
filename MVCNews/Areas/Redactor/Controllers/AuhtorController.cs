@@ -15,7 +15,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         public AuhtorController(IWebHostEnvironment hostingEnvironment, IAuthorSerives authorServices)
         {
             this.hostingEnvironment = hostingEnvironment;
-            
+
             _authorServices = authorServices;
         }
         public async Task<IActionResult> Index()
@@ -33,7 +33,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             var authorServicesResult = await _authorServices.DeleteAuthor(id);
             if (authorServicesResult == true) return RedirectToAction("Index");
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

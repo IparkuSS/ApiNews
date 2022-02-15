@@ -16,5 +16,7 @@ namespace News.DAL.RepositoryModels.Contracts
 
         void DeleteSection(Section section);
 
+        void SaveSectiom();
+
     }
 }
