@@ -81,6 +81,7 @@ namespace News.BLL.Services
                 return false;
             }
             _mapper.Map(subsectionForUpdateDto, subsectionEntity);
+            _subsectionRepository.SaveSubsection();
             return true;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using News.MVC.Helper.Contracts;
+using News.MVC.ClientsApi.Contracts;
 using News.MVC.Models;
 using Newtonsoft.Json;
 using System.Net.Http;

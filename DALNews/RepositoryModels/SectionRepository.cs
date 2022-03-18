@@ -29,7 +29,5 @@ namespace News.DAL.RepositoryModels
             await FindByCondition(x => ids.Contains(x.Id), _trackSettings.TrackChanges).ToListAsync();
 
         public void DeleteSection(Section section) => Delete(section);
-
-
     }
 }

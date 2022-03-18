@@ -2,6 +2,6 @@
 {
     public class SubsectionParameters : RequestParameters
     {
-
+        public string SearchTerm { get; set; }
     }
 }

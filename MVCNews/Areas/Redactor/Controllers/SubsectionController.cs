@@ -55,7 +55,7 @@ namespace News.MVC.Areas.Redactor.Controllers
         {
             if (ModelState.IsValid)
             {
-                var resultSubsectionServices = await _subsectionServices.CreateSubsection(sectionData, idsection, titleImageFile);
+                var resultSubsectionServices = await _subsectionServices.UpdateSubsection(sectionData, sectionData.Id, sectionData.IdSection, titleImageFile);
                 if (resultSubsectionServices == true)
                 {
                     return RedirectToAction("Index");

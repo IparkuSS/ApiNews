@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using News.MVC.Helper;
+using News.MVC.ClientsApi;
 using News.MVC.Services.Contracts;
 using System;
 using System.IO;

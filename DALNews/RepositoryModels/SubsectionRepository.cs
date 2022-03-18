@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using News.DAL.Models;
+using News.DAL.Parameters;
 using News.DAL.RepositoryModels.Contracts;
 using News.DAL.Setting;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using News.DAL.Parameters;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace News.DAL.RepositoryModels
 {
@@ -28,9 +28,12 @@ namespace News.DAL.RepositoryModels
         {
             subsection.IdSection = sectionId;
             Create(subsection);
+
         }
 
         public void DeleteSubsection(Subsection subsection) => Delete(subsection);
+
+        public void SaveSubsection() => Save();
 
 
     }

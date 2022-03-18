@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using News.MVC.Helper.Contracts;
+using News.MVC.ClientsApi.Contracts;
 using News.MVC.Models;
 using News.MVC.Services.Contracts;
 using Newtonsoft.Json;

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using News.DAL.Parameters;
 
 namespace News.DAL.RepositoryModels
 {
@@ -13,9 +14,13 @@ namespace News.DAL.RepositoryModels
     {
         private readonly TrackSettings _trackSettings;
         public ArticleRepository(RepositoryContext repositoryContext, TrackSettings trackSettings) : base(repositoryContext) { _trackSettings = trackSettings; }
-        public async Task<IEnumerable<Article>> GetArticlesAsync(Guid sectionId, Guid subsectionId) =>
-              await FindByCondition(e => e.IdSubsection.Equals(subsectionId), _trackSettings.TrackChanges).OrderBy(c => c.Priority)
-              .ToListAsync();
+
+        public async Task<IEnumerable<Article>> GetArticlesAsync(Guid sectionId, Guid subsectionId,
+            ArticlesParameters articlesParameters) =>
+            await FindByCondition(e => e.IdSubsection.Equals(subsectionId), _trackSettings.TrackChanges)
+                .OrderBy(c => c.Priority)
+                .Skip((articlesParameters.PageNumber - 1) * articlesParameters.PageSize)
+                .Take(articlesParameters.PageSize).ToListAsync();
 
         public async Task<Article> GetArticleAsync(Guid subsectionId, Guid id) =>
                 await FindByCondition(e => e.IdSubsection.Equals(subsectionId) && e.Id.Equals(id), _trackSettings.TrackChanges)
@@ -30,7 +35,7 @@ namespace News.DAL.RepositoryModels
         public void DeleteArticle(Article article) => Delete(article);
 
 
-
+        public void SaveArticle() => Save();
 
     }
 }

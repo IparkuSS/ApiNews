@@ -1,6 +1,5 @@
 C:\Users\Lenovo\source\repos\APINews\Entities\bin\Debug\net5.0\Entities.deps.json
 C:\Users\Lenovo\source\repos\APINews\Entities\bin\Debug\net5.0\Entities.dll
-C:\Users\Lenovo\source\repos\APINews\Entities\bin\Debug\net5.0\ref\Entities.dll
 C:\Users\Lenovo\source\repos\APINews\Entities\bin\Debug\net5.0\Entities.pdb
 C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\Entities.AssemblyInfoInputs.cache
@@ -10,3 +9,4 @@ C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\Entities.dll
 C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\ref\Entities.dll
 C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\Entities.pdb
 C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\Entities.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\APINews\Entities\obj\Debug\net5.0\refint\Entities.dll

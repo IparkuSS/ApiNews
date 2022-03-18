@@ -7,11 +7,11 @@ namespace News.MVC.Models
     {
         [Column("IdSubsection")]
         public Guid Id { get; set; }
-        [Required(ErrorMessage = "Subsection name must not be missing")]
-        [MaxLength(15, ErrorMessage = "Maximum size 15 letters")]
+        [Required(ErrorMessage = "Название подраздела не должно отсутствовать")]
+        [MaxLength(15, ErrorMessage = "Максимальный размер 15 букв")]
         public string Name { get; set; }
         public Guid IdSection { get; set; }
-        [Required(ErrorMessage = "Picture should not be missing")]
+        [Required(ErrorMessage = "Картинка не должна отсутствовать")]
         public string ImagePath { get; set; }
         public string MetaTitle { get; set; }
         public string MetaDescription { get; set; }
