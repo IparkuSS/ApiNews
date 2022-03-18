@@ -9,14 +9,16 @@ namespace News.MVC.Models
         public Guid Id { get; set; }
         public Guid IdSubsection { get; set; }
         public Guid IdAuthor { get; set; }
-        [Required(ErrorMessage = "Short description not missing")]
+        [Required(ErrorMessage = "Краткое описание отсутствует")]
         public string ShortDescription { get; set; }
-        [Required(ErrorMessage = "Heading should not be missing")]
+        [Required(ErrorMessage = "Заголовок не должен отсутствовать")]
         public string Heading { get; set; }
-        [Required(ErrorMessage = "Priority should not be missing")]
+        [Required(ErrorMessage = "Приоритет не должен отсутствовать")]
         public int Priority { get; set; }
+        [Required(ErrorMessage = "Картинка не должна отсуствавать")]
         public string Image { get; set; }
         public DateTime AddTime { get; set; }
+        [Required(ErrorMessage = "Текст не должен отсуствавать")]
         public string Text { get; set; }
     }
 }

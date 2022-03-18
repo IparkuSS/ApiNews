@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using News.MVC.Helper.Contracts;
+using News.MVC.ClientsApi.Contracts;
 using News.MVC.Models;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -32,7 +32,7 @@ namespace News.MVC.Areas.Administrator.Controllers
                 }
                 ModelState.AddModelError(nameof(UserForAuthentication.UserName), "incorrect input");
             }
-            return View();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Index()

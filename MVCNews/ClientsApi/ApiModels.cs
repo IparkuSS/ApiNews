@@ -1,7 +1,7 @@
-﻿using News.MVC.Helper.Contracts;
+﻿using News.MVC.ClientsApi.Contracts;
 using System;
 using System.Net.Http;
-namespace News.MVC.Helper
+namespace News.MVC.ClientsApi
 {
     public class ApiModels : IApiModels
     {

@@ -3,7 +3,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace News.MVC.Helper.Contracts
+namespace News.MVC.ClientsApi.Contracts
 {
     public interface IClientAuthor
     {

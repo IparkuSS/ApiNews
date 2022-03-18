@@ -6,9 +6,9 @@ namespace News.MVC.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Username is required")]
+        [Required(ErrorMessage = "поле Username Должно быть заполненно")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "поле Password Должно быть заполненно")]
         public string Password { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }

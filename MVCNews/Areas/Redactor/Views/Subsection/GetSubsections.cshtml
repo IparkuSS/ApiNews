@@ -27,7 +27,7 @@
                 </td>
                 <td>
                     <a asp-area="Redactor" asp-controller="Subsection" asp-action="PutSubsection" asp-route-sectionId="@item.IdSection" asp-route-id="@item.Id">Изменить</a>
-                    @Html.ActionLink("Delete", "DeleteSubsection", new { id=item.Id , idSection = item.IdSection})
+                    @Html.ActionLink("Удалить", "DeleteSubsection", new { id=item.Id , idSection = item.IdSection})
                 </td>
             </tr>
         }

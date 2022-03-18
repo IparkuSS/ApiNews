@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using News.MVC.Helper;
-using News.MVC.Helper.Contracts;
+using News.MVC.ClientsApi;
+using News.MVC.ClientsApi.Contracts;
 using News.MVC.Services;
 using News.MVC.Services.Contracts;
 using System;

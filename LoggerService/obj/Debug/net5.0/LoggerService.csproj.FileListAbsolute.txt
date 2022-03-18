@@ -1,6 +1,5 @@
 C:\Users\Lenovo\source\repos\APINews\LoggerService\bin\Debug\net5.0\LoggerService.deps.json
 C:\Users\Lenovo\source\repos\APINews\LoggerService\bin\Debug\net5.0\LoggerService.dll
-C:\Users\Lenovo\source\repos\APINews\LoggerService\bin\Debug\net5.0\ref\LoggerService.dll
 C:\Users\Lenovo\source\repos\APINews\LoggerService\bin\Debug\net5.0\LoggerService.pdb
 C:\Users\Lenovo\source\repos\APINews\LoggerService\bin\Debug\net5.0\Contract.dll
 C:\Users\Lenovo\source\repos\APINews\LoggerService\bin\Debug\net5.0\Entities.dll
@@ -15,3 +14,4 @@ C:\Users\Lenovo\source\repos\APINews\LoggerService\obj\Debug\net5.0\LoggerServic
 C:\Users\Lenovo\source\repos\APINews\LoggerService\obj\Debug\net5.0\LoggerService.dll
 C:\Users\Lenovo\source\repos\APINews\LoggerService\obj\Debug\net5.0\ref\LoggerService.dll
 C:\Users\Lenovo\source\repos\APINews\LoggerService\obj\Debug\net5.0\LoggerService.pdb
+C:\Users\Lenovo\source\repos\APINews\LoggerService\obj\Debug\net5.0\refint\LoggerService.dll

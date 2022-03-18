@@ -1,4 +1,4 @@
-﻿namespace News.MVC.Helper
+﻿namespace News.MVC.ClientsApi
 {
     public class ClientConfig
     {

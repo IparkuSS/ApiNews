@@ -15,5 +15,6 @@ namespace News.DAL.RepositoryModels.Contracts
         void CreateSubsectionForSection(Guid sectionId, Subsection subsection);
 
         void DeleteSubsection(Subsection subsection);
+        void SaveSubsection();
     }
 }

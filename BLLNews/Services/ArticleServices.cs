@@ -6,6 +6,8 @@ using News.DAL.RepositoryModels.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using News.DAL.Parameters;
+
 namespace News.BLL.Services
 {
     /// <summary>
@@ -22,14 +24,14 @@ namespace News.BLL.Services
             _mapper = mapper;
             _subsectionRepository = subsectionRepository;
         }
-        public async Task<IEnumerable<ArticleDto>> GetAriclesForSubsection(Guid sectionId, Guid subsectionId)
+        public async Task<IEnumerable<ArticleDto>> GetAriclesForSubsection(Guid sectionId, Guid subsectionId, ArticlesParameters articlesParameters)
         {
             var article = await _subsectionRepository.GetSubsectionAsync(sectionId, subsectionId);
             if (article == null)
             {
                 return null;
             }
-            var articleFromDb = await _articleRepository.GetArticlesAsync(sectionId, subsectionId);
+            var articleFromDb = await _articleRepository.GetArticlesAsync(sectionId, subsectionId, articlesParameters);
             var articleDto = _mapper.Map<IEnumerable<ArticleDto>>(articleFromDb);
             return articleDto;
         }
@@ -76,6 +78,7 @@ namespace News.BLL.Services
                 return false;
             }
             _mapper.Map(articleForCreationDto, articleEntity);
+            _articleRepository.SaveArticle();
             return true;
         }
     }

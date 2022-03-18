@@ -2,14 +2,12 @@
 using AutoMapper;
 using Contract;
 using FakeItEasy;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.API.Controllers;
 using News.BLL.DataTransferObjects.ArticlesDto;
 using News.BLL.Extensions;
 using News.BLL.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -33,23 +31,23 @@ namespace News.Tests
             _controller = new ArticleController(_loggerManager, _articleManager);
             _fixture = new Fixture();
         }
-        [Fact]
-        public async Task GetAllSArticlesTests_ShouldReturnActionResultOfArticlesWith200StatusCode()
-        {
-            //Arange 
-            var fakeSectionGuid = Guid.NewGuid();
-            var articles = _fixture.CreateMany<ArticleDto>(3).ToList();
-            var article = articles.FirstOrDefault();
-            A.CallTo(() => _articleManager.GetAriclesForSubsection(fakeSectionGuid, article.IdSubsection)).Returns(articles);
-            //Act
-            var result = await _controller.GetAriclesForSubsection(fakeSectionGuid, article.IdSubsection) as OkObjectResult;
-            //Assert
-            A.CallTo(() => _articleManager.GetAriclesForSubsection(fakeSectionGuid, article.IdSubsection)).MustHaveHappenedOnceExactly();
-            Assert.NotNull(result);
-            var returnValue = result.Value as IEnumerable<ArticleDto>;
-            Assert.Equal(articles.Count, returnValue.Count());
-            Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
-        }
+        //[Fact]
+        /*  public async Task GetAllSArticlesTests_ShouldReturnActionResultOfArticlesWith200StatusCode()
+          {
+              //Arange 
+              var fakeSectionGuid = Guid.NewGuid();
+              var articles = _fixture.CreateMany<ArticleDto>(3).ToList();
+              var article = articles.FirstOrDefault();
+              A.CallTo(() => _articleManager.GetAriclesForSubsection(fakeSectionGuid, article.IdSubsection)).Returns(articles);
+              //Act
+              var result = await _controller.GetAriclesForSubsection(fakeSectionGuid, article.IdSubsection) as OkObjectResult;
+              //Assert
+              A.CallTo(() => _articleManager.GetAriclesForSubsection(fakeSectionGuid, article.IdSubsection)).MustHaveHappenedOnceExactly();
+              Assert.NotNull(result);
+              var returnValue = result.Value as IEnumerable<ArticleDto>;
+              Assert.Equal(articles.Count, returnValue.Count());
+              Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
+          }*/
         [Fact]
         public async Task GetArticleTests_ShouldReturnActionResultOfArticleWith200StatusCode()
         {

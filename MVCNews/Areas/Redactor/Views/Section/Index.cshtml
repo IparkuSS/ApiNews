@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "GetSection";
 }
-<h1>GetSection</h1>
+<h1>Все секции</h1>
 <p>
     <a asp-area="Redactor" asp-controller="Section" asp-action="CreateSection" asp-route-id="">Создать</a>
 </p>
@@ -10,7 +10,7 @@
     <thead>
         <tr>
             <th>
-                Name Section
+                Название секции
             </th>
             <th></th>
         </tr>
@@ -24,7 +24,7 @@
                 </td>
                 <td>
                     <a asp-area="Redactor" asp-controller="Section" asp-action="PutSection" asp-route-id="@item.Id">Изменить</a>
-                    @Html.ActionLink("Delete", "DeleteSection", new { id=item.Id })
+                    @Html.ActionLink("Удалить", "DeleteSection", new { id=item.Id })
                 </td>
             </tr>
         }

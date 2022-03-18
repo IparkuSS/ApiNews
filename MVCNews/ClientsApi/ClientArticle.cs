@@ -1,11 +1,11 @@
-﻿using News.MVC.Helper.Contracts;
+﻿using News.MVC.ClientsApi.Contracts;
 using News.MVC.Models;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 
-namespace News.MVC.Helper
+namespace News.MVC.ClientsApi
 {
     public class ClientArticle : IClientArticle
     {

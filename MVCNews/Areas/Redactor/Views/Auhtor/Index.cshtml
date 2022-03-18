@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h1>Index</h1>
+<h1>Статьи от авторов</h1>
 <table class="table">
     <thead>
         <tr>
@@ -10,16 +10,16 @@
                 @Html.DisplayNameFor(model => model.Id)
                 </th>*@
             <th>
-                Name
+                Имя
             </th>
             <th>
-                Surname
+                Фамилия
             </th>
             <th>
-                Document
+                Файл
             </th>
             <th>
-                Download
+                Скачать
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Document)
                 </td>
-                <td>@Html.ActionLink("Download", "DownloadFile", new { fileName = item.Document })</td>
+                <td>@Html.ActionLink("Скачать", "DownloadFile", new { fileName = item.Document })</td>
                 <td>
                     @Html.ActionLink("Удалить", "DeleteAuthor", new { id=item.Id })
                 </td>

@@ -42,7 +42,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Delete", "DeleteArticle", new { id=item.Id , sectionId = @ViewBag.idsection, subsectionId =@ViewBag.idsubsection })
-                    <a asp-area="Redactor" asp-controller="Articles" asp-action="PutArticle" asp-route-id="@item.Id" asp-route-sectionId="@ViewBag.idsection" asp-route-subsectionId="@ViewBag.idsubsection">edit</a>
+                    <a asp-area="Redactor" asp-controller="Articles" asp-action="PutArticle" asp-route-id="@item.Id" asp-route-sectionId="@ViewBag.idsection" asp-route-subsectionId="@ViewBag.idsubsection">изменить</a>
                 </td>
             </tr>
         }
